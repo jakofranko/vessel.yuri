@@ -1,7 +1,11 @@
 #!/bin/env ruby
 # encoding: utf-8
+require 'glossa'
 
 $nataniev.require("action","tweet")
+
+require_relative 'objects/entity'
+require_relative 'objects/world'
 
 class VesselYuri
 
