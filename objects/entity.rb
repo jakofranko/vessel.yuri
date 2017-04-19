@@ -82,7 +82,7 @@ class Entity
             else
                 child = child_name
             end
-            @children.push({:preposition => preposition, :child child})
+            @children.push({:preposition => preposition, :child => child})
         end
     end
 
