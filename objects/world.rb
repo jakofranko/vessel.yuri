@@ -1,14 +1,29 @@
-class World
+require_relative "./entity"
 
-    def initialize data = nil
+class World < Entity
 
-        @data = data
+    @type = "World"
+    @child_max = 8
+    @child_types = {
+        :Continent => {
+            :name => false,
+            :inherit_language => false,
+            :name_self => true,
+        },
+        :Sea => {
+            :name => false,
+            :inherit_language => false,
+            :name_self => true,
+        }
+    }
+    @child_prepositions = {
+        :Continent => ['On %s'],
+        :Sea => ['On %s']
+    }
 
-        if data then
-            @name = data['name']
-        else
-            raise 'Data needs to be passed into the initializer' 
-        end
+    def initialize name, name_self = false, language = Glossa::Language.new(true)
+
+       super
 
     end
 
