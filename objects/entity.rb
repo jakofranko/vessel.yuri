@@ -11,6 +11,8 @@ require 'glossa'
 # the south', 'to/in the north' etc. Each one of the children can have different attributes depending
 # on type. Forests can be 'sparse', 'verdant', 'coniferous', 'brooding' etc. Hills can be 'rolling', 
 # 'squat', 'towering', 'bare' etc.
+#
+# TODO: child adjectives (like prepositions)
 class Entity
 
     attr_accessor :name, :child_types, :child_relates, :child_attributes, :children
