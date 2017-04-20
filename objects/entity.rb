@@ -71,7 +71,7 @@ class Entity
             if child_options[:name]
                 child_name = @language.make_name(child_type)
             else
-                child_name = child_type
+                child_name = "#{child_type}"
             end
 
             if Kernel.const_defined? child_type
@@ -85,15 +85,20 @@ class Entity
             else
                 child = child_name
             end
-            @children.push({:preposition => preposition, :child => child})
+            children.push({:preposition => preposition, :child => child})
         end
+
+        children
     end
 
     def describe
-        # TODO: Return a sentence describing the entity by its children
-        # Example: "<name> has a coniferous and brooding forest to the south. To the west, there are squat hills"
+        sentence = ""
+        @children.each do |c|
+            child_name = (c[:child].is_a? String) ? c[:child] : c.name
+            sentence << c[:preposition] % @name + " is #{child_name}. "
+        end
+
+        sentence
     end
-
-
 
 end
