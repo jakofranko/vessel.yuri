@@ -58,6 +58,7 @@ class Entity
     # a language defined.
     # Optionally, a child can have a new language generated for itself
     def generate_children new_name = false, inherit_language = true
+        children = []
         num_children = rand(@child_max)
         num_children.times do
             # Pick a child type, options and preposition
@@ -73,7 +74,7 @@ class Entity
                 child_name = child_type
             end
 
-            if Kernal.const_defined? child_type
+            if Kernel.const_defined? child_type
                 entity = Object.const_get(child_type)
                 params = []
                 params.push(child_name)
