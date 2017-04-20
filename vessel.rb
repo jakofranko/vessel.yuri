@@ -46,7 +46,7 @@ class ActionTest
   def act q = nil
     language = Glossa::Language.new
     world = World.new(language.make_name('world'))
-    puts q
+    puts world.describe
     return "This is a test"
 
   end
