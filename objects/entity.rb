@@ -120,7 +120,7 @@ class Entity
 
         @children.each do |c|
             child_name = (c[:child].is_a? String) ? c[:child] : c.name
-            sentence << c[:preposition] % @name + " is #{child_name}. "
+            sentence << " " + c[:preposition] % @name + " is #{child_name}."
         end
 
         sentence
