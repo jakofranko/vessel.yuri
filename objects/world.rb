@@ -4,6 +4,9 @@ class World < Entity
 
     def initialize name, name_self = false, language = Glossa::Language.new(true)
         @type = "World"
+        @adjectives = ['', 'blue', 'green', 'verdant', 'dark', 'evil']
+        @verbs = ['', '', '', '', 'swirling with chaos']
+        @adverbs = ['', '', '', '', 'violently']
         @child_max = 8
         @child_types = {
             :Continent => {

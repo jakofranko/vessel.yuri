@@ -15,7 +15,7 @@ require 'glossa'
 # TODO: child adjectives (like prepositions)
 class Entity
 
-    attr_accessor :name, :child_types, :child_relates, :child_attributes, :children
+    attr_accessor :name, :type, :adjective, :adverb, :verb, :adjectives, :adverbs, :verbs, :child_types, :child_relates, :child_attributes, :children
 
     def initialize name, name_self = false, language = Glossa::Language.new(true)
 
@@ -36,6 +36,9 @@ class Entity
         end     
                 
         @name = name_self ? language.make_name(@type) : name
+        @adjective = @adjectives ? choose(@adjectives) : false
+        @verb = @verbs ? choose(@verbs) : false
+        @adverb = @adverbs ? choose(@adverbs) : false
         @language = language
         @children = generate_children
     end
@@ -93,6 +96,28 @@ class Entity
 
     def describe
         sentence = ""
+
+        if @adjective && !@adjective.empty?
+            article = /^[aeiouAEIOU]/ =~ @adjective ? 'an' : 'a'
+            if @name != @type
+                sentence << "#{@name}, #{article} #{@adjective} #{@type}"
+            elsif
+                sentence << "#{article.capitalize} #{@adjective} #{@name}"
+            end
+        else
+            sentence << "#{@name}"
+        end
+
+        if @verb && !@verb.empty?
+            if @adverb && !@adverb.empty?
+                sentence << ", #{@adverb} #{@verb}"
+            else
+                sentence << ", #{@verb}"
+            end
+        end
+
+        sentence << "."
+
         @children.each do |c|
             child_name = (c[:child].is_a? String) ? c[:child] : c.name
             sentence << c[:preposition] % @name + " is #{child_name}. "
