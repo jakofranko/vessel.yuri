@@ -119,11 +119,12 @@ class Entity
         sentence << "."
 
         @children.each do |c|
-            child_name = (c[:child].is_a? String) ? c[:child] : c.name
+            child_name = (c[:child].is_a? String) ? c[:child] : c[:child].describe
             sentence << " " + c[:preposition] % @name + " is #{child_name}."
         end
 
-        sentence
+        # Filter out all multiple periods from nested children
+        sentence.gsub(/\.{2,}/, '.')
     end
 
 end
