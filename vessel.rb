@@ -17,7 +17,7 @@ class VesselYuri
 
     @name = "Yuri, Keeper of the Fire"
     @docs = "A pale (too pale?), grizzled man. Keeper of the Fire, Teller of the Stories."
-    @site = "jakofranko.github.io/vessel.yuri"
+    @site = "https://jakofranko.github.io/vessel.yuri"
     @path = File.expand_path(File.join(File.dirname(__FILE__), "/"))
 
     install(:generic,:document)
