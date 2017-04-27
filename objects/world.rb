@@ -1,4 +1,5 @@
 require_relative "./entity"
+require_relative './continent'
 
 class World < Entity
 
@@ -22,15 +23,14 @@ class World < Entity
         }
         @child_prepositions = {
             :Continent => [
-                'On %s', 'Sprawling across the southern hemisphere of %s',
+                'On %s', 
+                'Sprawling across the southern hemisphere of %s',
                 'Sprawling across the northern hemisphere of %s',
                 'Spread out upon the northern hemisphere of %s',
                 'Spread out upon the southern hemisphere of %s'
             ],
             :Sea => ['Spreading across %s', 'Covering %s', 'Upon the surface of %s']
         }
-
-        # TODO: adjectives
 
         super
 
