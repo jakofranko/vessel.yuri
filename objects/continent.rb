@@ -2,13 +2,13 @@ require_relative "./entity"
 
 class Continent < Entity
 
-    def initialize name, name_self = false, language = Glossa::Language.new(true)
+    def initialize options
         @type = "Continent"
         @adjectives = ['', 'large', 'small', 'medium']
         @child_max = 5
         @child_types = {
             :Land => {
-                :name => false,
+                :name => true,
                 :inherit_language => false,
                 :name_self => true,
             }
