@@ -6,6 +6,7 @@ $nataniev.require("action","tweet")
 
 require_relative 'objects/entity'
 require_relative 'objects/world'
+require_relative 'objects/memory.entity'
 
 class VesselYuri
 
@@ -45,9 +46,13 @@ class ActionTest
 
   def act q = nil
 
+    $entities = EntityMemory.new('entities', @host.path)
+    puts $entities.render
+
     language = Glossa::Language.new
-    world = World.new(language.make_name('world'))
+    world = World.new({:name => language.make_name('world')})
     puts world.describe
+
     return "This is a test"
 
   end
