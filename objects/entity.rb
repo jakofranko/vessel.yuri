@@ -15,11 +15,22 @@ require 'glossa'
 # TODO: child adjectives (like prepositions)
 class Entity
 
-    attr_accessor :name, :type, :adjective, :adverb, :verb, :adjectives, :adverbs, :verbs, :child_types, :child_relates, :child_attributes, :children
+    attr_accessor :id, :name, :language, :parent, :type, :adjective, :adverb, :verb, :adjectives, :adverbs, :verbs, :child_types, :child_relates, :child_attributes, :children
 
-    def initialize name, name_self = false, language = Glossa::Language.new(true)
+    def initialize options
 
         ##
+        # Validate the options
+        if options.nil? || !options.is_a?(Hash)
+            raise "Please specify an options hash"
+        elsif options[:name] == false && options[:name_self] == false
+            raise "An entity must either be given a name, or name itself"
+        elsif options[:name_self] == true && (options[:language] === false || options[:language].nil?)
+            raise "If an entity is naming itself, then it must have a language instance."
+        end
+
+        ##
+        # These class attributes must be defined at the subclass level
         # @child_types should be a hash, with the keys of the hash being the child types, and the value
         # of each type being a hash with the following options (with bool vals): :name, :inherit_language, :name_self 
         if @child_types.nil?
@@ -31,16 +42,16 @@ class Entity
             raise "Please specify a maximum number of children this entity can have (@child_max)"
         elsif @type.nil?
             raise "Please specify the entity's type (@type)"
-        elsif name_self == true && language === false
-            raise "If an entity is naming itself, then you must give it a language"
-        end     
-                
-        @name = name_self ? language.make_name(@type) : name
-        @adjective = @adjectives ? choose(@adjectives) : false
-        @verb = @verbs ? choose(@verbs) : false
-        @adverb = @adverbs ? choose(@adverbs) : false
-        @language = language
-        @children = generate_children
+        end
+
+        @id         = options[:id]          ? options[:id]                          : nil
+        @name       = options[:name_self]   ? options[:language].make_name(@type)   : options[:name]
+        @language   = options[:language]
+        @parent     = options[:parent]
+        @adjective  = @adjectives           ? choose(@adjectives)                   : false
+        @verb       = @verbs                ? choose(@verbs)                        : false
+        @adverb     = @adverbs              ? choose(@adverbs)                      : false
+        @children   = generate_children
     end
 
     ##
@@ -49,7 +60,6 @@ class Entity
     # the power of a given exponent.
     def choose(list, exponent = 2)
         list_index = ((rand ** exponent) * list.length).floor
-
         list[list_index]
     end
 
@@ -60,7 +70,7 @@ class Entity
     # Optionally, a name can be created for the child if the parent has
     # a language defined.
     # Optionally, a child can have a new language generated for itself
-    def generate_children new_name = false, inherit_language = true
+    def generate_children
         children = []
         num_children = rand(@child_max)
         num_children.times do
@@ -71,23 +81,31 @@ class Entity
 
             # Given the child_type's options, set the name
             child_name = nil
-            if child_options[:name]
-                child_name = @language.make_name(child_type)
-            else
+            if child_options[:name] == false || child_options[:name_self] == true
                 child_name = "#{child_type}"
+            else
+                child_name = @language.make_name(child_type)
             end
 
             if Kernel.const_defined? child_type
                 entity = Object.const_get(child_type)
-                params = []
-                params.push(child_name)
-                params.push(child_options[:name_self])
-                params.push(@language) if child_options[:inherit_language]
+                options = {
+                    :name => child_name,
+                    :name_self => child_options[:name_self],
+                    :parent => self
+                }
 
-                child = entity.new(*params)
+                if child_options[:inherit_language]
+                    options[:language] = @language
+                else
+                    options[:language] = Glossa::Language.new(true)
+                end
+
+                child = entity.new(options)
             else
                 child = child_name
             end
+
             children.push({:preposition => preposition, :child => child})
         end
 

@@ -1,9 +1,11 @@
-require_relative "./entity"
+require_relative './entity'
 require_relative './continent'
+require_relative './land'
 
 class World < Entity
 
-    def initialize name, name_self = false, language = Glossa::Language.new(true)
+    def initialize options
+
         @type = "World"
         @adjectives = ['', 'blue', 'green', 'verdant', 'dark', 'evil']
         @verbs = ['', '', '', '', 'swirling with chaos']
