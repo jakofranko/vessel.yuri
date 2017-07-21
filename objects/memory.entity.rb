@@ -16,8 +16,38 @@ class EntityMemory < Memory_Array
         adverb      = entity.adverb.append(" ", 14)
         # lang_id     = entity.lang_id
 
+        # Append this string to the entities.ma file
         self.append("#{new_id} #{parent_id.append(" ", 9)} #{type} #{name} #{preposition} #{adjective} #{verb} #{adverb}")
 
+        # Add directly to render, since append only adds a line to the file and doesn't re-render the memory
+        # If this isn't done, then, among other things, the new_id gets messed up when adding multiple things to memory during execution
+        $entities.render << {"id"=>new_id, "parent_id"=>parent_id, "type"=>type, "name"=>name, "preposition"=>preposition, "adjective"=>adjective, "verb"=>verb, "adverb"=>adverb}
+
+        # Return the new id
+        new_id
+
     end
+
+    def get id, with_children = false, with_parent = false
+
+        if id.is_a? Numeric
+            id = id.to_s.prepend("0", 5)
+        end
+
+        entity_row = self.filter('id', id, nil)
+
+    end
+
+    def filter field, value, type
+
+        a = []
+        @render.each do |line|
+          if !line[field].to_s.like(value) && value != "*" then next end
+          a.push(type ? Object.const_get(type.capitalize).new(line) : line)
+        end
+        return a
+
+    end
+
 
 end
