@@ -14,6 +14,8 @@ require_relative './_toolkit'
 # 'squat', 'towering', 'bare' etc.
 #
 # TODO: child adjectives (like prepositions)
+# TODO: Load entities from the entities memory, and handle saving differently
+# TODO: Save and load languages
 class Entity
     ATTRS = [
         :id,
