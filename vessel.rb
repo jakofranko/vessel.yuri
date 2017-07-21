@@ -47,11 +47,12 @@ class ActionTest
   def act q = nil
 
     $entities = EntityMemory.new('entities', @host.path)
-    puts $entities.render
+    # puts $entities.render
+    $entities.get(q.to_i)
 
-    language = Glossa::Language.new
-    world = World.new({:name => language.make_name('world')})
-    puts world.describe
+    # language = Glossa::Language.new
+    # world = World.new({:name => language.make_name('world')})
+    # puts world.describe
 
     return "This is a test"
 
