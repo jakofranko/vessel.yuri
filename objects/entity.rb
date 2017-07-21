@@ -74,6 +74,10 @@ class Entity
         @adverb      = @adverbs              ? choose(@adverbs)                      : ""
         @children    = []
 
+        # If the entity does not have an ID, add it to memory and then set the new ID
+        if @id.nil? then @id = $entities.add(self) end
+
+        # Now that the entity is saved, we can safely generate new children
         generate_children
     end
 
@@ -138,7 +142,6 @@ class Entity
             child.preposition = preposition
         end
 
-        # $entities.add(child)
         @children.push(child)
     end
 
