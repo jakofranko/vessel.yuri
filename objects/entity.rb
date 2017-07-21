@@ -15,8 +15,25 @@ require_relative './_toolkit'
 #
 # TODO: child adjectives (like prepositions)
 class Entity
-
-    attr_accessor :id, :name, :language, :parent, :type, :adjective, :adverb, :verb, :adjectives, :adverbs, :verbs, :child_types, :child_relates, :child_attributes, :children
+    ATTRS = [
+        :id,
+        :name,
+        :language,
+        :parent,
+        :type,
+        :adjective,
+        :adverb,
+        :verb,
+        :adjectives,
+        :adverbs,
+        :verbs,
+        :child_types,
+        :child_relates,
+        :child_attributes,
+        :children,
+        :preposition
+    ]
+    attr_accessor(*ATTRS)
 
     def initialize options
 
@@ -45,14 +62,17 @@ class Entity
             raise "Please specify the entity's type (@type)"
         end
 
-        @id         = options[:id]          ? options[:id]                          : nil
-        @name       = options[:name_self]   ? options[:language].make_name(@type)   : options[:name]
-        @language   = options[:language]
-        @parent     = options[:parent]
-        @adjective  = @adjectives           ? choose(@adjectives)                   : false
-        @verb       = @verbs                ? choose(@verbs)                        : false
-        @adverb     = @adverbs              ? choose(@adverbs)                      : false
-        @children   = generate_children
+        @id          = options[:id]          ? options[:id]                          : nil
+        @name        = options[:name_self]   ? options[:language].make_name(@type)   : options[:name]
+        @preposition = options[:preposition] ? options[:preposition]                 : nil
+        @language    = options[:language]
+        @parent      = options[:parent]
+        @adjective   = @adjectives           ? choose(@adjectives)                   : ""
+        @verb        = @verbs                ? choose(@verbs)                        : ""
+        @adverb      = @adverbs              ? choose(@adverbs)                      : ""
+        @children    = []
+
+        generate_children
     end
 
     ##
