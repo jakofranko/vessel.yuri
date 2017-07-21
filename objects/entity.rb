@@ -85,52 +85,59 @@ class Entity
     end
 
     ##
-    # By default, this function will create a random number of children
+    # This function will create a random number of children
     # that is less than the max number of children. Their names will be
     # what their type is, and will inherit the language of it's parent.
     # Optionally, a name can be created for the child if the parent has
     # a language defined.
     # Optionally, a child can have a new language generated for itself
     def generate_children
-        children = []
         num_children = rand(@child_max)
         num_children.times do
             # Pick a child type, options and preposition
             child_type = choose(@child_types.keys)
-            child_options = @child_types[child_type]
-            preposition = choose(@child_prepositions[child_type])
+            self.add_child(child_type)
+        end
+    end
 
-            # Given the child_type's options, set the name
-            child_name = nil
-            if child_options[:name] == false || child_options[:name_self] == true
-                child_name = "#{child_type}"
-            else
-                child_name = @language.make_name(child_type)
-            end
+    def add_child type
 
-            if Kernel.const_defined? child_type
-                entity = Object.const_get(child_type)
-                options = {
-                    :name => child_name,
-                    :name_self => child_options[:name_self],
-                    :parent => self
-                }
+        raise "#{type} is not a valid child for #{self.type}" if !@child_types[type]
 
-                if child_options[:inherit_language]
-                    options[:language] = @language
-                else
-                    options[:language] = Glossa::Language.new(true)
-                end
+        child_options = @child_types[type]
+        preposition = choose(@child_prepositions[type])
 
-                child = entity.new(options)
-            else
-                child = child_name
-            end
-
-            children.push({:preposition => preposition, :child => child})
+        # Given the child_type's options, set the name
+        child_name = nil
+        if child_options[:name] == false || child_options[:name_self] == true
+            child_name = "#{type}"
+        else
+            child_name = @language.make_name(type)
         end
 
-        children
+        if Kernel.const_defined? type
+            entity = Object.const_get(type)
+            options = {
+                :name => child_name,
+                :name_self => child_options[:name_self],
+                :preposition => preposition,
+                :parent => self
+            }
+
+            if child_options[:inherit_language]
+                options[:language] = @language
+            else
+                options[:language] = Glossa::Language.new(true)
+            end
+
+            child = entity.new(options)
+        else
+            child = child_name
+            child.preposition = preposition
+        end
+
+        # $entities.add(child)
+        @children.push(child)
     end
 
     def describe
