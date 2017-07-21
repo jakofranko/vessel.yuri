@@ -1,4 +1,5 @@
 require 'glossa'
+require_relative './_toolkit'
 
 ##
 # Entities are the parent class for all elements of a story: places, regions, people, things, etc.
@@ -115,15 +116,12 @@ class Entity
     def describe
         sentence = ""
 
-        if @adjective && !@adjective.empty?
-            article = /^[aeiouAEIOU]/ =~ @adjective ? 'an' : 'a'
-            if @name != @type
-                sentence << "#{@name}, #{article} #{@adjective} #{@type}"
-            elsif
-                sentence << "#{article.capitalize} #{@adjective} #{@name}"
-            end
-        else
-            sentence << "#{@name}"
+        article = (@adjective && !@adjective.empty?) ? @adjective.article : @type.article
+        adj = (@adjective && !@adjective.empty?) ? @adjective : ""
+        if @name != @type
+            sentence << "#{@name}, #{article} #{adj} #{@type.downcase}"
+        elsif
+            sentence << "#{article.capitalize} #{adj} #{@type.downcase}"
         end
 
         if @verb && !@verb.empty?
@@ -137,12 +135,20 @@ class Entity
         sentence << "."
 
         @children.each do |c|
-            child_name = (c[:child].is_a? String) ? c[:child] : c[:child].describe
-            sentence << " " + c[:preposition] % @name + " is #{child_name}."
+            if c.is_a? String
+                # Since this is likely a generic name like 'Forest', we can add an article
+                child_name = c.with_article.downcase
+                to_be = c.article.empty? ? "are" : "is"
+            else 
+                child_name = c.describe
+                to_be = "is"
+            end
+
+            sentence << " " + c.preposition % @name + " #{to_be} #{child_name}."
         end
 
-        # Filter out all multiple periods from nested children
-        sentence.gsub(/\.{2,}/, '.')
+        # Filter out all multiple periods and spaces from nested children
+        sentence.gsub(/\.{2,}/, '.').gsub(/\s{2,}/, ' ')
     end
 
 end
