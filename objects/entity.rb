@@ -66,7 +66,7 @@ class Entity
 
         @id          = options[:id]          ? options[:id]                          : nil
         @name        = options[:name_self]   ? options[:language].make_name(@type)   : options[:name]
-        @preposition = options[:preposition] ? options[:preposition]                 : nil
+        @preposition = options[:preposition] ? options[:preposition]                 : ""
         @language    = options[:language]
         @parent      = options[:parent]
         @adjective   = @adjectives           ? choose(@adjectives)                   : ""
