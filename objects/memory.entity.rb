@@ -34,7 +34,13 @@ class EntityMemory < Memory_Array
             id = id.to_s.prepend("0", 5)
         end
 
-        entity_row = self.filter('id', id, nil)
+        entity_row = self.filter('id', id, nil)[0]
+
+        # Symbolize keys
+        entity_row = Hash[entity_row.map { |k, v| [k.to_sym, v] }]
+
+        # Return the object
+        Object.const_get(entity_row[:type].capitalize).new(entity_row)
 
     end
 

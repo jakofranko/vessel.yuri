@@ -69,16 +69,26 @@ class Entity
         @preposition = options[:preposition] ? options[:preposition]                 : ""
         @language    = options[:language]
         @parent      = options[:parent]
-        @adjective   = @adjectives           ? choose(@adjectives)                   : ""
-        @verb        = @verbs                ? choose(@verbs)                        : ""
-        @adverb      = @adverbs              ? choose(@adverbs)                      : ""
         @children    = []
 
-        # If the entity does not have an ID, add it to memory and then set the new ID
-        if @id.nil? then @id = $entities.add(self) end
+        # If the entity does not have an ID, add it to memory, set the new ID, and generate new children
+        if @id.nil?
+            @adjective   = @adjectives ? choose(@adjectives) : ""
+            @verb        = @verbs      ? choose(@verbs)      : ""
+            @adverb      = @adverbs    ? choose(@adverbs)    : ""
+            @id = $entities.add(self)
 
-        # Now that the entity is saved, we can safely generate new children
-        generate_children
+            # Now that the entity is saved, we can safely generate new children
+            generate_children
+
+        # Otherwise, this entity is being initialized from memory, so load children?
+        else
+            @adjective   = options[:adjective] ? options[:adjective] : ""
+            @verb        = options[:verb]      ? options[:verb]      : ""
+            @adverb      = options[:adverb]    ? options[:adverb]    : ""
+        end
+
+
     end
 
     ##
