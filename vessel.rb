@@ -48,7 +48,8 @@ class ActionTest
 
     $entities = EntityMemory.new('entities', @host.path)
     # puts $entities.render
-    $entities.get(q.to_i)
+    entity = $entities.get(q.to_i)
+    puts entity.describe
 
     # language = Glossa::Language.new
     # world = World.new({:name => language.make_name('world')})
