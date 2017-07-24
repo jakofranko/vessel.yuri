@@ -73,9 +73,11 @@ class Entity
 
         # If the entity does not have an ID, add it to memory, set the new ID, and generate new children
         if @id.nil?
-            @adjective   = @adjectives ? choose(@adjectives) : ""
-            @verb        = @verbs      ? choose(@verbs)      : ""
-            @adverb      = @adverbs    ? choose(@adverbs)    : ""
+            @adjective = @adjectives ? choose(@adjectives) : ""
+            @verb      = @verbs      ? choose(@verbs)      : ""
+            @adverb    = @adverbs    ? choose(@adverbs)    : ""
+
+            # Add the entity to the memory file
             @id = $entities.add(self)
 
             # Now that the entity is saved, we can safely generate new children
@@ -83,11 +85,10 @@ class Entity
 
         # Otherwise, this entity is being initialized from memory, so load children?
         else
-            @adjective   = options[:adjective] ? options[:adjective] : ""
-            @verb        = options[:verb]      ? options[:verb]      : ""
-            @adverb      = options[:adverb]    ? options[:adverb]    : ""
+            @adjective = options[:adjective] ? options[:adjective] : ""
+            @verb      = options[:verb]      ? options[:verb]      : ""
+            @adverb    = options[:adverb]    ? options[:adverb]    : ""
         end
-
 
     end
 
