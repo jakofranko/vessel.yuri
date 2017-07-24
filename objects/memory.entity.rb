@@ -1,4 +1,5 @@
 require_relative '../../../memory.rb'
+require_relative './_toolkit'
 
 class EntityMemory < Memory_Array
 
@@ -34,13 +35,24 @@ class EntityMemory < Memory_Array
             id = id.to_s.prepend("0", 5)
         end
 
-        entity_row = self.filter('id', id, nil)[0]
-
-        # Symbolize keys
-        entity_row = Hash[entity_row.map { |k, v| [k.to_sym, v] }]
+        entity_row = self.filter('id', id, nil)[0].symbolize_keys
 
         # Return the object
-        Object.const_get(entity_row[:type].capitalize).new(entity_row)
+        entity = Object.const_get(entity_row[:type].capitalize).new(entity_row)
+
+        if with_children
+            # Fetch all entities that have a parent id of the entity's ID
+            children_rows = self.filter('parent_id', id, nil)
+
+            # Then, loop through the results and try to instantiate entity objects of them
+            children_rows.each do |child|
+                # Recursively fetch the entity and it's children
+                c = self.get(child['id'], true)
+                entity.children.push(c)
+            end
+        end
+
+        entity
 
     end
 
