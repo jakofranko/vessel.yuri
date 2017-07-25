@@ -1,0 +1,46 @@
+~ NAME : Languages
+~ NOTE : A place to store the languages generated while Yuri tells stories
+~ AUTH : Jake Franklin
+
+VOIDSTALKER
+  test : {"testing"=>{"testing"=>"again", "foo"=>"bar", "baz"=>"buzz"}}
+
+Pun pep
+  phonemes : {"C"=>"ptkmnls", "V"=>"aeiou", "S"=>"s", "F"=>"mn", "L"=>"rl"}
+  structure : CVC
+  exponent : 2
+  restricts
+  cortho : {}
+  vortho : {}
+  noortho : true
+  nomorph : true
+  nowordpool : true
+  minsyll : 1
+  maxsyll : 1
+  morphemes : {}
+  words : {"world"=>["pas", "til"], ""=>["nek", "pun", "kal", "pak"], "continent"=>["mep", "pat", "pip"], "sea"=>["pam", "lon", "top", "pup"], "language"=>["pep"]}
+  names
+    Nek nek
+    Nek pup pun
+    Pip pup kal
+    Pak pip
+    Lon pup top
+    Pam pup
+    Pak pup nek
+    Pun pep
+  joiner :  
+  maxchar : 12
+  minchar : 5
+  genitive : pup
+  definitive : lep
+  id : 2
+
+PREFIXES
+  ACT : action
+  AER : air
+  AGR     : farm : {"testing"=>["bazbarfoo"]}
+  ALG : pain
+  AMBI : both sides
+  AMBUL : move
+  AMI     : love : {"test"=>"foobarbaz"}
+
