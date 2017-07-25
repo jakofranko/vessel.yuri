@@ -7,6 +7,7 @@ $nataniev.require("action","tweet")
 require_relative 'objects/entity'
 require_relative 'objects/world'
 require_relative 'objects/memory.entity'
+require_relative 'objects/memory.language'
 
 class VesselYuri
 
@@ -48,10 +49,31 @@ class ActionTest
 
     $entities = EntityMemory.new('entities', @host.path)
     # puts $entities.render
-    entity = $entities.get(q.to_i, true)
-    puts entity.describe
+    # entity = $entities.get(q.to_i, true)
+    # puts entity.describe
 
-    # language = Glossa::Language.new
+    language = Glossa::Language.new
+    language.make_name('world')
+    language.make_name('continent')
+    language.make_name('continent')
+    language.make_name('continent')
+    language.make_name('sea')
+    language.make_name('sea')
+    language.make_name('sea')
+    language.instance_variables.each do |var|
+      puts language.instance_variable_get var
+    end
+
+    dict = LanguageMemory.new("languages", @host.path)
+    puts "---RENDER---"
+    puts dict.render
+    puts "---NOTES---"
+    puts dict.notes
+
+    dict.add(language)
+    puts "---RENDER---"
+    puts dict.render    
+
     # world = World.new({:name => language.make_name('world')})
     # puts world.describe
 
