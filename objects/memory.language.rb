@@ -56,19 +56,65 @@ class LanguageMemory < Memory_Hash
     end
 
     def stringify_hash key, values, depth
+        content = ""
         spacer = " " * (depth * 2)
+        if key == "" then key = "BLANK" end
         content += spacer + "#{key}"
         if values.kind_of?(Array)
             values.each do |val|
-                content += "\n" + spacer + "  #{val}\n"
+                content += "\n" + spacer + "  #{val}"
             end
         elsif values.kind_of?(String)
-            content += " : #{values}\n"
+            content += " : #{values}"
         elsif values.kind_of?(Hash)
             values.each do |k, v|
-                content += stringify_hash(k, v, depth + 1)
+                content += "\n" + stringify_hash(k, v, depth + 1)
             end
         end
+        content
+    end
+
+    def make_build id
+
+        if !@tree[id] then return end 
+        parent = @lines[id].last.strip
+
+        t = {}
+
+        @tree[id].each do |id|
+            child = @lines[id].last.strip
+            puts @lines[id].last.inspect
+            value = make_build(id)
+            if value != nil
+                if !t.kind_of?(Hash) 
+                    puts t.inspect
+                    abort("NOT HASH")
+                end
+                t[child] = value 
+              else
+                if t.kind_of?(Hash)
+                    if child.include?(" : ")
+                        t[child.split(" : ").first.strip] = child.split(" : ").last.strip
+                    # Check to see if the child ends like "foo :" and if it does, set it to an empty string
+                    elsif child.include?(" :") && /\s\:$/ =~ child
+                        t[child.split(" :").first.strip] = ""
+                    # If child doesn't have a value (doesn't match the pattern " : "), 
+                    # or an empty value (doesn't match the pattern " :")
+                    # attempt to turn t into an array. Otherwise add it to the existing tree
+                    elsif t.empty?
+                        t = []
+                        t.push(child)
+                    else
+                        t[child] = ""
+                    end
+                elsif t.kind_of?(Array)
+                    t.push(child)
+                end
+            end
+        end
+
+        return t
+
     end
 
     # def get id
