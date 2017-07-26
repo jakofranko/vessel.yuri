@@ -60,24 +60,24 @@ class ActionTest
     language.make_name('sea')
     language.make_name('sea')
     language.make_name('sea')
-    language.instance_variables.each do |var|
-      puts language.instance_variable_get var
-    end
 
     dict = LanguageMemory.new("languages", @host.path)
     puts "---RENDER---"
     puts dict.render
-    puts "---NOTES---"
-    puts dict.notes
+    # puts "---NOTES---"
+    # puts dict.notes
+    puts "---STRINGIFIED HASH---"
+    dict.render.each do |key, value|
+      # puts key, value
+      puts dict.stringify_hash(key, value, 0)
 
-    dict.add(language)
-    puts "---RENDER---"
-    puts dict.render    
+    end
+
 
     # world = World.new({:name => language.make_name('world')})
     # puts world.describe
 
-    return "This is a test"
+    return ""
 
   end
 
