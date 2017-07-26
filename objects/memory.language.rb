@@ -2,7 +2,7 @@ require 'glossa'
 require_relative '../../../memory.rb'
 require_relative './_toolkit'
 
-# TODO: Refactor Memory_Hash save method to support more depth for hashes
+# TODO: Support saving empty strings to memory_hash by passing in the string "BLANK" and convert "BLANK" to empty string ""
 class LanguageMemory < Memory_Hash
 
     def add language
