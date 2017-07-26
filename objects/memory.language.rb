@@ -40,6 +40,37 @@ class LanguageMemory < Memory_Hash
         count
     end
 
+    def save
+
+        # Add notes
+        content = @note.join("\n")+"\n\n"
+
+        # Create lines
+        @render.sort.reverse.each do |key,values|
+            content += stringify_hash(key, values, 0)
+            content += "\n"
+        end
+
+        overwrite(content)
+
+    end
+
+    def stringify_hash key, values, depth
+        spacer = " " * (depth * 2)
+        content += spacer + "#{key}"
+        if values.kind_of?(Array)
+            values.each do |val|
+                content += "\n" + spacer + "  #{val}\n"
+            end
+        elsif values.kind_of?(String)
+            content += " : #{values}\n"
+        elsif values.kind_of?(Hash)
+            values.each do |k, v|
+                content += stringify_hash(k, v, depth + 1)
+            end
+        end
+    end
+
     # def get id
 
     #     # TODO
