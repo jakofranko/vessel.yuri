@@ -43,7 +43,7 @@ class LanguageMemory < Memory_Hash
     def save
 
         # Add notes
-        content = @note.join("\n")+"\n\n"
+        content = @notes.join("\n")+"\n\n"
 
         # Create lines
         @render.sort.reverse.each do |key,values|
@@ -56,22 +56,26 @@ class LanguageMemory < Memory_Hash
     end
 
     def stringify_hash key, values, depth
+
         content = ""
         spacer = " " * (depth * 2)
         if key == "" then key = "BLANK" end
         content += spacer + "#{key}"
         if values.kind_of?(Array)
             values.each do |val|
+                if val == "" then val = "BLANK" end
                 content += "\n" + spacer + "  #{val}"
             end
-        elsif values.kind_of?(String)
+        elsif values.kind_of?(String) || values.kind_of?(Integer)
+            if values == "" then values = "BLANK" end
             content += " : #{values}"
         elsif values.kind_of?(Hash)
             values.each do |k, v|
                 content += "\n" + stringify_hash(k, v, depth + 1)
             end
         end
-        content
+
+        return content
     end
 
     def make_build id
@@ -79,10 +83,17 @@ class LanguageMemory < Memory_Hash
         if !@tree[id] then return end 
         parent = @lines[id].last.strip
 
+        # Specific to storing languages which will sometimes have empty string keys (janky, I know)
+        if parent == "BLANK" then parent = "" end
+
         t = {}
 
         @tree[id].each do |id|
             child = @lines[id].last.strip
+
+            # Specific to storing languages which will sometimes have empty string keys (janky, I know)
+            if child == "BLANK" then child = "" end
+
             value = make_build(id)
             if value != nil
                 if !t.kind_of?(Hash) 
