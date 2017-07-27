@@ -30,6 +30,21 @@ class LanguageMemory < Memory_Hash
 
     end
 
+    def get id
+
+        self.render.each do |lang, properties|
+            # puts self.render[lang]
+            # puts properties
+            # puts properties['id']
+            if properties['id'] == id.to_s
+                return self.render[lang]
+            end
+        end
+
+        return nil
+
+    end
+
     def get_num_languages
         count = 0
 
@@ -126,12 +141,6 @@ class LanguageMemory < Memory_Hash
         return t
 
     end
-
-    # def get id
-
-    #     # TODO
-
-    # end
 
     # def filter field, value, type
 
