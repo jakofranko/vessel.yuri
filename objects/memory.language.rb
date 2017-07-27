@@ -83,7 +83,6 @@ class LanguageMemory < Memory_Hash
 
         @tree[id].each do |id|
             child = @lines[id].last.strip
-            puts @lines[id].last.inspect
             value = make_build(id)
             if value != nil
                 if !t.kind_of?(Hash) 
