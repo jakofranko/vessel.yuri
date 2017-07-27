@@ -2,7 +2,7 @@ require 'glossa'
 require_relative '../../../memory.rb'
 require_relative './_toolkit'
 
-# TODO: Support saving empty strings to memory_hash by passing in the string "BLANK" and convert "BLANK" to empty string ""
+# TODO: when getting a language, actually return a Glossa::Language instance
 class LanguageMemory < Memory_Hash
 
     def add language
