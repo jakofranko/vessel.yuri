@@ -55,21 +55,6 @@ class LanguageMemory < Memory_Hash
         count
     end
 
-    def save
-
-        # Add notes
-        content = @notes.join("\n")+"\n\n"
-
-        # Create lines
-        @render.sort.reverse.each do |key,values|
-            content += stringify_hash(key, values, 0)
-            content += "\n"
-        end
-
-        overwrite(content)
-
-    end
-
     def stringify_hash key, values, depth
 
         content = ""
@@ -91,6 +76,24 @@ class LanguageMemory < Memory_Hash
         end
 
         return content
+    end
+
+    ##
+    ## Memory_Hash overrides
+    ##
+    def save
+
+        # Add notes
+        content = @notes.join("\n")+"\n\n"
+
+        # Create lines
+        @render.sort.reverse.each do |key,values|
+            content += stringify_hash(key, values, 0)
+            content += "\n"
+        end
+
+        overwrite(content)
+
     end
 
     def make_build id
