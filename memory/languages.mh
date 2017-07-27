@@ -2,8 +2,63 @@
 ~ NOTE : A place to store the languages generated while Yuri tells stories
 ~ AUTH : Jake Franklin
 
-Pun pep
-  phonemes 
+Nat sip mut
+  phonemes
+    C : ptkmnls
+    V : aeiou
+    S : s
+    F : mn
+    L : rl
+  structure : CVC
+  exponent : 2
+  restricts : BLANK
+  cortho : BLANK
+  vortho : BLANK
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  minsyll : 1
+  maxsyll : 1
+  morphemes : BLANK
+  words
+    world
+      kap
+      pan
+    BLANK
+      pap
+      pum
+      tek
+    continent
+      top
+      tet
+      set
+    sea
+      pan
+      pam
+      pap
+      tep
+      lok
+      tap
+    language
+      nat
+      mut
+  names
+    Pap pan
+    Pum tet
+    Pap sip pap
+    Set tek
+    Tep sip lok
+    Pan pam
+    Pum sip pap
+    Nat sip mut
+  joiner : BLANK
+  maxchar : 12
+  minchar : 5
+  genitive : sip
+  definitive : pat
+  id : 0
+Mal nap lip
+  phonemes
     C : ptkmnls
     V : aeiou
     S : s
@@ -12,46 +67,97 @@ Pun pep
   structure : CVC
   exponent : 2
   restricts
-  cortho : {}
-  vortho : {}
-  noortho : true
-  nomorph : true
-  nowordpool : true
+  cortho
+  vortho
+  noortho
+  nomorph
+  nowordpool
   minsyll : 1
   maxsyll : 1
-  morphemes : {}
-  words 
+  morphemes
+  words
     world
-        pas
-        til
+      kos
     BLANK
-        nek
-        pun
-        kal
-        pak
+      kop
+      tum
+      nan
+      tan
     continent
-        mep
-        pat
-        pip
+      kat
+      tem
+      tam
+      pep
     sea
-        pam
-        lon
-        top
-        pup
+      pat
+      pat
     language
-        pep
+      mal
+      nut
+      lip
   names
-    Nek nek
-    Nek pup pun
-    Pip pup kal
-    Pak pip
-    Lon pup top
-    Pam pup
-    Pak pup nek
-    Pun pep
+    Kos nap kop
+    Tem nap kat
+    Kat nap kat
+    Pep nap tum
+    Pat tum
+    Pat nap nan
+    Mak tan nan
+    Mal nap lip
   joiner :  
   maxchar : 12
   minchar : 5
-  genitive : pup
-  definitive : lep
+  genitive : nap
+  definitive : mak
   id : 2
+Lep nup sap
+  phonemes
+    C : ptkmnls
+    V : aeiou
+    S : s
+    F : mn
+    L : rl
+  structure : CVC
+  exponent : 2
+  restricts : BLANK
+  cortho : BLANK
+  vortho : BLANK
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  minsyll : 1
+  maxsyll : 1
+  morphemes : BLANK
+  words
+    world
+      pap
+      pip
+    BLANK
+      nus
+      pap
+      lap
+    continent
+      pen
+    sea
+      mit
+      lip
+      lop
+      pep
+    language
+      sap
+      lep
+  names
+    Pap nup pip
+    Nus nup pen
+    Pen pen
+    Pap lap
+    Mit nup lip
+    Tat lop
+    Nus nup pep
+    Lep nup sap
+  joiner : BLANK
+  maxchar : 12
+  minchar : 5
+  genitive : nup
+  definitive : tat
+  id : 1
