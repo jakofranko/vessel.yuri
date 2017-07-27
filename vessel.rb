@@ -62,13 +62,16 @@ class ActionTest
     language.make_name('sea')
 
     dict = LanguageMemory.new("languages", @host.path)
-    dict.add(language)
+    # dict.add(language)
     puts "---RENDER---"
     puts dict.render
     puts "---STRINGIFIED HASH---"
     dict.render.each do |key, value|
       puts dict.stringify_hash(key, value, 0)
     end
+
+    puts "--- GOT LANG ---"
+    puts dict.get q
 
 
     # world = World.new({:name => language.make_name('world')})
