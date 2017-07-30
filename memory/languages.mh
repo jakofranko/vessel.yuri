@@ -42,6 +42,11 @@ Nat sip mut
     language
       nat
       mut
+    strange
+      lap
+      pap
+    bottle
+      kap
   names
     Pap pan
     Pum tet
@@ -51,6 +56,9 @@ Nat sip mut
     Pan pam
     Pum sip pap
     Nat sip mut
+    Tek pum
+    Pap pum
+    Pum top kap
   joiner : BLANK
   maxchar : 12
   minchar : 5
@@ -66,15 +74,15 @@ Mal nap lip
     L : rl
   structure : CVC
   exponent : 2
-  restricts
-  cortho
-  vortho
-  noortho
-  nomorph
-  nowordpool
+  restricts : BLANK
+  cortho : BLANK
+  vortho : BLANK
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
   minsyll : 1
   maxsyll : 1
-  morphemes
+  morphemes : BLANK
   words
     world
       kos
@@ -95,6 +103,13 @@ Mal nap lip
       mal
       nut
       lip
+    strange
+      puk
+      pok
+      pat
+    bottle
+      pan
+      tak
   names
     Kos nap kop
     Tem nap kat
@@ -104,7 +119,9 @@ Mal nap lip
     Pat nap nan
     Mak tan nan
     Mal nap lip
-  joiner :  
+    Pok pat
+    Tak pak tak
+  joiner : BLANK
   maxchar : 12
   minchar : 5
   genitive : nap
@@ -136,6 +153,8 @@ Lep nup sap
       nus
       pap
       lap
+      pam
+      mol
     continent
       pen
     sea
@@ -146,6 +165,13 @@ Lep nup sap
     language
       sap
       lep
+    strange
+      kut
+      pap
+      mun
+      pip
+    bottle
+      nak
   names
     Pap nup pip
     Nus nup pen
@@ -155,6 +181,9 @@ Lep nup sap
     Tat lop
     Nus nup pep
     Lep nup sap
+    Mun pip
+    Pam lek lap
+    Mol nak
   joiner : BLANK
   maxchar : 12
   minchar : 5
