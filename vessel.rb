@@ -50,31 +50,17 @@ class ActionTest
   def act q = nil
 
     $entities = EntityMemory.new('entities', @host.path)
-    # puts $entities.render
-    # entity = $entities.get(q.to_i, true)
-    # puts entity.describe
+    $languages = LanguageMemory.new("languages", @host.path)
 
-    language = Glossa::Language.new
-    language.make_name('world')
-    language.make_name('continent')
-    language.make_name('continent')
-    language.make_name('continent')
-    language.make_name('sea')
-    language.make_name('sea')
-    language.make_name('sea')
-
-    dict = LanguageMemory.new("languages", @host.path)
-    # dict.add(language)
-    puts "---RENDER---"
-    puts dict.render
-    puts "---STRINGIFIED HASH---"
-    dict.render.each do |key, value|
-      puts dict.stringify_hash(key, value, 0)
-    end
+    # puts "---RENDER---"
+    # puts $languages.render
 
     puts "--- GOT LANG ---"
-    puts dict.get q
+    lang = $languages.get q
+    puts lang.make_name("strange")
+    $languages.save
 
+    # $languages.update(q, lang)
 
     # world = World.new({:name => language.make_name('world')})
     # puts world.describe

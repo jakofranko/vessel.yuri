@@ -32,11 +32,8 @@ class LanguageMemory < Memory_Hash
     def get id
 
         self.render.each do |lang, properties|
-            # puts self.render[lang]
-            # puts properties
-            # puts properties['id']
             if properties['id'] == id.to_s
-                return self.render[lang]
+                return Glossa::Language.new(false, sanitize(self.render[lang]))
             end
         end
 
