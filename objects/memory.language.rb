@@ -41,6 +41,29 @@ class LanguageMemory < Memory_Hash
 
     end
 
+    def sanitize(dirty_hash)
+
+        sanitized_hash = {}
+        dirty_hash.each do |k, v|
+            value = v
+            case k
+                when 'restricts', 'names'
+                    if v == '' || v == 'BLANK' then value = [] end
+                when 'cortho', 'vortho', 'morphemes', 'words'
+                    if v == '' || v == 'BLANK' then value = {} end
+                when 'noortho', 'nomorph', 'nowordpool'
+                    if v == '' || v == 'BLANK' then value = true end
+                when 'joiner'
+                    if v == '' || v == 'BLANK' then value = ' ' end
+            end
+
+            sanitized_hash[k] = value
+        end
+
+        return sanitized_hash
+
+    end
+
     def get_num_languages
         count = 0
 
