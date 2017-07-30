@@ -2,7 +2,6 @@ require 'glossa'
 require_relative '../../../memory.rb'
 require_relative './_toolkit'
 
-# TODO: when getting a language, actually return a Glossa::Language instance
 class LanguageMemory < Memory_Hash
 
     def add language

@@ -4,6 +4,8 @@ require 'glossa'
 
 $nataniev.require("action","tweet")
 
+# TODO: Characters -- probably a type of entity (for generated descriptions), but should be saved in their own memory, since characters will need to keep track of where they are (location), goals, current activities etc.
+# TODO: Goals -- these will be templates for generating scenes
 require_relative 'objects/entity'
 require_relative 'objects/world'
 require_relative 'objects/memory.entity'
