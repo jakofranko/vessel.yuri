@@ -1,5 +1,5 @@
 require 'glossa'
-require_relative '../../../memory.rb'
+require_relative '../../../system/memory.rb'
 require_relative './_toolkit'
 
 class LanguageMemory < Memory_Hash

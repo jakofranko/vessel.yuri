@@ -1,4 +1,4 @@
-require_relative '../../../memory.rb'
+require_relative '../../../system/memory.rb'
 require_relative './_toolkit'
 
 class EntityMemory < Memory_Array
