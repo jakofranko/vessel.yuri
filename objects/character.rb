@@ -1,7 +1,15 @@
 require 'glossa'
 require_relative './entity'
 
-    def initialize data = nil
+##
+# Character differ from other entities, in that they will care less about how they are described,
+# and more about things like  their current 'goal', 'quest', and attributes that will dictate
+# a proclivity to accomplishing goals a certain way. They do need a way to be described, and 
+# could take advantage of the entity class to describe themselves?
+# TODO: loading/saving
+# TODO: pick new quest
+# TODO: pick new goal
+class Character # < Entity
 
     def initialize params = {}
 
