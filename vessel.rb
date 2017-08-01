@@ -8,6 +8,7 @@ $nataniev.require("action","tweet")
 # TODO: Goals -- these will be templates for generating scenes
 require_relative 'objects/entity'
 require_relative 'objects/world'
+require_relative 'objects/character'
 require_relative 'objects/memory.entity'
 require_relative 'objects/memory.language'
 
