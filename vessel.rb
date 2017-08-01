@@ -52,21 +52,26 @@ class ActionTest
 
   def act q = nil
 
+    q = q == "" ? nil : q
+    # world = World.new({:name => language.make_name('world')})
+    # puts world.describe
+
     $entities = EntityMemory.new('entities', @host.path)
     $languages = LanguageMemory.new("languages", @host.path)
 
     # puts "---RENDER---"
     # puts $languages.render
 
-    puts "--- GOT LANG ---"
-    lang = $languages.get q
-    puts lang.make_name("strange")
-    $languages.save
+    # puts "--- GOT LANG ---"
+    # lang = $languages.get q
+    # puts lang.make_name("strange")
+    # $languages.save
 
     # $languages.update(q, lang)
 
-    # world = World.new({:name => language.make_name('world')})
-    # puts world.describe
+    puts q.inspect
+    character = Character.new({:language_id => q, :location_id => 13})
+    puts character.describe
 
     return ""
 
