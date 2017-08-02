@@ -41,6 +41,8 @@ class LanguageMemory < Memory_Hash
 
     end
 
+    # Utilities
+
     def sanitize(dirty_hash)
 
         sanitized_hash = {}
@@ -61,6 +63,18 @@ class LanguageMemory < Memory_Hash
         end
 
         return sanitized_hash
+
+    end
+
+    def get_id name
+
+        self.render.each do |lang, properties|
+            if properties['name'] == name
+                return properties['id']
+            end
+        end
+
+        return nil
 
     end
 
