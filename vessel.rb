@@ -13,6 +13,7 @@ require_relative 'objects/world'
 require_relative 'objects/character'
 require_relative 'objects/memory.entity'
 require_relative 'objects/memory.language'
+require_relative 'objects/memory.character'
 
 class VesselYuri
 
@@ -58,6 +59,7 @@ class ActionTest
 
     $entities = EntityMemory.new('entities', @host.path)
     $languages = LanguageMemory.new("languages", @host.path)
+    $characters = CharacterMemory.new("characters", @host.path)
 
     # puts "---RENDER---"
     # puts $languages.render
@@ -72,6 +74,7 @@ class ActionTest
     puts q.inspect
     character = Character.new({:language_id => q, :location_id => 13})
     puts character.describe
+    $characters.add(character)
 
     return ""
 
