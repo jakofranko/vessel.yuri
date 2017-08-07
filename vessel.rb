@@ -8,6 +8,7 @@ $nataniev.require("action","tweet")
 # TODO: Goals -- these will be templates for generating scenes
 # TODO: Scenes -- these will be the machines that spit out text for our stories
 # TODO: tell_story action, which will manage setting, characters, goals, scenes, quests, what is current, generating story chunks from scenes, creating the twitter payload, tweeting, and loading/saving all of these things.
+# TODO: Separation of data and functionality. Instead of entity objects, they should be memories
 require_relative 'objects/entity'
 require_relative 'objects/world'
 require_relative 'objects/character'
