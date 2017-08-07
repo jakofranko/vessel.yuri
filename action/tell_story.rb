@@ -26,7 +26,6 @@ class ActionTellStory
         load_folder("#{@host.path}/objects/*")
 
         current_arc = @active_story.get_current_arc || @active_story.new_arc
-
         current_scene = current_arc.get_current_scene || current_arc.new_scene
 
         current_scene.describe
@@ -35,30 +34,8 @@ class ActionTellStory
 
     def get_active_story
 
-    end
-
-    def new_story 
-
-    end
-    
-    def get_current_arc 
-
-    end
-    
-    def new_arc 
-
-    end
-    
-    def get_current_scene 
-
-    end
-    
-    def new_scene 
-
-    end
-    
-    def describe 
-
+        # TODO return a story instance from a memory of stories
+        
     end
     
 end
