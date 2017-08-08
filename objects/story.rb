@@ -33,13 +33,14 @@ class Story
         'The Infinity Gauntlet'
     ]
 
-    attr_accessor :summary, :characters, :current_arc, :current_scene
+    attr_accessor :summary, :summary_template, :characters, :current_arc, :current_scene
     def initialize
 
-        @characters    = pick_characters
-        @summary       = generate_summary
-        @current_arc   = get_current_arc
-        @current_scene = get_current_scene
+        @characters       = pick_characters
+        @summary_template = SUMMARIES.sample
+        @summary          = generate_summary
+        @current_arc      = get_current_arc
+        @current_scene    = get_current_scene
 
     end
 
@@ -54,12 +55,12 @@ class Story
 
     def generate_summary
 
-        summary = SUMMARIES.sample
+        summary = @summary_template.dup
 
         # Substitute out the wildcards for actual things
-        summary.gsub('<item>', ITEMS.sample)
-        summary.gsub('<protagonist>', @characters[:protagonist].name)
-        summary.gsub('<antagonist>', @characters[:antagonist].name)
+        summary.gsub!('<item>', ITEMS.sample)
+        summary.gsub!('<protagonist>', @characters[:protagonist].name)
+        summary.gsub!('<antagonist>', @characters[:antagonist].name)
 
         return summary
 
