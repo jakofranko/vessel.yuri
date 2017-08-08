@@ -1,3 +1,4 @@
+require_relative './character'
 
 ##
 # A story object contains the logic for keeping track of its characters, 
@@ -10,6 +11,7 @@
 # Bare-minimum, a story requires a protagonist and a McGuffin. 
 # Given those two things, a series of arcs can be generated depending on the McGuffin.
 #
+# TODO: Save/load stories
 # TODO: Come up with templates for summaries
 # TODO: ??? Create tool that will sift through the dictionary and allow me to sort words 
 #       by type. E.g., if I want to create a white-list of verbs for use in summaries,
@@ -19,12 +21,47 @@
 # TODO: Create arc templates given a summary type
 class Story
 
-    attr_accessor :characters, :current_arc, :current_scene
-    def initialize characters = nil
+    SUMMARIES = [
+        '<protagonist> must find <item>',
+        '<protagonist> must defeat <antagonist>',
+        '<protagonist> must destroy <item>'
+    ]
 
-        @characters = characters || pick_characters
-        @current_arc = get_current_arc
+    ITEMS = [
+        'Tetrahedron',
+        'The One Ring',
+        'The Infinity Gauntlet'
+    ]
+
+    attr_accessor :summary, :characters, :current_arc, :current_scene
+    def initialize
+
+        @characters    = pick_characters
+        @summary       = generate_summary
+        @current_arc   = get_current_arc
         @current_scene = get_current_scene
+
+    end
+
+    def pick_characters
+
+        {
+            :protagonist => Character.new,
+            :antagonist  => Character.new
+        }
+
+    end
+
+    def generate_summary
+
+        summary = SUMMARIES.sample
+
+        # Substitute out the wildcards for actual things
+        summary.gsub('<item>', ITEMS.sample)
+        summary.gsub('<protagonist>', @characters[:protagonist].name)
+        summary.gsub('<antagonist>', @characters[:antagonist].name)
+
+        return summary
 
     end
 
