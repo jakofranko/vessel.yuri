@@ -12,6 +12,7 @@ $nataniev.require("action","tweet")
 require_relative 'objects/entity'
 require_relative 'objects/world'
 require_relative 'objects/character'
+require_relative 'objects/story'
 require_relative 'objects/memory.entity'
 require_relative 'objects/memory.language'
 require_relative 'objects/memory.character'
@@ -72,10 +73,13 @@ class ActionTest
 
     # $languages.update(q, lang)
 
-    puts q.inspect
-    character = Character.new({:language_id => q, :location_id => 13})
-    puts character.describe
-    $characters.add(character)
+    # character = Character.new({:language_id => q, :location_id => 13})
+    # puts character.describe
+    # $characters.add(character)
+
+    story = Story.new
+    puts story.summary_template
+    puts story.summary
 
     return ""
 
