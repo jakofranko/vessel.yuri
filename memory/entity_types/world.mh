@@ -1,0 +1,40 @@
+TYPE : World
+CMAX : 8
+
+ADJV
+    NULL
+    blue
+    green
+    verdant
+    dark
+    evil
+
+VERB
+    NULL
+    NULL
+    NULL
+    NULL
+    swirling with chaos
+
+ADVB
+    NULL
+    NULL
+    NULL
+    NULL
+    violently
+
+CTPS
+    Continent
+    Sea
+
+CPRP
+    Continent
+        On %s
+        Sprawling across the southern hemisphere of %s
+        Sprawling across the northern hemisphere of %s
+        Spread out upon the northern hemisphere of %s
+        Spread out upon the southern hemisphere of %s
+    Sea
+        Spreading across %s
+        Covering %s
+        Upon the surface of %s
