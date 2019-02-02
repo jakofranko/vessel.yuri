@@ -2,6 +2,7 @@ class ActionCreate
 
     include Action
 
+    @@entity_type_num_args = 7
     @@entity_type_template = "" \
         "TYPE : %s\n" \
         "CMAX : %s\n\n" \
@@ -17,11 +18,13 @@ class ActionCreate
         super
 
         @name = "Create"
-        @docs = "Create a new memories. Current commands: `create entity_type`"
+        @docs = "Create new memories. Current commands: `create entity_type`"
 
     end
 
     def act q = nil
+
+        raise "You must specify what you want to create..." unless !q.nil?
 
         args = q.split(' ')
         case args.first
@@ -37,6 +40,11 @@ class ActionCreate
     private
 
     def create_entity_type attrs = []
+
+        @@entity_type_num_args.times do |i|
+            next if attrs[i]
+            attrs[i] = ''
+        end
 
         new_file = File.new("#{attrs.first.downcase}.mh", "w")
         new_file.puts(@@entity_type_template % attrs)
