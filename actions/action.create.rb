@@ -46,7 +46,7 @@ class ActionCreate
             attrs[i] = ''
         end
 
-        new_file = File.new("#{attrs.first.downcase}.mh", "w")
+        new_file = File.new("#{@host.path}/memory/entity_types/#{attrs.first.downcase}.mh", "w")
         new_file.puts(@@entity_type_template % attrs)
         new_file.close
 
