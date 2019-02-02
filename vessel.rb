@@ -30,12 +30,14 @@ class VesselYuri
     @site = "https://jakofranko.github.io/vessel.yuri"
     @path = File.expand_path(File.join(File.dirname(__FILE__), "/"))
 
-    install(:generic,:document)
-    install(:generic,:help)
-
-    install(:default,:test)
-    install(:default,:tweet)
+    install(:primary, :create)
     
+    install(:generic, :document)
+    install(:generic, :help)
+
+    install(:default, :test)
+    install(:default, :tweet)
+
   end
 
 end
