@@ -2,15 +2,16 @@ class ActionCreate
 
     include Action
 
+    @@indent = "\s" * 4
     @@entity_type_num_args = 7
     @@entity_type_template = "" \
         "TYPE : %s\n" \
         "CMAX : %s\n\n" \
-        "ADJV\n\s\s%s\n\n" \
-        "VERB\n\s\s%s\n\n" \
-        "ADVB\n\s\s%s\n\n" \
-        "CTPS\n\s\s%s\n\n" \
-        "CPRP\n\s\s%s\n\n" \
+        "ADJV\n#{@@indent}%s\n\n" \
+        "VERB\n#{@@indent}%s\n\n" \
+        "ADVB\n#{@@indent}%s\n\n" \
+        "CTPS\n#{@@indent}%s\n\n" \
+        "CPRP\n#{@@indent}%s\n\n" \
 
 
     def initialize q = nil
