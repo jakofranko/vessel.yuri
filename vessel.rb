@@ -31,7 +31,7 @@ class VesselYuri
     @path = File.expand_path(File.join(File.dirname(__FILE__), "/"))
 
     install(:primary, :create)
-    
+
     install(:generic, :document)
     install(:generic, :help)
 
@@ -64,6 +64,10 @@ class ActionTest
     $entities = EntityMemory.new('entities', @host.path)
     $languages = LanguageMemory.new("languages", @host.path)
     $characters = CharacterMemory.new("characters", @host.path)
+
+    world = Memory_Hash.new("entity_types/world", @host.path)
+    puts world.to_h.inspect
+
 
     # puts "---RENDER---"
     # puts $languages.render
