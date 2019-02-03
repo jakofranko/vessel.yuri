@@ -1,0 +1,59 @@
+TYPE : Land
+CMAX : 5
+
+ADJV
+    NULL
+    verdant
+    sparse
+    desert
+    arctic
+
+VERB
+    NULL
+
+ADVB
+    NULL
+
+CTPS
+    Forest
+    River
+    Mountains
+    Swamp
+
+CPRP
+    Forest
+        In the north of %s
+        In the east of %s
+        In the south of %s
+        In the west of %s
+        In the northeast of %s
+        In the northwest of %s
+        In the southeast of %s
+        In the southwest of %s
+    River
+        In the north of %s
+        In the east of %s
+        In the south of %s
+        In the west of %s
+        In the northeast of %s
+        In the northwest of %s
+        In the southeast of %s
+        In the southwest of %s
+    Mountains
+        In the north of %s
+        In the east of %s
+        In the south of %s
+        In the west of %s
+        In the northeast of %s
+        In the northwest of %s
+        In the southeast of %s
+        In the southwest of %s
+    Swamp
+        In the north of %s
+        In the east of %s
+        In the south of %s
+        In the west of %s
+        In the northeast of %s
+        In the northwest of %s
+        In the southeast of %s
+        In the southwest of %s

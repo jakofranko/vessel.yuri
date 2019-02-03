@@ -1,0 +1,28 @@
+TYPE : Continent
+CMAX : 5
+
+ADJV
+  NULL
+  large
+  small
+  medium
+
+VERB
+  NULL
+
+ADVB
+  NULL
+
+CTPS
+  Land
+
+CPRP
+  Land
+    In the north of %s
+    In the east of %s
+    In the south of %s
+    In the west of %s
+    In the northeast of %s
+    In the northwest of %s
+    In the southeast of %s
+    In the southwest of %s
