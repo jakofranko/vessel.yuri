@@ -18,87 +18,58 @@ require_relative './_toolkit'
 # TODO: Save and load languages
 class Entity
     ATTRS = [
-        :id,
-        :name,
+        :ID,
+        :NAME,
         :language,
         :parent,
         :type,
-        :adjective,
-        :adverb,
-        :verb,
+        :ADJV,
+        :ADVB,
+        :VERB,
         :adjectives,
         :adverbs,
         :verbs,
-        :child_types,
+        :CTPS,
         :child_relates,
         :child_attributes,
         :children,
-        :preposition
+        :PREP
     ]
     attr_accessor(*ATTRS)
 
-    def initialize options
+    def initialize attributes, options
 
-        ##
-        # Validate the options
-        if options.nil? || !options.is_a?(Hash)
-            raise "Please specify an options hash"
-        elsif options[:name] == false && options[:name_self] == false
-            raise "An entity must either be given a name, or name itself"
-        elsif options[:name_self] == true && (options[:language] === false || options[:language].nil?)
-            raise "If an entity is naming itself, then it must have a language instance."
-        end
+        validate(attributes, options)
 
-        ##
-        # These class attributes must be defined at the subclass level
-        # @child_types should be a hash, with the keys of the hash being the child types, and the value
-        # of each type being a hash with the following options (with bool vals): :name, :inherit_language, :name_self 
-        if @child_types.nil?
-            raise "Please specify the types of children this Entity can have (@child_types)"
-        elsif @child_prepositions.nil?
-            raise "Please specify a hash of prepositions like: {:type => ['Next to \%s', 'Beneath \%s']} (@child_prepositions)\n\n
-            Note: actually include the \%s's; the entity's name will be substituted there"
-        elsif @child_max.nil?
-            raise "Please specify a maximum number of children this entity can have (@child_max)"
-        elsif @type.nil?
-            raise "Please specify the entity's type (@type)"
-        end
+        # TODO: finish convertin this over to the new entity_type memory system
+        @ID = options[:ID] ? options[:ID] : nil
+        @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:NAME]
+        @PREP = options[:PREP] ? options[:PREP] : ""
 
-        @id          = options[:id]          ? options[:id]                          : nil
-        @name        = options[:name_self]   ? options[:language].make_name(@type)   : options[:name]
-        @preposition = options[:preposition] ? options[:preposition]                 : ""
-        @language    = options[:language]
-        @parent      = options[:parent]
-        @children    = []
+        @language = options[:language]
+        @parent   = options[:parent]
+        @children = []
 
-        # If the entity does not have an ID, add it to memory, set the new ID, and generate new children
-        if @id.nil?
-            @adjective = @adjectives ? choose(@adjectives) : ""
-            @verb      = @verbs      ? choose(@verbs)      : ""
-            @adverb    = @adverbs    ? choose(@adverbs)    : ""
+        # If the entity does not have an ID, this is a new entity
+        # and its children will also need to be generated
+        if @ID.nil?
+            @ADJV = attributes.ADJV.length ? choose(attributes.ADJV) : ""
+            @VERB = attributes.VERB.length ? choose(attributes.VERB) : ""
+            @ADVB = attributes.ADVB.length ? choose(attributes.ADVB) : ""
 
             # Add the entity to the memory file
-            @id = $entities.add(self)
+            @ID = $entities.add(self)
 
             # Now that the entity is saved, we can safely generate new children
             generate_children
 
-        # Otherwise, this entity is being initialized from memory, so load children?
+        # Otherwise, this entity is being initialized from memory, so load children
         else
-            @adjective = options[:adjective] ? options[:adjective] : ""
-            @verb      = options[:verb]      ? options[:verb]      : ""
-            @adverb    = options[:adverb]    ? options[:adverb]    : ""
+            @ADJV = options[:ADJV] ? options[:ADJV] : ""
+            @VERB = options[:VERB] ? options[:VERB] : ""
+            @ADVB = options[:ADVB] ? options[:ADVB] : ""
         end
 
-    end
-
-    ##
-    # Takes an array and picks a semi-random element, with the first
-    # elements weighted more frequently the the last elements by using
-    # the power of a given exponent.
-    def choose(list, exponent = 2)
-        list_index = ((rand ** exponent) * list.length).floor
-        list[list_index]
     end
 
     ##
@@ -109,24 +80,33 @@ class Entity
     # a language defined.
     # Optionally, a child can have a new language generated for itself
     def generate_children
-        num_children = rand(@child_max)
+        num_children = rand(@CMAX)
         num_children.times do
             # Pick a child type, options and preposition
-            child_type = choose(@child_types.keys)
+            type = choose(@CTPS.keys)
+            options = @CTPS[type]
+            prep = choose(@CPRP[type])
+
+            if options[:name] == false || options[:name_self] == true
+                name = "#{type}"
+            else
+                name = @language.make_name(type)
+            end
+
             self.add_child(child_type)
         end
     end
 
     def add_child type
 
-        raise "#{type} is not a valid child for #{self.type}" if !@child_types[type]
+        raise "#{type} is not a valid child for #{self.type}" if !@CTPS[type]
 
-        child_options = @child_types[type]
-        preposition = choose(@child_prepositions[type])
+        child_options = @CTPS[type]
+        preposition = choose(@CPRP[type])
 
         # Given the child_type's options, set the name
         child_name = nil
-        if child_options[:name] == false || child_options[:name_self] == true
+        if child_options[:NAME] == false || child_options[:name_self] == true
             child_name = "#{type}"
         else
             child_name = @language.make_name(type)
@@ -135,9 +115,9 @@ class Entity
         if Kernel.const_defined? type
             entity = Object.const_get(type)
             options = {
-                :name => child_name,
+                :NAME => child_name,
                 :name_self => child_options[:name_self],
-                :preposition => preposition,
+                :PREP => preposition,
                 :parent => self
             }
 
@@ -150,7 +130,7 @@ class Entity
             child = entity.new(options)
         else
             child = child_name
-            child.preposition = preposition
+            child.PREP = preposition
         end
 
         @children.push(child)
@@ -159,19 +139,19 @@ class Entity
     def describe
         sentence = ""
 
-        article = (@adjective && !@adjective.empty?) ? @adjective.article : @type.article
-        adj = (@adjective && !@adjective.empty?) ? @adjective : ""
-        if @name != @type
-            sentence << "#{@name}, #{article} #{adj} #{@type.downcase}"
+        article = (@ADJV && !@ADJV.empty?) ? @ADJV.article : @TYPE.article
+        adj = (@ADJV && !@ADJV.empty?) ? @ADJV : ""
+        if @NAME != @TYPE
+            sentence << "#{@NAME}, #{article} #{adj} #{@TYPE.downcase}"
         elsif
-            sentence << "#{article.capitalize} #{adj} #{@type.downcase}"
+            sentence << "#{article.capitalize} #{adj} #{@TYPE.downcase}"
         end
 
-        if @verb && !@verb.empty?
-            if @adverb && !@adverb.empty?
-                sentence << ", #{@adverb} #{@verb}"
+        if @VERB && !@VERB.empty?
+            if @ADVB && !@ADVB.empty?
+                sentence << ", #{@ADVB} #{@verb}"
             else
-                sentence << ", #{@verb}"
+                sentence << ", #{@VERB}"
             end
         end
 
@@ -182,16 +162,54 @@ class Entity
                 # Since this is likely a generic name like 'Forest', we can add an article
                 child_name = c.with_article.downcase
                 to_be = c.article.empty? ? "are" : "is"
-            else 
+            else
                 child_name = c.describe
                 to_be = "is"
             end
 
-            sentence << " " + c.preposition % @name + " #{to_be} #{child_name}."
+            sentence << " " + c.preposition % @NAME + " #{to_be} #{child_name}."
         end
 
         # Filter out all multiple periods and spaces from nested children
         sentence.gsub(/\.{2,}/, '.').gsub(/\s{2,}/, ' ')
+    end
+
+    private
+
+    def validate type, options
+
+        ##
+        # Validate the options
+        if options.nil? || !options.is_a?(Hash)
+            raise "Please specify an options hash"
+        elsif options[:NAME] == false && options[:name_self] == false
+            raise "An entity must either be given a name, or name itself"
+        elsif options[:name_self] == true && (options[:language] === false || options[:language].nil?)
+            raise "If an entity is naming itself, then it must have a language instance."
+        end
+
+        ##
+        # These attributes must be defined in the entity_type memory
+        if type["CTPS"].nil?
+            raise "Please specify the types of children this Entity can have"
+        elsif type["CPRP"].nil?
+            raise "Please specify a hash of prepositions like: {:type => ['Next to \%s', 'Beneath \%s']}\n\n
+            Note: actually include the \%s's; the entity's name will be substituted there"
+        elsif type["CMAX"].nil?
+            raise "Please specify a maximum number of children this entity can have"
+        elsif type["TYPE"].nil?
+            raise "Please specify the entity's type"
+        end
+
+    end
+
+    ##
+    # Takes an array and picks a semi-random element, with the first
+    # elements weighted more frequently the the last elements by using
+    # the power of a given exponent.
+    def choose(list, exponent = 2)
+        list_index = ((rand ** exponent) * list.length).floor
+        list[list_index]
     end
 
 end
