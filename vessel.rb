@@ -9,8 +9,9 @@ $nataniev.require("action","tweet")
 # TODO: Scenes -- these will be the machines that spit out text for our stories
 # TODO: tell_story action, which will manage setting, characters, goals, scenes, quests, what is current, generating story chunks from scenes, creating the twitter payload, tweeting, and loading/saving all of these things.
 # TODO: Separation of data and functionality. Instead of entity objects, they should be memories
+
+require_relative 'objects/archives'
 require_relative 'objects/entity'
-require_relative 'objects/world'
 require_relative 'objects/character'
 require_relative 'objects/story'
 require_relative 'objects/memory.entity'
@@ -60,6 +61,10 @@ class ActionTest
     q = q == "" ? nil : q
     # world = World.new({:name => language.make_name('world')})
     # puts world.describe
+
+    $entity_types = EntityTypes.new(@host)
+    world = $entity_types.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
+    puts world.describe
 
     $entities = EntityMemory.new('entities', @host.path)
     $languages = LanguageMemory.new("languages", @host.path)
