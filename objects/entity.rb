@@ -3,14 +3,14 @@ require_relative './_toolkit'
 
 ##
 # Entities are the parent class for all elements of a story: places, regions, people, things, etc.
-# An entity is defined by mainly by its own adjectives, and the type of children it can have. 
-# An Entity's primary purpose is to describe itself and its children, and contains the logic for 
+# An entity is defined by mainly by its own adjectives, and the type of children it can have.
+# An Entity's primary purpose is to describe itself and its children, and contains the logic for
 # procedurally generating its own children. Each child in turn is also an entity. Example:
 #
 # A Region is an sub-class of Entity. A region can have children of type 'forest', 'river', 'city',
-# 'mountains', 'hills', 'desert'. Every one of these types can relate to the parent like 'to/in 
+# 'mountains', 'hills', 'desert'. Every one of these types can relate to the parent like 'to/in
 # the south', 'to/in the north' etc. Each one of the children can have different attributes depending
-# on type. Forests can be 'sparse', 'verdant', 'coniferous', 'brooding' etc. Hills can be 'rolling', 
+# on type. Forests can be 'sparse', 'verdant', 'coniferous', 'brooding' etc. Hills can be 'rolling',
 # 'squat', 'towering', 'bare' etc.
 #
 # TODO: child adjectives (like prepositions)
