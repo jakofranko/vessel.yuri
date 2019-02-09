@@ -42,14 +42,8 @@ class Entity
         validate(attributes, options)
 
         # TODO: finish convertin this over to the new entity_type memory system
-        @ID = options[:ID] ? options[:ID] : nil
-        @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:NAME]
-        @PREP = options[:PREP] ? options[:PREP] : ""
-
-        @language = options[:language]
-        @parent   = options[:parent]
-        @children = []
-
+        # TODO: cleanup unused instance variables
+        @TYPE = attributes[:TYPE]
         # If the entity does not have an ID, this is a new entity
         # and its children will also need to be generated
         if @ID.nil?
@@ -70,6 +64,14 @@ class Entity
             @ADVB = options[:ADVB] ? options[:ADVB] : ""
         end
 
+        @ID = options[:ID] ? options[:ID] : nil
+        @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
+        @PREP = options[:prep] ? options[:prep] : ""
+
+        @language = options[:language]
+        @parent   = options[:parent]
+        @children = []
+
     end
 
     ##
@@ -85,18 +87,21 @@ class Entity
             # Pick a child type, options and preposition
             type = choose(@CTPS.keys)
             options = @CTPS[type]
-            prep = choose(@CPRP[type])
+            options[:prep] = choose(@CPRP[type])
+            options[:parent] = self
 
             if options[:name] == false || options[:name_self] == true
-                name = "#{type}"
+                options[:name] = "#{type}"
             else
-                name = @language.make_name(type)
+                options[:name] = @language.make_name(type)
             end
 
-            self.add_child(child_type)
+            child = Archives.create(type, options)
+            @children.push(child)
         end
     end
 
+    # Deprecated
     def add_child type
 
         raise "#{type} is not a valid child for #{self.type}" if !@CTPS[type]
