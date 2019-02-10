@@ -87,6 +87,7 @@ class Entity
             type = choose(@CTPS.keys)
             options = @CTPS[type]
             options[:prep] = choose(@CPRP[type])
+            options[:language] = @language
             options[:parent] = self
 
             if options[:name] == false || options[:name_self] == true
@@ -186,7 +187,7 @@ class Entity
         # Validate the options
         if options.nil? || !options.is_a?(Hash)
             raise "Please specify an options hash"
-        elsif options[:NAME] == false && options[:name_self] == false
+        elsif options[:name] == false && options[:name_self] == false
             raise "An entity must either be given a name, or name itself"
         elsif options[:name_self] == true && (options[:language] === false || options[:language].nil?)
             raise "If an entity is naming itself, then it must have a language instance."
