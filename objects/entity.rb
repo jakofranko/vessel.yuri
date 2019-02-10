@@ -155,15 +155,19 @@ class Entity
 
         ##
         # These attributes must be defined in the entity_type memory
-        if type["CTPS"].nil?
-            raise "Please specify the types of children this Entity can have"
-        elsif type["CPRP"].nil?
-            raise "Please specify a hash of prepositions like: {:type => ['Next to \%s', 'Beneath \%s']}\n\n
-            Note: actually include the \%s's; the entity's name will be substituted there"
-        elsif type["CMAX"].nil?
-            raise "Please specify a maximum number of children this entity can have"
-        elsif type["TYPE"].nil?
+        if type["TYPE"].nil?
             raise "Please specify the entity's type"
+        end
+
+        ##
+        # If the entity has children, make sure their descriptors are set
+        if !type["CMAX"].nil? && type["CMAX"].to_i > 0
+            if type["CTPS"].nil?
+                raise "Please specify the types of children this Entity can have"
+            elsif type["CPRP"].nil?
+                raise "Please specify a hash of prepositions like: {:type => ['Next to \%s', 'Beneath \%s']}\n\n
+                Note: actually include the \%s's; the entity's name will be substituted there"
+            end
         end
 
     end
