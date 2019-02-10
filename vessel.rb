@@ -62,8 +62,8 @@ class ActionTest
     # world = World.new({:name => language.make_name('world')})
     # puts world.describe
 
-    $entity_types = EntityTypes.new(@host)
-    world = $entity_types.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
+    $archives = Archives.new(@host)
+    world = $archives.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
     puts world.describe
 
     $entities = EntityMemory.new('entities', @host.path)
