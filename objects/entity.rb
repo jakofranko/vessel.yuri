@@ -96,49 +96,9 @@ class Entity
                 options[:name] = @language.make_name(type)
             end
 
-            child = Archives.create(type, options)
+            child = $archives.create(type.downcase.to_sym, options)
             @children.push(child)
         end
-    end
-
-    # Deprecated
-    def add_child type
-
-        raise "#{type} is not a valid child for #{self.type}" if !@CTPS[type]
-
-        child_options = @CTPS[type]
-        preposition = choose(@CPRP[type])
-
-        # Given the child_type's options, set the name
-        child_name = nil
-        if child_options[:NAME] == false || child_options[:name_self] == true
-            child_name = "#{type}"
-        else
-            child_name = @language.make_name(type)
-        end
-
-        if Kernel.const_defined? type
-            entity = Object.const_get(type)
-            options = {
-                :NAME => child_name,
-                :name_self => child_options[:name_self],
-                :PREP => preposition,
-                :parent => self
-            }
-
-            if child_options[:inherit_language]
-                options[:language] = @language
-            else
-                options[:language] = Glossa::Language.new(true)
-            end
-
-            child = entity.new(options)
-        else
-            child = child_name
-            child.PREP = preposition
-        end
-
-        @children.push(child)
     end
 
     def describe
