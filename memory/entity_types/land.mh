@@ -16,9 +16,13 @@ ADVB
 
 CTPS
     Forest
+        name_self : false
     River
+        name_self : false
     Mountains
+        name_self : false
     Swamp
+        name_self : false
 
 CPRP
     Forest

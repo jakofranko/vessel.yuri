@@ -15,6 +15,7 @@ ADVB
 
 CTPS
   Land
+    name_self : true
 
 CPRP
   Land

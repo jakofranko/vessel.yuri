@@ -25,7 +25,9 @@ ADVB
 
 CTPS
     Continent
+        name_self : true
     Sea
+        name_self : false
 
 CPRP
     Continent
