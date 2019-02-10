@@ -43,18 +43,25 @@ class Entity
 
         # TODO: finish convertin this over to the new entity_type memory system
         # TODO: cleanup unused instance variables
-        @TYPE = attributes[:TYPE]
+        @TYPE = attributes["TYPE"]
+        @CMAX = attributes["CMAX"].to_i
+        @CTPS = attributes["CTPS"]
+        @CPRP = attributes["CPRP"]
+        @ID = options[:ID] ? options[:ID] : nil
+        @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
+        @PREP = options[:prep] ? options[:prep] : ""
+
+        @language = options[:language]
+        @parent   = options[:parent]
+        @children = []
+
         # If the entity does not have an ID, this is a new entity
         # and its children will also need to be generated
         if @ID.nil?
-            @ADJV = attributes.ADJV.length ? choose(attributes.ADJV) : ""
-            @VERB = attributes.VERB.length ? choose(attributes.VERB) : ""
-            @ADVB = attributes.ADVB.length ? choose(attributes.ADVB) : ""
+            @ADJV = attributes["ADJV"].length ? choose(attributes["ADJV"]) : ""
+            @VERB = attributes["VERB"].length ? choose(attributes["VERB"]) : ""
+            @ADVB = attributes["ADVB"].length ? choose(attributes["ADVB"]) : ""
 
-            # Add the entity to the memory file
-            @ID = $entities.add(self)
-
-            # Now that the entity is saved, we can safely generate new children
             generate_children
 
         # Otherwise, this entity is being initialized from memory, so load children
@@ -63,14 +70,6 @@ class Entity
             @VERB = options[:VERB] ? options[:VERB] : ""
             @ADVB = options[:ADVB] ? options[:ADVB] : ""
         end
-
-        @ID = options[:ID] ? options[:ID] : nil
-        @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
-        @PREP = options[:prep] ? options[:prep] : ""
-
-        @language = options[:language]
-        @parent   = options[:parent]
-        @children = []
 
     end
 

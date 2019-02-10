@@ -10,7 +10,7 @@ class Archives
         Dir.entries("#{host.path}/memory/entity_types").each do |file|
             if file == "." || file == ".." then next end
             name = file.sub(".mh", "")
-            @entity_types[name.to_sym] = Memory_Hash.new("entity_types/#{name}", host.path)
+            @entity_types[name.to_sym] = Memory_Hash.new("entity_types/#{name}", host.path).to_h
         end
 
     end
