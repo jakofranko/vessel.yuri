@@ -172,13 +172,4 @@ class Entity
 
     end
 
-    ##
-    # Takes an array and picks a semi-random element, with the first
-    # elements weighted more frequently the the last elements by using
-    # the power of a given exponent.
-    def choose(list, exponent = 2)
-        list_index = ((rand ** exponent) * list.length).floor
-        list[list_index]
-    end
-
 end
