@@ -38,7 +38,7 @@ class EntityMemory < Memory_Array
         entity_row = self.filter('id', id, nil)[0].symbolize_keys
 
         # Return the object
-        entity = Object.const_get(entity_row[:type].capitalize).new(entity_row)
+        entity = $archives.create(entity_row[:type].downcase.to_sym, entity_row)
 
         if with_children
             # Fetch all entities that have a parent id of the entity's ID
@@ -63,6 +63,7 @@ class EntityMemory < Memory_Array
           if !line[field].to_s.like(value) && value != "*" then next end
           a.push(type ? Object.const_get(type.capitalize).new(line) : line)
         end
+        
         return a
 
     end
