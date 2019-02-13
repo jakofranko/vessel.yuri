@@ -63,17 +63,21 @@ class ActionTest
     # puts world.describe
 
     $archives = Archives.new(@host)
-    world = $archives.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
-    puts world.describe
-
     $entities = EntityMemory.new('entities', @host.path)
     $languages = LanguageMemory.new("languages", @host.path)
     $characters = CharacterMemory.new("characters", @host.path)
 
-    world = Memory_Hash.new("entity_types/world", @host.path)
-    puts world.to_h.inspect
+    puts "--- NEW WORLD ---"
+    world = $archives.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
+    puts world.describe
 
+    puts "\n--- ENTITY FROM MEMORY ---"
+    entity = $entities.get(2)
+    puts entity.describe
 
+    puts "\n--- ENTITY FROM MEMORY W/ CHILDREN ---"
+    continent = $entities.get(7, true) # with children
+    puts continent.describe
 
     # puts "---RENDER---"
     # puts $languages.render
@@ -89,6 +93,7 @@ class ActionTest
     # puts character.describe
     # $characters.add(character)
 
+    puts "\n--- NEW STORY ---"
     story = Story.new
     puts story.summary_template
     puts story.summary
