@@ -18,7 +18,7 @@ require_relative './_toolkit'
 # TODO: Save and load languages
 class Entity
     ATTRS = [
-        :ID,
+        :id,
         :NAME,
         :TYPE,
         :ADJV,
@@ -43,7 +43,7 @@ class Entity
         @CMAX = attributes["CMAX"].to_i
         @CTPS = attributes["CTPS"]
         @CPRP = attributes["CPRP"]
-        @ID = options[:ID] ? options[:ID] : nil
+        @id = options[:id] ? options[:id] : nil
         @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
         @PREP = options[:prep] ? options[:prep] : ""
 
@@ -53,7 +53,7 @@ class Entity
 
         # If the entity does not have an ID, this is a new entity
         # and its children will also need to be generated
-        if @ID.nil?
+        if @id.nil?
             @ADJV = attributes["ADJV"] && attributes["ADJV"].length ? choose(attributes["ADJV"]) : ""
             @VERB = attributes["VERB"] && attributes["VERB"].length ? choose(attributes["VERB"]) : ""
             @ADVB = attributes["ADVB"] && attributes["ADVB"].length ? choose(attributes["ADVB"]) : ""
