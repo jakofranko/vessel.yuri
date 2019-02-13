@@ -20,20 +20,16 @@ class Entity
     ATTRS = [
         :ID,
         :NAME,
-        :language,
-        :parent,
-        :type,
+        :TYPE,
         :ADJV,
         :ADVB,
         :VERB,
-        :adjectives,
-        :adverbs,
-        :verbs,
+        :CMAX,
         :CTPS,
-        :child_relates,
-        :child_attributes,
+        :PREP,
+        :language,
+        :parent,
         :children,
-        :PREP
     ]
     attr_accessor(*ATTRS)
 
@@ -58,9 +54,9 @@ class Entity
         # If the entity does not have an ID, this is a new entity
         # and its children will also need to be generated
         if @ID.nil?
-            @ADJV = attributes["ADJV"].length ? choose(attributes["ADJV"]) : ""
-            @VERB = attributes["VERB"].length ? choose(attributes["VERB"]) : ""
-            @ADVB = attributes["ADVB"].length ? choose(attributes["ADVB"]) : ""
+            @ADJV = attributes["ADJV"] && attributes["ADJV"].length ? choose(attributes["ADJV"]) : ""
+            @VERB = attributes["VERB"] && attributes["VERB"].length ? choose(attributes["VERB"]) : ""
+            @ADVB = attributes["ADVB"] && attributes["ADVB"].length ? choose(attributes["ADVB"]) : ""
 
             generate_children
 
@@ -81,6 +77,9 @@ class Entity
     # a language defined.
     # Optionally, a child can have a new language generated for itself
     def generate_children
+
+        return unless @CMAX && @CMAX > 0
+
         num_children = rand(@CMAX)
         num_children.times do
             # Pick a child type, options and preposition
@@ -99,6 +98,7 @@ class Entity
             child = $archives.create(type.downcase.to_sym, options)
             @children.push(child)
         end
+
     end
 
     def describe
@@ -123,16 +123,7 @@ class Entity
         sentence << "."
 
         @children.each do |c|
-            if c.is_a? String
-                # Since this is likely a generic name like 'Forest', we can add an article
-                child_name = c.with_article.downcase
-                to_be = c.article.empty? ? "are" : "is"
-            else
-                child_name = c.describe
-                to_be = "is"
-            end
-
-            sentence << " " + c.preposition % @NAME + " #{to_be} #{child_name}."
+            sentence << " " + c.PREP % @NAME + " is #{c.describe}."
         end
 
         # Filter out all multiple periods and spaces from nested children
