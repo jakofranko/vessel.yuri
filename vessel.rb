@@ -62,6 +62,7 @@ class ActionTest
     # world = World.new({:name => language.make_name('world')})
     # puts world.describe
 
+    $summaries = Memory_Array.new('summaries', @host.path).to_a
     $archives = Archives.new(@host)
     $entities = EntityMemory.new('entities', @host.path)
     $languages = LanguageMemory.new("languages", @host.path)
