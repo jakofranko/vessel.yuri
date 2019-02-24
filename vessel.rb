@@ -15,6 +15,7 @@ require_relative 'objects/entity'
 require_relative 'objects/character'
 require_relative 'objects/story'
 require_relative 'objects/memory.entity'
+require_relative 'objects/memory.arc'
 require_relative 'objects/memory.language'
 require_relative 'objects/memory.character'
 
@@ -59,11 +60,10 @@ class ActionTest
   def act q = nil
 
     q = q == "" ? nil : q
-    # world = World.new({:name => language.make_name('world')})
-    # puts world.describe
 
     $summaries = Memory_Array.new('summaries', @host.path).to_a
     $archives = Archives.new(@host)
+    $arcs = ArcMemory.new('arcs', @host.path)
     $entities = EntityMemory.new('entities', @host.path)
     $languages = LanguageMemory.new("languages", @host.path)
     $characters = CharacterMemory.new("characters", @host.path)
@@ -94,10 +94,14 @@ class ActionTest
     # puts character.describe
     # $characters.add(character)
 
+    puts "\n--- ARCS ---"
+    puts $arcs.inspect
+
     puts "\n--- NEW STORY ---"
     story = Story.new
     puts story.summary_template
     puts story.summary
+    puts story.arcs
 
     return ""
 

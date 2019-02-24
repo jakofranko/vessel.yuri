@@ -27,7 +27,7 @@ class Story
         'The Infinity Gauntlet'
     ]
 
-    attr_accessor :summary, :summary_template, :characters, :current_arc, :current_scene
+    attr_accessor :summary, :summary_template, :characters, :current_arc, :current_scene, :arcs
     def initialize
 
         @characters       = pick_characters
@@ -63,18 +63,32 @@ class Story
 
     def generate_arcs
 
+        arcs = []
         by_order = {}
+        used_arcs = []
+
         summary_arcs = $arcs.get_by_summary_id(@summary_template["id"])
         summary_arcs.each do |arc|
-            order = arc.order.split(",")
+            order = arc["order"].split(",")
             order.each do |o|
                 if by_order[o].nil? then by_order[o] = [] end
                 by_order[o].push(arc)
             end
         end
 
-        puts by_order.inspect
+        by_order.each do |order, arc_arr|
+            arc_arr.shuffle.each do |arc|
+                if !used_arcs.include? arc then
+                    arcs.push(arc)
+                    used_arcs.push(arc)
+                    break
+                else
+                    next
+                end
+            end
+        end
 
+        return arcs
     end
 
     def get_current_arc
