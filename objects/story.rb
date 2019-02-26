@@ -27,15 +27,16 @@ class Story
         'The Infinity Gauntlet'
     ]
 
-    attr_accessor :summary, :summary_template, :characters, :current_arc, :current_scene, :arcs
+    attr_accessor :summary, :summary_template, :characters, :current_scene, :arcs
     def initialize
 
         @characters       = pick_characters
         @summary_template = $summaries.sample
         @summary          = generate_summary
         @arcs             = generate_arcs
-        @current_arc      = get_current_arc
-        @current_scene    = get_current_scene # Does this live here, or in the Arc class?
+        @current_arc      = nil
+        @current_scene    = nil
+        @current_scenes   = []
 
     end
 
@@ -91,15 +92,34 @@ class Story
         return arcs
     end
 
-    def get_current_arc
+    def generate_scenes
 
-        return false
+
+        @arcs.each do |arc|
+            scenes = $scenes.get_scenes_by_arc_id(arc["id"])
+
+        end
 
     end
 
-    def get_current_scene
+    def current_arc
 
-        return false
+        if @current_arc.nil? || @current_scenes.length == 0 then
+            @current_arc = @arcs.shift
+            @current_scenes = @current_arc.scenes
+        end
+
+        return @current_arc
+
+    end
+
+    def current_scene
+
+        if @current_scene.nil? && @current_scenes.length != 0 then
+            @current_scene = @current_scenes.shift
+        end
+
+        return @current_scene
 
     end
 
