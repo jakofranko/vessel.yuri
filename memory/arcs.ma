@@ -1,6 +1,6 @@
-~ NAME :
-~ NOTE :
-~ AUTH :
+~ NAME : Story Arcs
+~ NOTE : A memory of story arcs, each related to a summary template
+~ AUTH : Jake Franklin
 
 @ id  summary_id order                    text
 00000 00001      1,2                      Motivation
