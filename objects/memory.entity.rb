@@ -8,13 +8,13 @@ class EntityMemory < Memory_Array
         if !entity.is_a? Entity then return end
 
         new_id      = self.length.to_s.prepend("0", 5)
-        parent_id   = (entity.parent && !entity.parent.id.nil?) ? entity.parent.id : 'NULL0'
-        type        = entity.type.append(" ", 10)
-        name        = entity.name.append(" ", 14)
-        preposition = entity.preposition.append(" ", 50)
-        adjective   = entity.adjective.append(" ", 14)
-        verb        = entity.verb.append(" ", 20)
-        adverb      = entity.adverb.append(" ", 14)
+        parent_id   = (entity.PRNT && !entity.PRNT.id.nil?) ? entity.PRNT.id : 'NULL0'
+        type        = entity.TYPE.append(" ", 10)
+        name        = entity.NAME.append(" ", 14)
+        preposition = entity.PREP.append(" ", 50)
+        adjective   = entity.ADJV.append(" ", 14)
+        verb        = entity.VERB.append(" ", 20)
+        adverb      = entity.ADVB.append(" ", 14)
         # lang_id     = entity.lang_id
 
         # Append this string to the entities.ma file
@@ -22,7 +22,7 @@ class EntityMemory < Memory_Array
 
         # Add directly to render, since append only adds a line to the file and doesn't re-render the memory
         # If this isn't done, then, among other things, the new_id gets messed up when adding multiple things to memory during execution
-        $entities.render << {"id"=>new_id, "parent_id"=>parent_id, "type"=>type, "name"=>name, "preposition"=>preposition, "adjective"=>adjective, "verb"=>verb, "adverb"=>adverb}
+        $entities.render << {"ID"=>new_id, "P_ID"=>parent_id, "TYPE"=>type, "NAME"=>name, "PREP"=>preposition, "ADJV"=>adjective, "VERB"=>verb, "ADVB"=>adverb}
 
         # Return the new id
         new_id
@@ -35,19 +35,19 @@ class EntityMemory < Memory_Array
             id = id.to_s.prepend("0", 5)
         end
 
-        entity_row = self.filter('id', id, nil)[0].symbolize_keys
+        entity_row = self.filter('ID', id, nil)[0].symbolize_keys
 
         # Return the object
         entity = $archives.create(entity_row[:type].downcase.to_sym, entity_row)
 
         if with_children
             # Fetch all entities that have a parent id of the entity's ID
-            children_rows = self.filter('parent_id', id, nil)
+            children_rows = self.filter('P_ID', id, nil)
 
             # Then, loop through the results and try to instantiate entity objects of them
             children_rows.each do |child|
                 # Recursively fetch the entity and it's children
-                c = self.get(child['id'], true)
+                c = self.get(child['ID'], true)
                 entity.children.push(c)
             end
         end
@@ -63,7 +63,7 @@ class EntityMemory < Memory_Array
           if !line[field].to_s.like(value) && value != "*" then next end
           a.push(type ? Object.const_get(type.capitalize).new(line) : line)
         end
-        
+
         return a
 
     end

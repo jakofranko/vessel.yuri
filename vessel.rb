@@ -16,8 +16,10 @@ require_relative 'objects/character'
 require_relative 'objects/story'
 require_relative 'objects/memory.entity'
 require_relative 'objects/memory.arc'
+require_relative 'objects/memory.scene'
 require_relative 'objects/memory.language'
 require_relative 'objects/memory.character'
+require_relative 'objects/memory.story'
 
 class VesselYuri
 
@@ -61,24 +63,28 @@ class ActionTest
 
     q = q == "" ? nil : q
 
-    $summaries = Memory_Array.new('summaries', @host.path).to_a
     $archives = Archives.new(@host)
-    $arcs = ArcMemory.new('arcs', @host.path)
-    $entities = EntityMemory.new('entities', @host.path)
-    $languages = LanguageMemory.new("languages", @host.path)
-    $characters = CharacterMemory.new("characters", @host.path)
+    $stories = StoryMemory.new("stories/stories", @host.path)
 
-    puts "--- NEW WORLD ---"
-    world = $archives.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
-    puts world.describe
+    # Template memories
+    $summaries = Memory_Array.new("story_templates/summaries", @host.path).to_a
+    $arcs = ArcMemory.new("story_templates/arcs", @host.path)
+    $scenes = SceneMemory.new("story_templates/scenes", @host.path)
+    $entities = EntityMemory.new("world_generation/entities", @host.path)
+    $languages = LanguageMemory.new("world_generation/languages", @host.path)
+    $characters = CharacterMemory.new("stories/characters", @host.path)
 
-    puts "\n--- ENTITY FROM MEMORY ---"
-    entity = $entities.get(2)
-    puts entity.describe
-
-    puts "\n--- ENTITY FROM MEMORY W/ CHILDREN ---"
-    continent = $entities.get(7, true) # with children
-    puts continent.describe
+    # puts "--- NEW WORLD ---"
+    # world = $archives.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
+    # puts world.describe
+    #
+    # puts "\n--- ENTITY FROM MEMORY ---"
+    # entity = $entities.get(2)
+    # puts entity.describe
+    #
+    # puts "\n--- ENTITY FROM MEMORY W/ CHILDREN ---"
+    # continent = $entities.get(7, true) # with children
+    # puts continent.describe
 
     # puts "---RENDER---"
     # puts $languages.render
@@ -94,14 +100,36 @@ class ActionTest
     # puts character.describe
     # $characters.add(character)
 
-    puts "\n--- ARCS ---"
-    puts $arcs.inspect
+    # puts "\n--- ARCS ---"
+    # puts $arcs.inspect
+    #
+    # puts "\n--- SCENES ---"
+    # puts $scenes.inspect
 
     puts "\n--- NEW STORY ---"
+    # Create a new story, and then save the results
     story = Story.new
-    puts story.summary_template
-    puts story.summary
-    puts story.arcs
+    story_id = $stories.add(story.world.ID, story.summary)
+    story.id = story_id
+    story.characters.each do |type, character|
+        if !character.id then
+            character.story_id = story_id
+            $characters.add(character)
+        else
+            # TODO: will only happen once stories can use existing characters
+            $characters.update(character.id, { story_id: story_id})
+        end
+    end
+
+    # Inspect story
+    puts story.inspect
+    # puts story.summary_template
+    # puts story.summary
+    # puts story.arcs.inspect
+    # puts "\n--- STORY SCENES ---"
+    # story.arc_scenes.each do |arc_scenes|
+    #     arc_scenes.each {|scene| puts scene.describe}
+    # end
 
     return ""
 

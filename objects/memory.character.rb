@@ -8,11 +8,12 @@ class CharacterMemory < Memory_Array
         if !character.is_a? Character then return end
 
         new_id = self.length.to_s.prepend("0", 5)
-        location_id = character.location.nil? ? character.location.id : "BLANK"
+        story_id = character.story_id.nil? ? "BLANK" : character.story_id
+        location_id = character.location.nil? ? "BLANK" : character.location.id
         language_id = character.language_id.to_s.prepend("0", 5)
 
         # Append this string to the entities.ma file
-        self.append("#{new_id} #{character.name.append(" ", 20)}#{location_id.prepend("0", 5).append(" ", 16)}#{language_id.prepend("0", 5)}")
+        self.append("#{new_id} #{character.name.append(" ", 20)}#{story_id.prepend("0", 5).append(" ", 13)}#{location_id.prepend("0", 5).append(" ", 16)}#{language_id.prepend("0", 5)}")
 
         # Add directly to render, since append only adds a line to the file and doesn't re-render the memory
         # If this isn't done, then, among other things, the new_id gets messed up when adding multiple things to memory during execution

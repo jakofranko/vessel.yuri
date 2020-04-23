@@ -10,3 +10,8 @@
 00004 00000      1,2                      Discover the item's location
 00005 00000      3                        Trial to Obtain the Item
 00006 00000      4                        Journey Home
+00007 00002      1                        Motivation to destroy item
+00008 00002      2,4                      Journey to attempt to destroy item
+00009 00002      3,5                      Prevented from destroying item
+00010 00002      3,4,5,6                  Trial to destroy the item
+00011 00002      6,7                      Aftermath

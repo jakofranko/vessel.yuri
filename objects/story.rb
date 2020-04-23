@@ -18,22 +18,37 @@ require_relative './character'
 #       have the tool give me all the verbs in the dictionary one at a time and I can say
 #       'yes', or 'no'. If I want a list of objects for McGuffins, do the same thing with nouns.
 #       Not sure if this is a good idea or it's better to just hardcode words
-# TODO: Create arc templates given a summary type
 class Story
 
+    # TODO: Move these to a memory
     ITEMS = [
         'Tetrahedron',
         'The One Ring',
         'The Infinity Gauntlet'
     ]
 
-    attr_accessor :summary, :summary_template, :characters, :current_scene, :arcs
-    def initialize
+    NEW_WORLD_CHANCE = 0.01
 
-        @characters       = pick_characters
-        @summary_template = $summaries.sample
-        @summary          = generate_summary
-        @arcs             = generate_arcs
+    ATTRS = [
+        :id,
+        :summary,
+        :summary_template,
+        :characters,
+        :current_scene,
+        :arcs,
+        :arc_scenes,
+        :world
+    ]
+    attr_accessor(*ATTRS)
+    def initialize id = nil, world_id = nil, summary = nil
+
+        @id               = id
+        @summary_template = id ? get_summary_template : $summaries.sample
+        @characters       = id ? get_characters : pick_characters
+        @world            = world_id ? $entities.get(world_id) : pick_world
+        @summary          = summary || generate_summary
+        @arcs             = id ? get_arcs : generate_arcs
+        @arc_scenes       = id ? get_scenes : generate_scenes
         @current_arc      = nil
         @current_scene    = nil
         @current_scenes   = []
@@ -46,6 +61,25 @@ class Story
             :protagonist => Character.new,
             :antagonist  => Character.new
         }
+
+    end
+
+    def pick_world
+
+        if rand < NEW_WORLD_CHANCE then
+            world = $archives.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
+            # puts world.inspect
+            @world = world
+            puts 'making a new world'
+            puts @world
+            @world.ID = $entities.add(world)
+        else
+            puts 'getting an existing world'
+            worlds = $entities.filter("TYPE", "World", "Entity")
+            @world = worlds.sample
+        end
+
+        return @world
 
     end
 
@@ -94,11 +128,16 @@ class Story
 
     def generate_scenes
 
+        scenes = []
 
         @arcs.each do |arc|
-            scenes = $scenes.get_scenes_by_arc_id(arc["id"])
-
+            scene = $scenes.get_by_arc_id(arc["id"]);
+            if scene.length > 0 then
+                scenes.push(scene)
+            end
         end
+
+        return scenes
 
     end
 

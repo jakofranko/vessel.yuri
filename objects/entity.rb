@@ -18,7 +18,7 @@ require_relative './_toolkit'
 # TODO: Save and load languages
 class Entity
     ATTRS = [
-        :id,
+        :ID,
         :NAME,
         :TYPE,
         :ADJV,
@@ -27,33 +27,32 @@ class Entity
         :CMAX,
         :CTPS,
         :PREP,
-        :language,
-        :parent,
-        :children,
+        :LANG,
+        :PRNT,
+        :CHLD,
     ]
     attr_accessor(*ATTRS)
 
-    def initialize attributes, options
+    def initialize attributes, options = {}
 
         validate(attributes, options)
 
-        # TODO: finish convertin this over to the new entity_type memory system
         # TODO: cleanup unused instance variables
         @TYPE = attributes["TYPE"]
         @CMAX = attributes["CMAX"].to_i
         @CTPS = attributes["CTPS"]
         @CPRP = attributes["CPRP"]
-        @id = options[:id] ? options[:id] : nil
+        @ID   = attributes["ID"] ? attributes["ID"] : nil
         @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
         @PREP = options[:prep] ? options[:prep] : ""
 
-        @language = options[:language]
-        @parent   = options[:parent]
-        @children = []
+        @LANG = options[:language]
+        @PRNT = options[:parent]
+        @CHLD = []
 
         # If the entity does not have an ID, this is a new entity
         # and its children will also need to be generated
-        if @id.nil?
+        if @ID.nil?
             @ADJV = attributes["ADJV"] && attributes["ADJV"].length ? choose(attributes["ADJV"]) : ""
             @VERB = attributes["VERB"] && attributes["VERB"].length ? choose(attributes["VERB"]) : ""
             @ADVB = attributes["ADVB"] && attributes["ADVB"].length ? choose(attributes["ADVB"]) : ""
@@ -86,17 +85,17 @@ class Entity
             type = choose(@CTPS.keys)
             options = @CTPS[type]
             options[:prep] = choose(@CPRP[type])
-            options[:language] = @language
+            options[:language] = @LANG
             options[:parent] = self
 
             if options[:name] == false || options[:name_self] == true
                 options[:name] = "#{type}"
             else
-                options[:name] = @language.make_name(type)
+                options[:name] = @LANG.make_name(type)
             end
 
             child = $archives.create(type.downcase.to_sym, options)
-            @children.push(child)
+            @CHLD.push(child)
         end
 
     end
@@ -122,7 +121,7 @@ class Entity
 
         sentence << "."
 
-        @children.each do |c|
+        @CHLD.each do |c|
             sentence << " " + c.PREP % @NAME + " is #{c.describe}."
         end
 
