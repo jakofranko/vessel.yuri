@@ -28,6 +28,7 @@ class Entity
         :CTPS,
         :PREP,
         :LANG,
+        :LANG_ID,
         :PRNT,
         :CHLD,
     ]
@@ -46,7 +47,9 @@ class Entity
         @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
         @PREP = options[:prep] ? options[:prep] : ""
 
+        @LANG_ID = options[:language_id]
         @LANG = options[:language]
+        @P_ID = options[:parent_id]
         @PRNT = options[:parent]
         @CHLD = []
 

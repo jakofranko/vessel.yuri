@@ -131,7 +131,7 @@ class LanguageMemory < Memory_Hash
 
     def make_build id
 
-        if !@tree[id] then return end 
+        if !@tree[id] then return end
         parent = @lines[id].last.strip
 
         # Specific to storing languages which will sometimes have empty string keys (janky, I know)
@@ -147,11 +147,11 @@ class LanguageMemory < Memory_Hash
 
             value = make_build(id)
             if value != nil
-                if !t.kind_of?(Hash) 
+                if !t.kind_of?(Hash)
                     puts t.inspect
                     abort("NOT HASH")
                 end
-                t[child] = value 
+                t[child] = value
               else
                 if t.kind_of?(Hash)
                     if child.include?(" : ")
@@ -159,7 +159,7 @@ class LanguageMemory < Memory_Hash
                     # Check to see if the child ends like "foo :" and if it does, set it to an empty string
                     elsif child.include?(" :") && /\s\:$/ =~ child
                         t[child.split(" :").first.strip] = ""
-                    # If child doesn't have a value (doesn't match the pattern " : "), 
+                    # If child doesn't have a value (doesn't match the pattern " : "),
                     # or an empty value (doesn't match the pattern " :")
                     # attempt to turn t into an array. Otherwise add it to the existing tree
                     elsif t.empty?
