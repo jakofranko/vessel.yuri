@@ -19,3 +19,17 @@
 00015 Pékomo              BLANK        BLANK           00000
 00014 Lüg                 00039        BLANK           00000
 00017 Kuklol              00039        BLANK           00000
+00016 Nïnnïnsämmï         00040        BLANK           00000
+00019 Engepupop           00040        BLANK           00000
+00018 Tut                 00041        BLANK           00000
+00021 Konnonwongmu        00041        BLANK           00000
+00020 Po-sapsep           00042        BLANK           00000
+00023 Nonnun              00042        BLANK           00000
+00022 Omunlinnim          00043        BLANK           00000
+00025 Utenatik            00043        BLANK           00000
+00024 Teoteokuokkout      00044        BLANK           00000
+00027 Unakik              00044        BLANK           00000
+00026 Liklew              00045        BLANK           00000
+00029 Nonmumememon        00045        BLANK           00000
+00028 Gemsin              00046        BLANK           00000
+00031 Uduj                00046        BLANK           00000

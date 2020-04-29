@@ -2,6 +2,148 @@
 ~ NOTE : A place to store the languages generated while Yuri tells stories
 ~ AUTH : Jake Franklin
 
+Umkom
+  phonemes
+    C : tmlspnk
+    V : ueo
+    L : r
+    S : ʃs
+    F : nm
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : C?VC
+  exponent : 1
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho : BLANK
+  vortho
+    A : aa
+    E : ee
+    I : ii
+    O : oo
+    U : uu
+  morphemes
+    of
+      os
+    the
+      kom
+    BLANK
+      um
+    language
+      kom
+  words
+    language
+      Umkom
+  names
+    Umkom
+  joiner : BLANK
+  maxchar : 14
+  minchar : 4
+  minsyll : 1
+  maxsyll : 5
+  genitive : os
+  definitive : kom
+  id : 6
+Pehum
+  phonemes
+    C : knhpmt
+    V : oue
+    L : lr
+    S : s
+    F : nm
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : CVF?
+  exponent : 1
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho : BLANK
+  vortho
+    A : au
+    E : ei
+    I : ie
+    O : ou
+    U : oo
+  morphemes
+    of
+      nu
+    the
+      kem
+    language
+      pe
+    BLANK
+      hum
+  words
+    language
+      Pehum
+  names
+    Pehum
+  joiner : BLANK
+  maxchar : 12
+  minchar : 4
+  minsyll : 2
+  maxsyll : 5
+  genitive : nu
+  definitive : kem
+  id : 00010
+Nuhmotopnuh
+  phonemes
+    C : hptkmn
+    V : oue
+    L : r
+    S : ʃs
+    F : nm
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : C?VC
+  exponent : 3
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+    ʃ : š
+    ʒ : ž
+    ʧ : č
+    ʤ : ǧ
+    j : j
+  vortho
+    A : au
+    E : ei
+    I : ie
+    O : ou
+    U : oo
+  morphemes
+    of
+      pon
+    the
+      hoh
+    BLANK
+      nuh
+      mot
+      op
+    language
+      nuh
+  words
+    language
+      Nuhmotopnuh
+  names
+    Nuhmotopnuh
+  joiner : -
+  maxchar : 12
+  minchar : 4
+  minsyll : 2
+  maxsyll : 6
+  genitive : pon
+  definitive : hoh
+  id : 4
 Nat sip mut
   phonemes
     C : ptkmnls
@@ -127,6 +269,67 @@ Mal nap lip
   genitive : nap
   definitive : mak
   id : 2
+Limnumunit
+  phonemes
+    C : lmtpsnk
+    V : eiuao
+    L : lr
+    S : s
+    F : ʒzsʃ
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : C?L?VC
+  exponent : 1
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+    ʃ : sch
+    ʒ : zh
+    ʧ : tsch
+    ʤ : dz
+    j : j
+    x : ch
+  vortho : BLANK
+  morphemes
+    of
+      ep
+    the
+      pruk
+    BLANK
+      es
+      lul
+      lik
+      lim
+      it
+      un
+    language
+      num
+      lin
+      el
+  words
+    BLANK
+      eslul
+      lullik
+      lulun
+    language
+      limnum
+      num
+      itlinunlim
+      likel
+      Limnumunit
+  names
+    Limnumunit
+  joiner : BLANK
+  maxchar : 10
+  minchar : 3
+  minsyll : 1
+  maxsyll : 5
+  genitive : ep
+  definitive : pruk
+  id : 3
 Lep nup sap
   phonemes
     C : ptkmnls
@@ -190,3 +393,270 @@ Lep nup sap
   genitive : nup
   definitive : tat
   id : 1
+Iršderm
+  phonemes
+    C : ʃdʒrknzʧmgtlsbp
+    V : iaueo
+    L : r
+    S : s
+    F : nm
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : C?VLC?
+  exponent : 3
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+    ʃ : š
+    ʒ : ž
+    ʧ : č
+    ʤ : ǧ
+    j : j
+  vortho : BLANK
+  morphemes
+    of
+      dirš
+    the
+      ar
+    language
+      irš
+    BLANK
+      derm
+  words
+    language
+      Iršderm
+  names
+    Iršderm
+  joiner : -
+  maxchar : 10
+  minchar : 3
+  minsyll : 1
+  maxsyll : 2
+  genitive : dirš
+  definitive : ar
+  id : 00007
+Ilpol
+  phonemes
+    C : zsʒpkwhdnmgjʧtb
+    V : uaeio
+    L : lr
+    S : s
+    F : ʒzsʃ
+  noortho
+  nomorph
+  nowordpool
+  structure : C?VLC?
+  exponent : 1
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+  vortho
+    A : ä
+    E : ë
+    I : ï
+    O : ö
+    U : ü
+  morphemes
+    of
+      ber
+    the
+      chult
+    language
+      il
+    BLANK
+      pol
+  words
+    language
+      Ilpol
+  names
+    Ilpol
+  joiner :  
+  maxchar : 13
+  minchar : 3
+  minsyll : 1
+  maxsyll : 2
+  genitive : ber
+  definitive : chult
+  id : 00011
+Ekeppom
+  phonemes
+    C : tkhpmn
+    V : ueo
+    L : jw
+    S : ʃfs
+    F : nm
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : C?VC
+  exponent : 1
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+    ʃ : x
+    ʧ : q
+    ʤ : j
+  vortho
+    A : au
+    E : ei
+    I : ie
+    O : ou
+    U : oo
+  morphemes
+    of
+      ek
+    the
+      keh
+    BLANK
+      uk
+      em
+      peh
+      pom
+      ek
+    language
+      ep
+  words
+    BLANK
+      ukem
+    language
+      peheppom
+      Ekeppom
+  names
+    Ekeppom
+  joiner : BLANK
+  maxchar : 13
+  minchar : 4
+  minsyll : 1
+  maxsyll : 3
+  genitive : ek
+  definitive : keh
+  id : 00008
+Chaubdijd
+  phonemes
+    C : dxkqjrtblsɣʃwmn
+    V : iIAau
+    L : jw
+    S : fsʃ
+    F : nm
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : C?VL?C
+  exponent : 3
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+    ʃ : sch
+    ʒ : zh
+    ʧ : tsch
+    ʤ : dz
+    j : j
+    x : ch
+  vortho
+    A : au
+    E : ei
+    I : ie
+    O : ou
+    U : oo
+  morphemes
+    of
+      jijd
+    the
+      did
+    language
+      dijd
+    BLANK
+      ijd
+      chaub
+  words
+    language
+      dijd
+      dijdijd
+      Chaubdijd
+  names
+    Chaubdijd
+  joiner : BLANK
+  maxchar : 12
+  minchar : 4
+  minsyll : 1
+  maxsyll : 3
+  genitive : jijd
+  definitive : did
+  id : 00009
+Amunwn
+  phonemes
+    C : shdnʒkzwgbtjmpʧ
+    V : uUaeAoiO
+    L : lr
+    S : s
+    F : nm
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
+  structure : C?VF
+  exponent : 2
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+    ʃ : sch
+    ʒ : zh
+    ʧ : tsch
+    ʤ : dz
+    j : j
+    x : ch
+  vortho
+    A : â
+    E : ê
+    I : y
+    O : ô
+    U : w
+  morphemes
+    of
+      dwn
+    the
+      ôm
+    BLANK
+      jun
+      un
+      gôn
+      kan
+      sun
+      twm
+      hun
+      ôn
+      tschun
+      am
+      un
+      wn
+    language
+      wwm
+      am
+  words
+    BLANK
+      junungônkan
+      hunôntschun
+    language
+      suntwmkanwwm
+      gônwwmjunam
+      Amunwn
+  names
+    Amunwn
+  joiner : BLANK
+  maxchar : 13
+  minchar : 4
+  minsyll : 2
+  maxsyll : 4
+  genitive : dwn
+  definitive : ôm
+  id : 5

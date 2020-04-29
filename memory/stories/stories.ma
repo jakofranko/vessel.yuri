@@ -45,3 +45,10 @@
 00037 00000     Niknoptuhhum must destroy The One Ring
 00038 00022     Snan-snan must destroy Tetrahedron
 00039 00003     Lüg must destroy Tetrahedron
+00040 00025     Nïnnïnsämmï must find The Infinity Gauntlet
+00041 00000     Tut must defeat Konnonwongmu
+00042 00005     Po-sapsep must defeat Nonnun
+00043 00005     Omunlinnim must defeat Utenatik
+00044 00011     Teoteokuokkout must find Tetrahedron
+00045 00016     Liklew must defeat Nonmumememon
+00046 00016     Gemsin must defeat Uduj
