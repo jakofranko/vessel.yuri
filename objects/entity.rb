@@ -3,7 +3,7 @@ require_relative './_toolkit'
 
 ##
 # Entities are the parent class for all elements of a story: places, regions, people, things, etc.
-# An entity is defined by mainly by its own adjectives, and the type of children it can have.
+# An entity is defined by its own adjectives, and the type of children it can have.
 # An Entity's primary purpose is to describe itself and its children, and contains the logic for
 # procedurally generating its own children. Each child in turn is also an entity. Example:
 #

@@ -19,7 +19,7 @@ class LanguageMemory < Memory_Hash
         language.instance_variables.each do |variable|
             lang_hash[variable.to_s[1, variable.length - 1]] = language.instance_variable_get variable
         end
-        lang_hash["id"] = self.get_num_languages
+        lang_hash["id"] = self.get_num_languages.to_s.prepend("0", 5)
 
         self.render[name] = lang_hash
         self.save

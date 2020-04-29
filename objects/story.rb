@@ -11,6 +11,8 @@ require_relative './character'
 # Bare-minimum, a story requires a protagonist and a McGuffin.
 # Given those two things, a series of arcs can be generated depending on the McGuffin.
 #
+# @tag_map: keeps track of the generated entity IDs that will be substituted in as the story is told.
+#
 # TODO: Save/load stories
 # TODO: Come up with templates for summaries
 # TODO: ??? Create tool that will sift through the dictionary and allow me to sort words
@@ -43,6 +45,7 @@ class Story
     def initialize id = nil, world_id = nil, summary = nil
 
         @id               = id
+        @tag_map          = {}
         @summary_template = id ? get_summary_template : $summaries.sample
         @characters       = id ? get_characters : pick_characters
         @world            = world_id ? $entities.get(world_id) : pick_world
@@ -52,6 +55,19 @@ class Story
         @current_arc      = nil
         @current_scene    = nil
         @current_scenes   = []
+
+    end
+
+    ##
+    # Will handle creating and associating new entities to the story based on the tag
+    def parse_tags str
+
+        $tags.to_a.each do |t|
+            if str.match(t.tag) && !@tag_map[t.tag].nil? then
+                new_id = Object.const_get(t.entity).new
+                # @tag_map[t.tag] = new entity ID
+            end
+        end
 
     end
 

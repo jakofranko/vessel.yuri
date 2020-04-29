@@ -1,5 +1,4 @@
 # Yuri gazes into the fire, as he searches the vast archives of his mind for...
-require 'glossa'
 require_relative "./entity"
 
 class Archives

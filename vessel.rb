@@ -75,9 +75,12 @@ class ActionTest
     $characters = CharacterMemory.new("stories/characters", @host.path)
 
     # puts "--- NEW WORLD ---"
-    # world = $archives.create(:world, {:name_self => true, :language => Glossa::Language.new(true)})
-    # puts world.describe
-    #
+    language = Glossa::Language.new(true)
+    language_id = $languages.add(language)
+    world = $archives.create(:world, {:name_self => true, :language_id => language_id, :language => language})
+    puts world.describe
+    $entities.add(world, true)
+
     # puts "\n--- ENTITY FROM MEMORY ---"
     # entity = $entities.get(2)
     # puts entity.describe
@@ -107,10 +110,14 @@ class ActionTest
     # puts $scenes.inspect
 
     puts "\n--- NEW STORY ---"
-    # Create a new story, and then save the results
+    # Create a new story
     story = Story.new
+
+    # Save story
     story_id = $stories.add(story.world.ID, story.summary)
     story.id = story_id
+
+    # Save characters
     story.characters.each do |type, character|
         if !character.id then
             character.story_id = story_id
@@ -121,15 +128,11 @@ class ActionTest
         end
     end
 
-    # Inspect story
-    puts story.inspect
-    # puts story.summary_template
-    # puts story.summary
-    # puts story.arcs.inspect
-    # puts "\n--- STORY SCENES ---"
-    # story.arc_scenes.each do |arc_scenes|
-    #     arc_scenes.each {|scene| puts scene.describe}
-    # end
+    # Save Arcs
+
+
+    # Save Scenes
+
 
     return ""
 
