@@ -16,7 +16,7 @@ class Archives
 
     def create type, options
 
-        raise "#{type} is not a valid entity type. You should create one." unless @entity_types[type]
+        raise "#{type} is not a valid entity type. You should create one. Valid entity types are #{@entity_types}" unless @entity_types[type]
 
         return Entity.new(@entity_types[type], options)
 

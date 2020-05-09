@@ -47,8 +47,8 @@ class Entity
         @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
         @PREP = options[:prep] ? options[:prep] : ""
 
-        @LANG_ID = options[:language_id]
-        @LANG = options[:language]
+        @LANG_ID = attributes["LANG_ID"] || options[:language_id]
+        @LANG = (@LANG_ID && !options[:language]) ? $languages.get(@LANG_ID) : options[:language]
         @P_ID = options[:parent_id]
         @PRNT = options[:parent]
         @CHLD = []
@@ -88,8 +88,8 @@ class Entity
             type = choose(@CTPS.keys)
             options = @CTPS[type]
             options[:prep] = choose(@CPRP[type])
-            options[:language] = @LANG
             options[:parent] = self
+            options[:language] = @LANG
 
             if options[:name] == false || options[:name_self] == true
                 options[:name] = "#{type}"

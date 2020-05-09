@@ -9,7 +9,7 @@ class StoryMemory < Memory_Array
         new_id = self.length.to_s.prepend("0", 5)
 
         # Append this string to the entities.ma file
-        self.append("#{new_id} #{world_id.prepend("0", 5).append(" ", "world_id".length + 1)} #{summary}")
+        self.append("#{new_id} #{world_id.prepend("0", 5).append(" ", "world_id".length)} #{summary}")
 
         return new_id
 

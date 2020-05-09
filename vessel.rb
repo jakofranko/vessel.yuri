@@ -12,14 +12,15 @@ $nataniev.require("action","tweet")
 
 require_relative 'objects/archives'
 require_relative 'objects/entity'
-require_relative 'objects/character'
 require_relative 'objects/story'
 require_relative 'objects/memory.entity'
+require_relative 'objects/memory.item_names'
 require_relative 'objects/memory.arc'
 require_relative 'objects/memory.scene'
 require_relative 'objects/memory.language'
-require_relative 'objects/memory.character'
+require_relative 'objects/memory.story_entity'
 require_relative 'objects/memory.story'
+require_relative 'objects/memory.story_arc'
 
 class VesselYuri
 
@@ -65,21 +66,26 @@ class ActionTest
 
     $archives = Archives.new(@host)
     $stories = StoryMemory.new("stories/stories", @host.path)
+    $story_arcs = StoryArcMemory.new("stories/story_arcs", @host.path)
+
+    # World Building memories
+    $entities = EntityMemory.new("world_generation/entities", @host.path)
+    $languages = LanguageMemory.new("world_generation/languages", @host.path)
 
     # Template memories
+    $tags = Memory_Array.new("story_templates/tags", @host.path)
     $summaries = Memory_Array.new("story_templates/summaries", @host.path).to_a
     $arcs = ArcMemory.new("story_templates/arcs", @host.path)
     $scenes = SceneMemory.new("story_templates/scenes", @host.path)
-    $entities = EntityMemory.new("world_generation/entities", @host.path)
-    $languages = LanguageMemory.new("world_generation/languages", @host.path)
-    $characters = CharacterMemory.new("stories/characters", @host.path)
+    $story_entities = StoryEntityMemory.new("stories/story_entities", @host.path)
+    $item_names = ItemNameMemory.new("story_templates/item_names", @host.path)
 
     # puts "--- NEW WORLD ---"
-    language = Glossa::Language.new(true)
-    language_id = $languages.add(language)
-    world = $archives.create(:world, {:name_self => true, :language_id => language_id, :language => language})
-    puts world.describe
-    $entities.add(world, true)
+    # language = Glossa::Language.new(true)
+    # language_id = $languages.add(language)
+    # world = $archives.create(:world, {:name_self => true, :language_id => language_id, :language => language})
+    # puts world.describe
+    # $entities.add(world, true)
 
     # puts "\n--- ENTITY FROM MEMORY ---"
     # entity = $entities.get(2)
@@ -117,15 +123,28 @@ class ActionTest
     story_id = $stories.add(story.world.ID, story.summary)
     story.id = story_id
 
-    # Save characters
-    story.characters.each do |type, character|
-        if !character.id then
-            character.story_id = story_id
-            $characters.add(character)
+    # Loop through all of the entities that have been generated
+    # from the tags in the summaries, arcs and scenes, and save them.
+    story.tag_map.each do |tag, entity|
+        puts entity.inspect
+        if entity.ID.nil? then
+            entity_id = $entities.add(entity)
+            entity.ID = entity_id
+            $story_entities.add(entity, {:story_id => story_id})
         else
-            # TODO: will only happen once stories can use existing characters
-            $characters.update(character.id, { story_id: story_id})
+            # TODO: will only happen once stories can use existing story_entities
+            # Only need to update the character entry since we are using an existing entity
+            $story_entities.update(entity.id, { story_id: story_id})
         end
+    end
+
+    puts story.summary
+    puts "The story will start with"
+    story.arcs.each_index do |i|
+        arc = story.arcs[i]
+        puts arc["text"]
+        puts "and then"
+        $story_arcs.add(arc, story_id, i)
     end
 
     # Save Arcs

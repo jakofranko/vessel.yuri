@@ -21,18 +21,13 @@ class ActionCreate
         super
 
         @name = "Create"
-        @docs = "Create new memories. Current commands: `create entity_type`"
-        @summaries = nil
-        @arcs = nil
+        @docs = "Create new memories. Current commands: `create entity_type`, `create arc`"
 
     end
 
     def act q = nil
 
         raise "You must specify what you want to create..." unless !q.nil?
-
-        if @summaries.nil? then @summaries = $summaries || Memory_Array.new('summaries', @host.path) end
-        if @arcs.nil? then @arcs = $arcs || ArcMemory.new('arcs', @host.path) end
 
         args = q.split(' ')
         case args.first
@@ -42,7 +37,7 @@ class ActionCreate
         when 'arc'
             start_arc_creator
         else
-            puts "#{@host.name} cannot create #{args.first}"
+            puts "\"#{args.first}\" is not something #{@host.name} can create right now."
         end
 
     end
@@ -56,7 +51,7 @@ class ActionCreate
             attrs[i] = ''
         end
 
-        new_file = File.new("#{@host.path}/memory/entity_types/#{attrs.first.downcase}.mh", "w")
+        new_file = File.new("#{@host.path}/memory/world_generation/entity_types/#{attrs.first.downcase}.mh", "w")
         new_file.puts(@@entity_type_template % attrs)
         new_file.close
 
@@ -66,21 +61,21 @@ class ActionCreate
 
     def start_arc_creator
 
-        puts @summaries.inspect
+        puts $summaries.inspect
         summary_id = "1"
         puts "Create arc for which summary template? (enter ID)"
-        @summaries.to_a.each {|s| puts "#{s["id"]} : #{s["summary"]}" }
+        $summaries.to_a.each {|s| puts "#{s["id"]} : #{s["summary"]}" }
         summary_id = STDIN.gets.chomp
-        summary = @summaries.filter("id", summary_id.prepend("0", 5), nil).first
+        summary = $summaries.filter("id", summary_id.prepend("0", 5), nil).first
         puts "Creating arc for summary #{summary["summary"]}"
         puts "Here are the arcs for the selected summary:"
-        @arcs.get_by_summary_id(summary_id).each{|a| puts "#{a["text"]}, order: #{a["order"]}"}
+        $arcs.get_by_summary_id(summary_id).each{|a| puts "#{a["text"]}, order: #{a["order"]}"}
         puts "Input arc text:"
         arc = STDIN.gets.chomp
         puts "What order does this arc have? (number, can be comma seperated)"
         order = STDIN.gets.chomp
         puts "Adding arc: #{arc}, order: #{order}, for summary ID: #{summary_id}"
-        @arcs.add(summary_id, order, arc)
+        $arcs.add(summary_id, order, arc)
         puts "done."
 
     end

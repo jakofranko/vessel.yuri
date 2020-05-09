@@ -1,0 +1,35 @@
+TYPE : Character
+CMAX :
+
+ADJV
+    NULL
+    NULL
+    NULL
+    NULL
+    Young
+    Old
+    Unassuming
+
+VERB
+    NULL
+    NULL
+    NULL
+    NULL
+    Standing
+    Looking
+    Sitting
+    Wondering
+
+ADVB
+    NULL
+    NULL
+    NULL
+    NULL
+    Curiously
+    Furtively
+    Restlessly
+    Suspiciously
+
+CTPS
+
+CPRP

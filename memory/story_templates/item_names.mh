@@ -1,0 +1,41 @@
+TYPE
+    Stone
+    Sword
+    Map
+    Ring
+    Glove
+    Book
+    Scroll
+    Cuirass
+    Shoe
+    Scepter
+    Staff
+    Spear
+    Hammer
+    Shield
+    Gem
+    Jewel
+    Ring
+
+PREFIX
+    The Dark
+    The Evil
+    The Sorcerous
+    The Chaotic
+    The Nefarious
+    The Diabolical
+    The Infinite
+    The Doomed
+    The Cursed
+
+SUFFIX
+    of Power
+    of Death
+    of Necromancy
+    of Horror
+    of the Great Beyond
+    of the Elder Things
+    of the Elder Gods
+    from Beyond
+    from the Dead Lands
+    forged From the Stars

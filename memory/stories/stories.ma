@@ -5,50 +5,67 @@
 ~ AUTH : Jake Franklin
 
 @ id  world_id summary
-00000 00030     Lon‘i must find Tetrahedron
-00001 00005     Gek-mos-gekgek must defeat E-umchu
-00002 00028     Soik must defeat Ear qeqeyoq
-00003 00018     Wertmutshoow must destroy The Infinity Gauntlet
-00004 00021     Mammum must find The Infinity Gauntlet
-00005 00020     Lem henwun must find Tetrahedron
-00006 00021     Tlítklík must destroy The Infinity Gauntlet
-00007 00030     Ilapop must find The One Ring
-00008 00024     Gémlib must find The One Ring
-00009 00028     Waiwwiw must defeat Ukutit
-00010 00029     Sníbkínškep must destroy The One Ring
-00011 00019     Tungsmum must defeat Kinusuke
-00012 00000     Muznrutzuh must defeat Seen seen
-00013 00024     Nossap must defeat Num
-00014 00017     Otschezh must find The Infinity Gauntlet
-00015 00027     Anun anal must defeat Syumeepler
-00016 00019     Ungelelel must defeat Kamaim
-00017 00006     Monman must defeat Pio neu pio
-00018 00028     Mukulsul must destroy Tetrahedron
-00019 00005     Mimtaudsus must find The One Ring
-00020 00017     Sinmlimtun must defeat Kurkur-kuriln
-00021 00000     Ulpulptulsar must defeat Klossok
-00022 00005     Musuk-mu-okok must destroy The Infinity Gauntlet
-00023 00023     Maizhchaish must defeat Úpopikonon
-00024 00022     ‘unu-ko must destroy The One Ring
-00025 00020     Qaypuugngir must defeat Or muwaj
-00026 00000     Schmíthí must destroy The One Ring
-00027 00005     Slis must find Tetrahedron
-00028 00021     Nunnu must defeat Rirbritrur
-00029 00021     Sumkimkan must defeat Shnunbânbân
-00030 00022     Nánshlon must find The One Ring
-00031 00020     Ujmuwpujw must find The One Ring
-00032 00020     Rekkretet must find Tetrahedron
-00033 00028     Iyrawng must defeat Daš
-00034 00026     Chaudchaud must find The Infinity Gauntlet
-00035 00031     Mulm mulm must destroy Tetrahedron
-00036 00018     Maonmaonsoan must defeat Qidbolzhiplar
-00037 00000     Niknoptuhhum must destroy The One Ring
-00038 00022     Snan-snan must destroy Tetrahedron
-00039 00003     Lüg must destroy Tetrahedron
-00040 00025     Nïnnïnsämmï must find The Infinity Gauntlet
-00041 00000     Tut must defeat Konnonwongmu
-00042 00005     Po-sapsep must defeat Nonnun
-00043 00005     Omunlinnim must defeat Utenatik
-00044 00011     Teoteokuokkout must find Tetrahedron
-00045 00016     Liklew must defeat Nonmumememon
-00046 00016     Gemsin must defeat Uduj
+00000 00000     Nyazhiê must find The Infinity Gauntlet
+00001 00000     Eirmaulg must defeat Maulgmaursil
+00002 00000     U tunonïn must destroy The One Ring
+00003 00000     Amapa amapa must find The Infinity Gauntlet
+00004 00000     Aampo must find The One Ring
+00005 00000     Palpas must destroy Tetrahedron
+00006 00000     Epki must destroy The Infinity Gauntlet
+00007 00000     Ieka nënuu must defeat Atmu lapep
+00008 00000     Oopu must destroy The One Ring
+00009 00000     Puak must destroy The Infinity Gauntlet
+00010 00000     Tippeep must find Tetrahedron
+00011 00000     Ipke must destroy Tetrahedron
+00012 00000     Nosinat must destroy The One Ring
+00013 00000     Ua lik nënuu must destroy The Infinity Gauntlet
+00014 00000     Aloma must find Tetrahedron
+00015 00000     Aa ma aa must destroy The Infinity Gauntlet
+00016 00000     Mema must destroy Tetrahedron
+00017 00000     Appee must destroy The One Ring
+00018 00000     Ippi must destroy The Infinity Gauntlet
+00019 00000     Sinu must find Tetrahedron
+00020 00000     Nënuu nënuu must destroy Tetrahedron
+00021 00000     Tumip must destroy The Infinity Gauntlet
+00022 00000     Poplap ataap must defeat Pouk
+00023 00000     Nënuu epupas must destroy The One Ring
+00024 00000     Papmup must find Tetrahedron
+00025 00000     Ipap a atopu must destroy The One Ring
+00026 00000     Napa must defeat Atit atit
+00027 00000     Titi talap must find The Infinity Gauntlet
+00028 00000    Epap must find Tetrahedron
+00029 00000    Peppaok must destroy The One Ring
+00030 00000    <protagonist> must find <item>
+00031 00000    <protagonist> must find <item>
+00032 00000    <protagonist> must defeat <antagonist>
+00033 00000    <protagonist> must destroy <item>
+00034 00000    <protagonist> must destroy <item>
+00035 00071    <protagonist> must destroy <item>
+00036 00071    <protagonist> must defeat <antagonist>
+00037 00071    <protagonist> must find <item>
+00038 00000    <protagonist> must destroy <item>
+00039 00000    <protagonist> must find <item>
+00040 00000    <protagonist> must find <item>
+00041 00071    <protagonist> must defeat <antagonist>
+00042 00000    <protagonist> must find <item>
+00043 00000    <protagonist> must find <item>
+00044 00000    Paaop must find Hammer
+00045 00000    A pipil must find Shoe
+00046 00071    Panpa must defeat Keli
+00047 00071    Me pim me must defeat Lepampum
+00048 00000    Pina ipaka must defeat Aaat
+00049 00071    Sasa ta sasa must defeat Pampiku nen
+00050 00071    Tapapan must defeat Pampe
+00051 00000    Tokpupe must find The Evil Gem
+00052 00000    Pa aka must destroy The Diabolical Spear
+00053 00071    Nampimpum must find The Nefarious Map
+00054 00071    Kuntom must destroy Glove of the Great Beyond
+00055 00000    Ispop must defeat Olpa olpa
+00056 00000    Ea atatpul must defeat Taepa
+00057 00071    Tasukem must defeat Tam ma sam
+00058 00000    Ippa ato must defeat Paone pipapa
+00059 00071    Patam must defeat Pampa
+00060 00000    Aptek aptek must defeat Kipu
+00061 00000    Apapa must find Cuirass
+00062 00000    Papi must find Spear
+00063 00071    Pa pamte must destroy Map

@@ -6,3 +6,4 @@
 00000   <protagonist>   Character
 00001   <antagonist>    Character
 00002   <item>          Item
+00003   <henchman>      Character
