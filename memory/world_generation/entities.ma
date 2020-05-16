@@ -146,3 +146,5 @@
 00139 NULL0 NULL0    Item       Spear                                                                                                               
 00139 NULL0 NULL0    Character  Pa pamte                                                                                                            
 00141 NULL0 NULL0    Item       Map                                                                                                                 
+00141 NULL0 NULL0    Character  Pelpaap aapa                                                                                                        
+00143 NULL0 NULL0    Item       Sword                                                                                                               

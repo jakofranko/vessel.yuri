@@ -7,3 +7,4 @@
 00001   <antagonist>    Character
 00002   <item>          Item
 00003   <henchman>      Character
+00004   <homeland>      Land

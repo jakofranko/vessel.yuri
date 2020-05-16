@@ -69,3 +69,4 @@
 00061 00000    Apapa must find Cuirass
 00062 00000    Papi must find Spear
 00063 00071    Pa pamte must destroy Map
+00064 00000    Pelpaap aapa must find Sword

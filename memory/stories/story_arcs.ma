@@ -8,3 +8,7 @@
 00002 00063    2     Trial to destroy the Map
 00003 00063    3     Prevented from destroying Map
 00004 00063    4     Aftermath
+00005 00064    0     Discover the Sword's location
+00006 00064    1     Journey to Destination
+00007 00064    2     Trial to Obtain the Sword
+00008 00064    3     Journey Home

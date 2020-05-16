@@ -8,3 +8,5 @@
 
 @ id  arc_id time                        action                                              setting
 00000 00000  During the winter months    A powerful wizard oppressed the people of the land  While the snow was still fresh
+00001 00002  a long time ago,            during the reign of Emperor <antagonist>            in a galaxy far, far away
+00002 00002  in years long past          a king once ruled his people with dignity and grace in the land of <homeland>
