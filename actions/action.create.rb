@@ -29,6 +29,11 @@ class ActionCreate
 
         raise "You must specify what you want to create..." unless !q.nil?
 
+        $tags ||= Memory_Array.new("story_templates/tags", @host.path)
+        $summaries ||= Memory_Array.new("story_templates/summaries", @host.path)
+        $arcs ||= ArcMemory.new("story_templates/arcs", @host.path)
+        $scenes ||= SceneMemory.new("story_templates/scenes", @host.path)
+
         args = q.split(' ')
         case args.first
         when 'entity_type'
@@ -36,6 +41,8 @@ class ActionCreate
             create_entity_type(args[1..-1])
         when 'arc'
             start_arc_creator
+        when 'scene'
+            start_scene_creator
         else
             puts "\"#{args.first}\" is not something #{@host.name} can create right now."
         end
@@ -77,6 +84,34 @@ class ActionCreate
         puts "Adding arc: #{arc}, order: #{order}, for summary ID: #{summary_id}"
         $arcs.add(summary_id, order, arc)
         puts "done."
+
+    end
+
+    def start_scene_creator
+
+        puts "What arc would you like to create a scene for? Enter the ID:"
+        $summaries.to_a.each do |s|
+            summary_id = s["id"]
+
+            puts "Story: #{s["summary"]}"
+            $arcs.get_by_summary_id(summary_id).each{|a| puts "    #{a["id"]} - #{a["text"]}, order: #{a["order"]}"}
+        end
+        arc_id = STDIN.gets.chomp
+        arc = $arcs.get(arc_id)
+        puts "Creating scene for arc #{arc_id}, '#{arc[:text]}'"
+        puts "Existing scenes for selected arc:"
+        $scenes.get_by_arc_id(arc_id).each{|s| puts "#{s.time} #{s.setting} #{s.action}"}
+        puts "The following tags can be used (use the 'tag' exactly as written (including carats <>)):"
+        $tags.to_a.each{|t| puts "Tag: #{t["tag"]}, Type: #{t["entity"]}"}
+        puts "Input TIME description:"
+        time = STDIN.gets.chomp
+        puts "Input ACTION description:"
+        action = STDIN.gets.chomp
+        puts "Input SETTING description:"
+        setting = STDIN.gets.chomp
+        puts "Creating scene..."
+        $scenes.add(arc_id, time, action, setting)
+        puts "Scene created."
 
     end
 

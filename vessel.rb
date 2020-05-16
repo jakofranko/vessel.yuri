@@ -140,6 +140,8 @@ class ActionTest
 
     puts story.summary
     puts "The story will start with"
+
+    # Save Arcs
     story.arcs.each_index do |i|
         arc = story.arcs[i]
         puts arc["text"]
@@ -147,7 +149,6 @@ class ActionTest
         $story_arcs.add(arc, story_id, i)
     end
 
-    # Save Arcs
 
 
     # Save Scenes
