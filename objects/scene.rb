@@ -1,5 +1,13 @@
 class Scene
 
+    ATTRS = [
+        :time,
+        :location,
+        :setting,
+        :action
+    ]
+    attr_accessor(*ATTRS)
+
     ##
     # Scenes will be generated from scene templates.
     # Settings and actions will be generated from text templates.

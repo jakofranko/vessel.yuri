@@ -17,10 +17,10 @@ class ArcMemory < Memory_Array
     def get id
 
         if id.is_a? Numeric
-            id = id.to_s.prepend("0", 5)
+            id = id.to_s
         end
 
-        arc_row = self.filter('id', id, nil).first.symbolize_keys
+        arc_row = self.filter('id', id.prepend("0", 5), nil).first.symbolize_keys
 
         return arc_row
 

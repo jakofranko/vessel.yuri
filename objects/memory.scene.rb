@@ -9,7 +9,7 @@ class SceneMemory < Memory_Array
         new_id = self.length.to_s.prepend("0", 5)
 
         # Append this string to the entities.ma file
-        self.append("#{new_id} #{arc_id.prepend("0", 5).append(" ", "arc_id".length + 1)} #{time.append(" ", 24)} #{action.append(" ", 52)}")
+        self.append("#{new_id} #{arc_id.prepend("0", 5).append(" ", "arc_id".length)} #{time.append(" ", 27)} #{action.append(" ", 51)} #{setting}")
 
         return new_id
 
