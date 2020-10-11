@@ -4,12 +4,16 @@ require_relative './_toolkit'
 
 class SceneMemory < Memory_Array
 
-    def add arc_id, time, action, setting
+    def add arc_id, time, action, setting, order
 
         new_id = self.length.to_s.prepend("0", 5)
+        formatted_arc_id = arc_id.prepend("0", 5).append(" ", "arc_id".length)
+        formatted_order = order.append(" ", 5)
+        formatted_setting = setting.append(" ", 59)
+        formatted_time = time.append(" ", 49)
 
         # Append this string to the entities.ma file
-        self.append("#{new_id} #{arc_id.prepend("0", 5).append(" ", "arc_id".length)} #{time.append(" ", 27)} #{action.append(" ", 51)} #{setting}")
+        self.append("#{new_id} #{formatted_arc_id} #{formatted_order} #{formatted_setting} #{formatted_time} #{action}")
 
         return new_id
 
@@ -30,15 +34,6 @@ class SceneMemory < Memory_Array
     def get_by_arc_id arc_id
 
         return self.filter("arc_id", arc_id.prepend("0", 5), "Scene")
-
-    end
-
-    def describe
-
-        self.each { |x, y|
-            puts x
-            puts y
-        }
 
     end
 

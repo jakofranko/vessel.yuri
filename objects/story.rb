@@ -113,20 +113,13 @@ class Story
 
     def generate_arcs
 
-        by_order = {}
         used_arcs = []
         arcs = []
 
         summary_arcs = $arcs.get_by_summary_id(@summary_template["id"])
 
         # Sort all arcs by order they could occur
-        summary_arcs.each do |arc|
-            order = arc["order"].split(",")
-            order.each do |o|
-                if by_order[o].nil? then by_order[o] = [] end
-                by_order[o].push(arc)
-            end
-        end
+        by_order = get_by_order(summary_arcs)
 
         # Select a single arc per order
         by_order.each do |order, arc_arr|
@@ -147,14 +140,39 @@ class Story
         return arcs
     end
 
+    ##
+    # Generate all of the scenes belonging to each story arc
+    # returning a map of scenes for each story arc where the
+    # keys are the arc IDs and the values are the ordered array of scenes.
     def generate_scenes
 
-        scenes = []
+        scenes = {}
 
         @arcs.each do |arc|
-            scene = $scenes.get_by_arc_id(arc["id"]);
-            if scene.length > 0 then
-                scenes.push(scene)
+            arc_scenes = $scenes.get_by_arc_id(arc.id);
+            by_order = get_by_order(arc_scenes)
+            used_scenes = []
+
+            by_order.each do |order, scene_arr|
+                scene_arr.shuffle.each do |scene|
+                    if !used_scenes.include? scene then
+                        used_scenes.push(scene)
+                        formatted_scene = scene.dup
+
+                        # Parse tags and push the re-formated scene into our final list
+                        formatted_scene.time = parse_tags(scene.time)
+                        formatted_scene.setting = parse_tags(scene.setting)
+                        formatted_scene.action = parse_tags(scene.action)
+                        formatted_scene.order = order
+
+                        if !scenes[arc.id] then scenes[arc.id] = [] end
+                        scenes[arc.id].push(formatted_scene)
+                        scenes[arc.id].sort_by(&:order)
+                        break
+                    else
+                        next
+                    end
+                end
             end
         end
 
@@ -183,4 +201,22 @@ class Story
 
     end
 
+    private
+
+    ##
+    # Expects an unordered list of items that each have
+    # a property called "order", which is a comma delinated
+    # list of possible order numbers that item could appear in
+    def get_by_order unordered_list
+        by_order = {}
+        unordered_list.each do |item|
+            order = item.order.split(",")
+            order.each do |o|
+                if by_order[o].nil? then by_order[o] = [] end
+                by_order[o].push(item)
+            end
+        end
+
+        return by_order
+    end
 end
