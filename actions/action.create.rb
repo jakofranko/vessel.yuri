@@ -109,8 +109,10 @@ class ActionCreate
         action = STDIN.gets.chomp
         puts "Input SETTING description:"
         setting = STDIN.gets.chomp
+        puts "Input ORDER this scene should appear in (can be comma separated):"
+        order = STDIN.gets.chomp
         puts "Creating scene..."
-        $scenes.add(arc_id, time, action, setting)
+        $scenes.add(arc_id, time, action, setting, order)
         puts "Scene created."
 
     end
