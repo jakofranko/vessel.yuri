@@ -21,6 +21,7 @@ require_relative 'objects/memory.language'
 require_relative 'objects/memory.story_entity'
 require_relative 'objects/memory.story'
 require_relative 'objects/memory.story_arc'
+require_relative 'objects/memory.story_arc_scene'
 
 class VesselYuri
 
@@ -67,6 +68,7 @@ class ActionTest
     $archives = Archives.new(@host)
     $stories = StoryMemory.new("stories/stories", @host.path)
     $story_arcs = StoryArcMemory.new("stories/story_arcs", @host.path)
+    $story_arc_scenes = StoryArcSceneMemory.new("stories/story_arc_scenes", @host.path)
 
     # World Building memories
     $entities = EntityMemory.new("world_generation/entities", @host.path)
@@ -139,19 +141,29 @@ class ActionTest
     end
 
     puts story.summary
-    puts "The story will start with"
+    puts "\nThe story's arcs are:\n"
 
     # Save Arcs
     story.arcs.each_index do |i|
         arc = story.arcs[i]
-        puts arc["text"]
+        puts arc.text
         puts "and then"
         $story_arcs.add(arc, story_id, i)
     end
 
-
-
+    puts "\nThe scenes in order of each arc are:\n"
     # Save Scenes
+    if story.arc_scenes.length > 0 then
+        story.arc_scenes.each {|arc_template_id, scenes|
+            scene_arc = $story_arcs.get_by_template_id(arc_template_id, story_id).first
+            scenes.each {|scene|
+                $story_arc_scenes.add(scene_arc["ID"], scene.time, scene.action, scene.setting, scene.order)
+                puts scene.describe
+            }
+        }
+    else
+        puts "no scenes"
+    end
 
 
     return ""
