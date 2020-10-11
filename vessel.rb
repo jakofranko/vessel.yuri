@@ -128,7 +128,6 @@ class ActionTest
     # Loop through all of the entities that have been generated
     # from the tags in the summaries, arcs and scenes, and save them.
     story.tag_map.each do |tag, entity|
-        puts entity.inspect
         if entity.ID.nil? then
             entity_id = $entities.add(entity)
             entity.ID = entity_id

@@ -16,17 +16,9 @@
 # TODO: ??? Create tool that will sift through the dictionary and allow me to sort words
 #       by type. E.g., if I want to create a white-list of verbs for use in summaries,
 #       have the tool give me all the verbs in the dictionary one at a time and I can say
-#       'yes', or 'no'. If I want a list of objects for McGuffins, do the same thing with nouns.
+#       yes, or no. If I want a list of objects for McGuffins, do the same thing with nouns.
 #       Not sure if this is a good idea or it's better to just hardcode words
 class Story
-
-    # TODO: Move these to a memory
-    ITEMS = [
-        'Tetrahedron',
-        'The One Ring',
-        'The Infinity Gauntlet'
-    ]
-
     NEW_WORLD_CHANCE = 0.01
 
     ATTRS = [
@@ -39,6 +31,7 @@ class Story
         :arc_scenes,
         :world
     ]
+
     attr_accessor(*ATTRS)
     def initialize id = nil, world_id = nil, summary = nil
 
@@ -73,6 +66,9 @@ class Story
                     options[:name] = @world.LANG.make_name(tag.gsub(/\<\>/, ''))
                 elsif entity_type == "Item" then
                     options[:name] = $item_names.rand
+                else
+                    options[:name_self] = true
+                    options[:language] = @world.LANG # TODO: should use a character language instead
                 end
 
                 entity = $archives.create(entity_type.downcase.to_sym, options)
