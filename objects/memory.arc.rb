@@ -1,4 +1,5 @@
 require_relative '../../../system/memory.rb'
+require_relative './arc'
 require_relative './_toolkit'
 
 class ArcMemory < Memory_Array
@@ -20,7 +21,7 @@ class ArcMemory < Memory_Array
             id = id.to_s
         end
 
-        arc_row = self.filter('id', id.prepend("0", 5), nil).first.symbolize_keys
+        arc_row = self.filter('id', id.prepend("0", 5), "Arc").first.symbolize_keys
 
         return arc_row
 
@@ -28,7 +29,7 @@ class ArcMemory < Memory_Array
 
     def get_by_summary_id summary_id
 
-        return self.filter("summary_id", summary_id.prepend("0", 5), nil)
+        return self.filter("summary_id", summary_id.prepend("0", 5), "Arc")
 
     end
 

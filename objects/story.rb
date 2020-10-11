@@ -135,7 +135,7 @@ class Story
                     used_arcs.push(arc)
 
                     # Parse tags and push the re-formated arc into our final list
-                    arc["text"] = parse_tags(arc["text"])
+                    arc.text = parse_tags(arc.text)
                     arcs.push(arc)
                     break
                 else
