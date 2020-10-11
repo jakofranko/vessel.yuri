@@ -148,3 +148,175 @@
 00141 NULL0 NULL0    Item       Map                                                                                                                 
 00141 NULL0 NULL0    Character  Pelpaap aapa                                                                                                        
 00143 NULL0 NULL0    Item       Sword                                                                                                               
+00143 NULL0 NULL0    Character  A nënuu aipe                                                      Young          Looking                            
+00145 NULL0 NULL0    Item       Cuirass                                                                                                             
+00145 NULL0 NULL0    Character  Pemka                                                                                                               
+00147 NULL0 NULL0    Character  Panpopam                                                          Unassuming                          Curiously     
+00148 NULL0 NULL0    Character  Pemman                                                                                                              
+00148 NULL0 NULL0    Character  Akaa                                                                                                                
+00150 NULL0 NULL0    Item       Hammer                                                                                                              
+00150 NULL0 NULL0    Character  Tikamo                                                                                                              
+00152 NULL0 NULL0    Item       Gem                                                                                                                 
+00152 NULL0 NULL0    Character  Naapa puppa                                                                      Looking                            
+00154 NULL0 NULL0    Item       Shoe                                                                                                                
+00154 NULL0 NULL0    Character  Kantam                                                                           Looking                            
+00156 NULL0 NULL0    Item       Cuirass                                                                                                             
+00156 NULL0 NULL0    Character  Peepam                                                            Young                                             
+00158 NULL0 NULL0    Item       Shoe                                                                                                                
+00158 NULL0 NULL0    Character  Pampela                                                                                               Curiously     
+00160 NULL0 NULL0    Item       The Diabolical Stone                                                                                                      
+00160 NULL0 NULL0    Character  Mamkanpa pa                                                                                           Curiously     
+00162 NULL0 NULL0    Item       Sword                                                                                                               
+00162 NULL0 NULL0    Character  Eka a otat                                                        Unassuming                                        
+00164 NULL0 NULL0    Item       Scroll of the Elder Things                                                                                                      
+00164 NULL0 NULL0    Character  Pemapap                                                           Unassuming                                        
+00166 NULL0 NULL0    Item       Staff                                                                                                               
+00166 NULL0 NULL0    Character  Opia paa                                                                                                            
+00168 NULL0 NULL0    Item       Map of Power                                                                                                        
+00168 NULL0 NULL0    Character  Aiep ampeop                                                                                                         
+00170 NULL0 NULL0    Item       Staff                                                                                                               
+00170 NULL0 NULL0    Character  Pemen                                                                                                               
+00172 NULL0 NULL0    Character  Kempa                                                                            Sitting                            
+00173 NULL0 NULL0    Character  Pamin pika                                                                       Sitting                            
+00173 NULL0 NULL0    Character  Apepas                                                                                                              
+00175 NULL0 NULL0    Item       Shield                                                                                                              
+00175 NULL0 NULL0    Character  Lapam                                                                                                               
+00177 NULL0 NULL0    Item       The Diabolical Ring                                                                                                      
+00177 NULL0 NULL0    Character  Pa pa                                                                            Looking                            
+00179 NULL0 NULL0    Item       Shield                                                                                                              
+00179 NULL0 NULL0    Character  Másomi natan                                                                     Standing             Restlessly    
+00181 NULL0 NULL0    Item       Stone of Horror                                                                                                      
+00181 NULL0 NULL0    Character  Nimnam                                                                                                              
+00183 NULL0 NULL0    Character  Tapi                                                                                                                
+00184 NULL0 NULL0    Character  Nepe nepe                                                                        Looking              Restlessly    
+00184 NULL0 NULL0    Character  Epkappit                                                                                                            
+00186 NULL0 NULL0    Item       The Diabolical Ring                                                                                                      
+00186 NULL0 NULL0    Character  Pa pempe                                                          Unassuming     Wondering                          
+00188 NULL0 NULL0    Character  Kapem                                                             Young                                             
+00189 NULL0 NULL0    Character  Pemkam                                                            Young                                             
+00189 NULL0 NULL0    Character  Empai                                                                            Standing             Curiously     
+00191 NULL0 NULL0    Item       The Nefarious Ring                                                                                                      
+00192 NULL0 NULL0    Character  Ap paapa                                                          Old                                 Curiously     
+00192 NULL0 NULL0    Character  Tampa                                                                            Standing             Furtively     
+00194 NULL0 NULL0    Character  Kim papamne                                                                                                         
+00195 NULL0 NULL0    Character  Pampo                                                             Young                                             
+00195 NULL0 NULL0    Character  Pakampim                                                                                              Furtively     
+00197 NULL0 NULL0    Item       Map of Necromancy                                                                                                      
+00197 NULL0 NULL0    Character  Semata                                                                                                              
+00199 NULL0 NULL0    Item       Ring                                                                                                                
+00199 NULL0 NULL0    Character  Tampekin                                                                                                            
+00201 NULL0 NULL0    Item       Jewel                                                                                                               
+00201 NULL0 NULL0    Character  Ippaat                                                            Unassuming                                        
+00203 NULL0 NULL0    Item       The Doomed Ring                                                                                                      
+00203 NULL0 NULL0    Character  Pipam pesame                                                                                          Curiously     
+00205 NULL0 NULL0    Character  Mún mún                                                                          Looking                            
+00206 NULL0 NULL0    Character  Pa tumpam                                                                                                           
+00206 NULL0 NULL0    Character  Aape anekpa                                                                                                         
+00208 NULL0 NULL0    Item       The Nefarious Hammer                                                                                                      
+00208 NULL0 NULL0    Character  Ippes                                                                                                 Furtively     
+00210 NULL0 NULL0    Item       Map                                                                                                                 
+00210 NULL0 NULL0    Character  Ka pan pinpi                                                      Young          Looking              Furtively     
+00212 NULL0 NULL0    Item       Ring from Beyond                                                                                                      
+00212 NULL0 NULL0    Character  Mamke                                                                            Standing             Furtively     
+00214 NULL0 NULL0    Item       Map of the Elder Gods                                                                                                      
+00214 NULL0 NULL0    Character  E oalit                                                                          Wondering            Restlessly    
+00216 NULL0 NULL0    Character  Ae tatke                                                                                                            
+00217 NULL0 NULL0    Character  Meaut                                                                            Looking              Curiously     
+00218 NULL0 NULL0    City       Aat ka aat                                                        Dirty                                             
+00218 NULL0 NULL0    Character  Papto                                                                                                               
+00220 NULL0 NULL0    Item       The Doomed Shield                                                                                                      
+00221 NULL0 NULL0    Character  Epapli papa                                                                                                         
+00221 NULL0 NULL0    Character  Tukappi                                                                                                             
+00223 NULL0 NULL0    Character  Ali a nënuu                                                                                                         
+00224 NULL0 NULL0    Character  Pa apappa                                                                                             Curiously     
+00225 NULL0 NULL0    City       Nënuu a pana                                                      Old            Loud with the sound of industry               
+00225 NULL0 NULL0    Character  Mima                                                                                                                
+00227 NULL0 NULL0    Character  Mún pemla                                                                                                           
+00228 NULL0 NULL0    Character  Ta pin                                                                                                              
+00229 NULL0 NULL0    City       Pempomam                                                          Celestial      Bustling with activity               
+00229 NULL0 NULL0    Character  Pampo pe pu                                                       Old                                               
+00231 NULL0 NULL0    Item       The Nefarious Staff                                                                                                      
+00232 NULL0 NULL0    Character  Kam papa                                                                                                            
+00232 NULL0 NULL0    Character  Pam tu                                                                                                Restlessly    
+00234 NULL0 NULL0    Item       Staff                                                                                                               
+00235 NULL0 NULL0    Character  Pampatam                                                          Unassuming                          Furtively     
+00235 NULL0 NULL0    Character  Pamkompam                                                                                                           
+00237 NULL0 NULL0    Character  Tem pa                                                                           Sitting              Furtively     
+00238 NULL0 NULL0    Character  Másomi pampa                                                      Young          Standing             Furtively     
+00239 NULL0 NULL0    City       Mapem                                                             Old                                               
+00239 NULL0 NULL0    Character  Pipampap                                                          Young                               Suspiciously  
+00241 NULL0 NULL0    Item       The Chaotic Staff                                                                                                      
+00241 NULL0 NULL0    Character  Másomi ka pe                                                                     Standing                           
+00243 NULL0 NULL0    Item       The Chaotic Spear                                                                                                      
+00243 NULL0 NULL0    Character  Pakappo                                                           Young                                             
+00245 NULL0 NULL0    Item       The Evil Scepter                                                                                                      
+00246 NULL0 NULL0    Character  Nënuu papoep                                                      Old                                               
+00246 NULL0 NULL0    Character  Etnalap                                                           Old                                               
+00248 NULL0 NULL0    Item       Map                                                                                                                 
+00249 NULL0 NULL0    Character  Aaep                                                              Old                                               
+00249 NULL0 NULL0    Character  Masoso pa                                                                                                           
+00251 NULL0 NULL0    Character  Pumpi                                                             Young                                             
+00252 NULL0 NULL0    Character  Pen pa                                                                                                              
+00253 NULL0 NULL0    City       Mepam masoso                                                      Sprawling                                         
+00253 NULL0 NULL0    Character  Penpike                                                                                                             
+00255 NULL0 NULL0    Item       Spear of the Great Beyond                                                                                                      
+00256 NULL0 NULL0    Character  Tapam                                                                                                               
+00256 NULL0 NULL0    Character  Ippupna                                                           Young          Sitting                            
+00258 NULL0 NULL0    Item       Hammer                                                                                                              
+00258 NULL0 NULL0    Character  Papapa                                                            Unassuming                          Furtively     
+00260 NULL0 NULL0    Character  Tipe                                                                             Wondering            Suspiciously  
+00261 NULL0 NULL0    Character  Iptapa                                                                           Standing                           
+00262 NULL0 NULL0    City       Apis                                                              Dirty                                             
+00262 NULL0 NULL0    Character  Pipempa                                                                          Looking              Restlessly    
+00264 NULL0 NULL0    Item       Stone                                                                                                               
+00264 NULL0 NULL0    Character  Pipanti                                                           Young          Wondering                          
+00266 NULL0 NULL0    Item       Gem                                                                                                                 
+00266 NULL0 NULL0    Character  Lom emapam                                                                                            Furtively     
+00268 NULL0 NULL0    Item       Jewel                                                                                                               
+00269 NULL0 NULL0    Character  Paap mapop                                                                       Standing             Furtively     
+00269 NULL0 NULL0    Character  Masim                                                                                                               
+00271 NULL0 NULL0    Item       Glove                                                                                                               
+00271 NULL0 NULL0    Character  Sasup                                                                                                               
+00273 NULL0 NULL0    Character  Peke                                                                             Sitting                            
+00274 NULL0 NULL0    Character  Kiiti kiiti                                                                                                         
+00275 NULL0 NULL0    City       Ait ekmakep                                                       Celestial      Crawling with its denizens               
+00275 NULL0 NULL0    Character  Masopmak                                                                                              Curiously     
+00277 NULL0 NULL0    Character  Apap                                                              Old                                               
+00278 NULL0 NULL0    Character  Ip kosat                                                                         Wondering                          
+00279 NULL0 NULL0    City       Asoep                                                                                                               
+00279 NULL0 NULL0    Character  Uptap                                                             Old                                               
+00281 NULL0 NULL0    Character  Itakak                                                                           Standing             Furtively     
+00282 NULL0 NULL0    Character  Opesa                                                                            Sitting              Curiously     
+00283 NULL0 NULL0    City       Mippap                                                                           Loud with the sound of industry               
+00283 NULL0 NULL0    Character  Mam pam mam                                                                                                         
+00285 NULL0 NULL0    Character  Pankom                                                                                                Curiously     
+00286 NULL0 NULL0    Character  Pilo                                                                                                                
+00287 NULL0 NULL0    City       Pone                                                              Old                                               
+00287 NULL0 NULL0    Character  Tapapat                                                                          Sitting                            
+00289 NULL0 NULL0    Character  Loetop ipa                                                                       Wondering                          
+00290 NULL0 NULL0    Character  Pepep                                                                                                               
+00291 NULL0 NULL0    City       Ekpemip                                                                          Crawling with its denizens               
+00291 NULL0 NULL0    Character  Mamnamnu                                                                                              Suspiciously  
+00293 NULL0 NULL0    Item       Hammer                                                                                                              
+00294 NULL0 NULL0    Character  Pamsa                                                                            Looking                            
+00294 NULL0 NULL0    Character  Sa ka                                                                                                               
+00296 NULL0 NULL0    Character  Tamnipem pi                                                                                                         
+00297 NULL0 NULL0    Character  Penkanma                                                          Old            Wondering                          
+00298 NULL0 NULL0    City       Lampapam                                                                         Bustling with activity               
+00298 NULL0 NULL0    Character  Paspip                                                                                                              
+00300 NULL0 NULL0    Item       Ring                                                                                                                
+00301 NULL0 NULL0    Character  Piomap                                                            Unassuming     Standing                           
+00301 NULL0 NULL0    Character  Akan pektek                                                                      Looking                            
+00303 NULL0 NULL0    Item       The Cursed Book                                                                                                      
+00303 NULL0 NULL0    Character  Apeo at upia                                                                     Sitting              Curiously     
+00305 NULL0 NULL0    Character  Eppit                                                                                                 Suspiciously  
+00306 NULL0 NULL0    Character  Paoa                                                                                                  Curiously     
+00307 NULL0 NULL0    City       Tatpa                                                             Dirty          Bustling with activity               
+00307 NULL0 NULL0    Character  Kampom                                                            Young          Looking                            
+00309 NULL0 NULL0    Character  Pepam pe tam                                                                                                        
+00310 NULL0 NULL0    Character  Pampantam                                                                                                           
+00311 NULL0 NULL0    City       Pe pe                                                             Beautiful                                         
+00311 NULL0 NULL0    Character  Pa pamem                                                                         Wondering                          
+00313 NULL0 NULL0    Character  Pepam pempa                                                                                                         
+00314 NULL0 NULL0    Character  Pa tu masoso                                                                                                        
+00315 NULL0 NULL0    City       Penmam pinpe                                                                     Crawling with its denizens               

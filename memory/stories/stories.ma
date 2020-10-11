@@ -70,3 +70,66 @@
 00062 00000    Papi must find Spear
 00063 00071    Pa pamte must destroy Map
 00064 00000    Pelpaap aapa must find Sword
+00065 00000    A nënuu aipe must find Cuirass
+00066 00071    Pemka must defeat Panpopam
+00067 00000    Akaa must destroy Hammer
+00068 00000    Tikamo must destroy Gem
+00069 00000    Naapa puppa must destroy Shoe
+00070 00071    Kantam must destroy Cuirass
+00071 00000    Peepam must find Shoe
+00072 00071    Pampela must destroy The Diabolical Stone
+00073 00071    Mamkanpa pa must destroy Sword
+00074 00000    Eka a otat must find Scroll of the Elder Things
+00075 00000    Pemapap must find Staff
+00076 00000    Opia paa must destroy Map of Power
+00077 00000    Aiep ampeop must destroy Staff
+00078 00071    Pemen must defeat Kempa
+00079 00000    Apepas must find Shield
+00080 00071    Lapam must find The Diabolical Ring
+00081 00071    Pa pa must find Shield
+00082 00071    Másomi natan must find Stone of Horror
+00083 00071    Nimnam must defeat Tapi
+00084 00000    Epkappit must find The Diabolical Ring
+00085 00071    Pa pempe must defeat Kapem
+00086 00000    Empai must find The Nefarious Ring
+00087 00071    Tampa must defeat Kim papamne
+00088 00071    Pakampim must find Map of Necromancy
+00089 00000    Semata must find Ring
+00090 00071    Tampekin must destroy Jewel
+00091 00000    Ippaat must destroy The Doomed Ring
+00092 00071    Pipam pesame must defeat Mún mún
+00093 00000    Aape anekpa must destroy The Nefarious Hammer
+00094 00000    Ippes must destroy Map
+00095 00071    Ka pan pinpi must destroy Ring from Beyond
+00096 00071    Mamke must destroy Map of the Elder Gods
+00097 00000    E oalit must defeat Ae tatke
+00098 00000    Papto must find The Doomed Shield
+00099 00000    Tukappi must defeat Ali a nënuu
+00100 00071    Mima must defeat Mún pemla
+00101 00071    Pampo pe pu must find The Nefarious Staff
+00102 00071    Pam tu must find Staff
+00103 00071    Pamkompam must defeat Tem pa
+00104 00000    Pipampap must destroy The Chaotic Staff
+00105 00071    Másomi ka pe must find The Chaotic Spear
+00106 00000    Pakappo must find The Evil Scepter
+00107 00000    Etnalap must find Map
+00108 00071    Masoso pa must defeat Pumpi
+00109 00071    Penpike must find Spear of the Great Beyond
+00110 00000    Ippupna must find Hammer
+00111 00000    Papapa must defeat Tipe
+00112 00071    Pipempa must destroy Stone
+00113 00071    Pipanti must destroy Gem
+00114 00000    Lom emapam must find Jewel
+00115 00071    Masim must destroy Glove
+00116 00000    Sasup must defeat Peke
+00117 00000    Masopmak must defeat Apap
+00118 00000    Uptap must defeat Itakak
+00119 00071    Mam pam mam must defeat Pankom
+00120 00000    Tapapat must defeat Loetop ipa
+00121 00071    Mamnamnu must find Hammer
+00122 00071    Sa ka must defeat Tamnipem pi
+00123 00000    Paspip must find Ring
+00124 00000    Akan pektek must destroy The Cursed Book
+00125 00000    Apeo at upia must defeat Eppit
+00126 00071    Kampom must defeat Pepam pe tam
+00127 00071    Pa pamem must defeat Pepam pempa

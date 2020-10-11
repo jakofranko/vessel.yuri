@@ -1,0 +1,25 @@
+TYPE : City
+CMAX :
+
+ADJV
+    NULL
+    Sprawling
+    Old
+    Dirty
+    Beautiful
+    Sparkling
+    Celestial
+
+VERB
+    NULL
+    Bustling with activity
+    Loud with the sound of industry
+    Crawling with its denizens
+
+ADVB
+
+
+CTPS
+
+
+CPRP
