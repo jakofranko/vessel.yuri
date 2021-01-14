@@ -21,7 +21,7 @@ class ActionCreate
         super
 
         @name = "Create"
-        @docs = "Create new memories. Current commands: `create entity_type`, `create arc`"
+        @docs = "Create new memories. Current commands: `create entity_type`, `create arc`, `create scene`"
 
     end
 
