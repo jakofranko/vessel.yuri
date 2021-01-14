@@ -94,13 +94,15 @@ class ActionCreate
             summary_id = s["id"]
 
             puts "Story: #{s["summary"]}"
-            $arcs.get_by_summary_id(summary_id).each{|a| puts "    #{a["id"]} - #{a["text"]}, order: #{a["order"]}"}
+            $arcs.get_by_summary_id(summary_id).each{|a| puts "    #{a.id} - #{a.text}, order: #{a.order}"}
         end
         arc_id = STDIN.gets.chomp
         arc = $arcs.get(arc_id)
-        puts "Creating scene for arc #{arc_id}, '#{arc[:text]}'"
+        puts "Creating scene for arc #{arc_id}, '#{arc.text}'"
+        puts "\n"
         puts "Existing scenes for selected arc:"
-        $scenes.get_by_arc_id(arc_id).each{|s| puts "#{s.time} #{s.setting} #{s.action}"}
+        $scenes.get_by_arc_id(arc_id).each{|s| puts " - #{s.time} #{s.setting} #{s.action}"}
+        puts "\n"
         puts "The following tags can be used (use the 'tag' exactly as written (including carats <>)):"
         $tags.to_a.each{|t| puts "Tag: #{t["tag"]}, Type: #{t["entity"]}"}
         puts "Input TIME description:"

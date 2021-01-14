@@ -21,7 +21,7 @@ class ArcMemory < Memory_Array
             id = id.to_s
         end
 
-        arc_row = self.filter('id', id.prepend("0", 5), "Arc").first.symbolize_keys
+        arc_row = self.filter('id', id.prepend("0", 5), "Arc").first
 
         return arc_row
 

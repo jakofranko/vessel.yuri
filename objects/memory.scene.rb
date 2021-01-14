@@ -25,7 +25,7 @@ class SceneMemory < Memory_Array
             id = id.to_s.prepend("0", 5)
         end
 
-        scene = self.filter('id', id, "Scene").first.symbolize_keys
+        scene = self.filter('ID', id, "Scene").first.symbolize_keys
 
         return scene
 
@@ -33,7 +33,7 @@ class SceneMemory < Memory_Array
 
     def get_by_arc_id arc_id
 
-        return self.filter("arc_id", arc_id.prepend("0", 5), "Scene")
+        return self.filter("ARC_ID", arc_id.prepend("0", 5), "Scene")
 
     end
 

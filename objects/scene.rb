@@ -16,12 +16,12 @@ class Scene
     # Time is a description of when the thing happened.
     # E.g., About mid-morning, while the merchants were selling their wares, a meteor fell from the sky.
     def initialize scene
-        @id = scene["id"]
-        @order = scene["order"]
-        @time = scene["time"]
+        @id = scene["ID"]
+        @order = scene["ORDER"]
+        @time = scene["TIME"]
         @location = get_location
-        @setting = scene["setting"]
-        @action = scene["action"]
+        @setting = scene["SETTING"]
+        @action = scene["ACTION"]
     end
 
     def get_time
