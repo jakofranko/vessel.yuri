@@ -2,17 +2,10 @@
 # encoding: utf-8
 require 'glossa'
 
-$nataniev.require("action","tweet")
-
-# TODO: Characters -- probably a type of entity (for generated descriptions), but should be saved in their own memory, since characters will need to keep track of where they are (location), goals, current activities etc.
-# TODO: Goals -- these will be templates for generating scenes
-# TODO: Scenes -- these will be the machines that spit out text for our stories
-# TODO: tell_story action, which will manage setting, characters, goals, scenes, quests, what is current, generating story chunks from scenes, creating the twitter payload, tweeting, and loading/saving all of these things.
-# TODO: Separation of data and functionality. Instead of entity objects, they should be memories
-
 require_relative 'objects/archives'
 require_relative 'objects/entity'
 require_relative 'objects/story'
+require_relative 'objects/memory.current_story'
 require_relative 'objects/memory.entity'
 require_relative 'objects/memory.item_names'
 require_relative 'objects/memory.arc'

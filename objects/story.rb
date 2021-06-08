@@ -26,18 +26,25 @@ class Story
         :tag_map,
         :summary,
         :summary_template,
+        :current_arc,
         :current_scene,
         :arcs,
         :arc_scenes,
         :world
     ]
-
     attr_accessor(*ATTRS)
-    def initialize id = nil, world_id = nil, summary = nil
+
+    ##
+    # The story_config param should contain the data in a row of the `stories` memory
+    def initialize story_config = {}
+
+        id = story_config["id"]
+        world_id = story_config["world_id"]
+        summary = story_config["summary"]
 
         @id               = id
         @tag_map          = {}
-        @summary_template = id ? get_summary_template : $summaries.sample
+        @summary_template = id ? get_summary_template(id) : $summaries.to_a.sample
         @world            = world_id ? $entities.get(world_id) : pick_world
         # @characters       = id ? get_characters : pick_characters --> replaced by tag_map
         @summary          = summary || generate_summary
@@ -56,6 +63,8 @@ class Story
         new_string = str.dup
 
         $tags.to_a.each do |t|
+            next unless new_string
+
             tag = t["tag"]
             entity_type = t["entity"]
             string_match = new_string.match(tag)
@@ -98,6 +107,13 @@ class Story
         end
 
         return world
+
+    end
+
+    def get_summary_template id
+
+        puts $summaries.inspect
+        $summaries.to_a.select {|summary| summary["id"] === id}
 
     end
 
@@ -176,11 +192,38 @@ class Story
 
     end
 
+    def get_arcs
+
+        $story_arcs.get_by_story_id(@id)
+
+    end
+
+    def get_scenes
+
+        raise "The @arcs variable has to be set and must be an array" unless @arcs.kind_of?(Array)
+
+        scenes = []
+        @arcs.each do |arc|
+            scenes.concat $story_arc_scenes.get_by_arc_id(arc["ID"])
+        end
+
+        scenes
+
+    end
+
     def current_arc
 
         if @current_arc.nil? || @current_scenes.length == 0 then
             @current_arc = @arcs.shift
-            @current_scenes = @current_arc.scenes
+
+            if @scenes.nil? || @scenes.length == 0 then
+                raise 'There are no scenes for the selected story.'\
+                    ' You need to make sure there are scene templates'\
+                    ' written out for all the arc templates in your given story template.'\
+                    ' Then, you will need to delete this story and generate a new one.'
+            else
+                @current_scenes = @scenes.select {|scene| scene["arc_id"] == @current_arc["ID"] }
+            end
         end
 
         return @current_arc

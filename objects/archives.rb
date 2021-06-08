@@ -22,5 +22,11 @@ class Archives
 
     end
 
+    def get attributes, options = {}
+
+        return Entity.new(attributes, options)
+
+    end
+
 
 end

@@ -21,9 +21,9 @@ class StoryMemory < Memory_Array
             id = id.to_s.prepend("0", 5)
         end
 
-        scene = self.filter('id', id, "Story").first.symbolize_keys
+        story = self.filter('id', id, "Story").first
 
-        return scene
+        return story
 
     end
 

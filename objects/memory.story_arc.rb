@@ -27,4 +27,10 @@ class StoryArcMemory < Memory_Array
 
     end
 
+    def get_by_story_id story_id
+
+        self.filter("STORY_ID", story_id, nil)
+
+    end
+
 end

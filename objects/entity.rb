@@ -36,22 +36,26 @@ class Entity
     ]
     attr_accessor(*ATTRS)
 
+    ##
+    # The attributes param should reflect EITHER 1) the standard entity template found in all of the
+    # entity_types files, or 2) all data found in a row in the `entities` memory.
+    # The options param should contain config options only used when creating a truly new entity.
     def initialize attributes, options = {}
 
         validate(attributes, options)
 
         # TODO: cleanup unused instance variables
+        @ID   = attributes["ID"] ? attributes["ID"] : nil
+        @P_ID = attributes["P_ID"]
+        @LANG_ID = attributes["LANG_ID"] || options[:language_id]
         @TYPE = attributes["TYPE"]
         @CMAX = attributes["CMAX"].to_i
         @CTPS = attributes["CTPS"]
         @CPRP = attributes["CPRP"]
-        @ID   = attributes["ID"] ? attributes["ID"] : nil
         @NAME = options[:name_self] ? options[:language].make_name(@TYPE) : options[:name]
         @PREP = options[:prep] ? options[:prep] : ""
 
-        @LANG_ID = attributes["LANG_ID"] || options[:language_id]
         @LANG = (@LANG_ID && !options[:language]) ? $languages.get(@LANG_ID) : options[:language]
-        @P_ID = options[:parent_id]
         @PRNT = options[:parent]
         @CHLD = []
 

@@ -18,10 +18,10 @@ class Scene
     def initialize scene
         @id = scene["ID"]
         @order = scene["ORDER"]
-        @time = scene["TIME"]
+        @time = scene["TIME"] || ""
         @location = get_location
-        @setting = scene["SETTING"]
-        @action = scene["ACTION"]
+        @setting = scene["SETTING"] || ""
+        @action = scene["ACTION"] || ""
     end
 
     def get_time

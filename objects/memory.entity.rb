@@ -41,10 +41,10 @@ class EntityMemory < Memory_Array
             id = id.to_s.prepend("0", 5)
         end
 
-        entity_row = self.filter('ID', id, nil)[0].symbolize_keys
+        entity_row = self.filter('ID', id, nil)[0]
 
         # Return the object
-        entity = $archives.create(entity_row[:type].downcase.to_sym, entity_row)
+        entity = $archives.get(entity_row)
 
         if with_children
             # Fetch all entities that have a parent id of the entity's ID
