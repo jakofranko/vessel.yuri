@@ -1,5 +1,5 @@
 class String
-    PLURAL_EXCEPTIONS = []
+    PLURAL_EXCEPTIONS ||= []
 
     # Given string x, find out if it is a x, an x, or are x
     def article

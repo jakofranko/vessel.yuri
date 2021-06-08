@@ -19,9 +19,9 @@
 #       yes, or no. If I want a list of objects for McGuffins, do the same thing with nouns.
 #       Not sure if this is a good idea or it's better to just hardcode words
 class Story
-    NEW_WORLD_CHANCE = 0.01
+    NEW_WORLD_CHANCE ||= 0.01
 
-    ATTRS = [
+    ATTRS ||= [
         :id,
         :tag_map,
         :summary,

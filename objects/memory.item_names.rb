@@ -1,7 +1,7 @@
 class ItemNameMemory < Memory_Hash
 
-    PREFIX_CHANCE = 0.3
-    SUFFIX_CHANCE = 0.2
+    PREFIX_CHANCE ||= 0.3
+    SUFFIX_CHANCE ||= 0.2
 
     def rand
 

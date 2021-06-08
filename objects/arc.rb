@@ -1,6 +1,7 @@
+
 class Arc
 
-    ATTRS = [
+    ATTRS ||= [
         :id,
         :summary_id,
         :text,

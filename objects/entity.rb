@@ -16,8 +16,10 @@ require_relative './_toolkit'
 # TODO: child adjectives (like prepositions)
 # TODO: Handle editing entities after they have been saved to memory
 # TODO: Save and load languages
+
 class Entity
-    ATTRS = [
+
+    ATTRS ||= [
         :ID,
         :NAME,
         :TYPE,

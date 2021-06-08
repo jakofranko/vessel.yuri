@@ -1,6 +1,6 @@
 class Scene
 
-    ATTRS = [
+    ATTRS ||= [
         :id,
         :order,
         :time,
