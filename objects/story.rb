@@ -11,8 +11,6 @@
 #
 # @tag_map: keeps track of the generated entity IDs that will be substituted in as the story is told.
 #
-# TODO: Save/load stories
-# TODO: Come up with templates for summaries
 # TODO: ??? Create tool that will sift through the dictionary and allow me to sort words
 #       by type. E.g., if I want to create a white-list of verbs for use in summaries,
 #       have the tool give me all the verbs in the dictionary one at a time and I can say
