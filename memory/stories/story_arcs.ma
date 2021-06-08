@@ -85,3 +85,29 @@
 00079 00126    00000           1     Motivation
 00080 00127    00001           0     Confrontation with a Pa tu masoso
 00081 00127    00000           1     Motivation
+00082 00128    00004           0     Discover the Staff from the Dead Lands's location
+00083 00128    00003           1     Journey to Destination
+00084 00128    00005           2     Trial to Obtain the Staff from the Dead Lands
+00085 00128    00006           3     Journey Home
+00086 00129    00007           0     Motivation to destroy The Chaotic Stone of Power
+00087 00129    00008           1     Journey to attempt to destroy The Chaotic Stone of Power
+00088 00129    00010           2     Trial to destroy the The Chaotic Stone of Power
+00089 00129    00009           3     Prevented from destroying The Chaotic Stone of Power
+00090 00129    00011           4     Aftermath
+00091 00130    00002           0     Motivation to find Map
+00092 00130    00004           1     Discover the Map's location
+00093 00130    00005           2     Trial to Obtain the Map
+00094 00130    00006           3     Journey Home
+00095 00131    00002           0     Motivation to find Cuirass
+00096 00131    00003           1     Journey to Destination
+00097 00131    00005           2     Trial to Obtain the Cuirass
+00098 00131    00006           3     Journey Home
+00099 00132    00000           0     Motivation
+00100 00132    00001           1     Confrontation with a Kampa
+00101 00133    00001           0     Confrontation with a Masoso pa
+00102 00133    00000           1     Motivation
+00103 00134    00007           0     Motivation to destroy Hammer forged From the Stars
+00104 00134    00008           1     Journey to attempt to destroy Hammer forged From the Stars
+00105 00134    00010           2     Trial to destroy the Hammer forged From the Stars
+00106 00134    00009           3     Prevented from destroying Hammer forged From the Stars
+00107 00134    00011           4     Aftermath

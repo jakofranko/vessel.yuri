@@ -320,3 +320,27 @@
 00313 NULL0 NULL0    Character  Pepam pempa                                                                                                         
 00314 NULL0 NULL0    Character  Pa tu masoso                                                                                                        
 00315 NULL0 NULL0    City       Penmam pinpe                                                                     Crawling with its denizens               
+00315 NULL0 NULL0    Character  Epatso                                                                                                              
+00317 NULL0 NULL0    Item       Staff from the Dead Lands                                                                                                      
+00318 NULL0 NULL0    Character  Aapa                                                              Young          Standing                           
+00318 NULL0 NULL0    Character  Papapu                                                                                                Curiously     
+00320 NULL0 NULL0    Item       The Chaotic Stone of Power                                                                                                      
+00321 NULL0 NULL0    Land       Nam pape                                                          arctic                                            
+00322 NULL0 NULL0    Character  Pempam                                                                                                Furtively     
+00322 NULL0 NULL0    Character  Apsa                                                                             Sitting                            
+00324 NULL0 NULL0    Item       Map                                                                                                                 
+00325 NULL0 NULL0    Character  Aapap                                                             Old                                               
+00325 NULL0 NULL0    Character  Tukopa                                                                                                              
+00327 NULL0 NULL0    Item       Cuirass                                                                                                             
+00328 NULL0 NULL0    Character  Mún te mu                                                         Young                                             
+00329 NULL0 NULL0    Character  Netapem                                                                                                             
+00330 NULL0 NULL0    Character  Kampa                                                                                                 Curiously     
+00331 NULL0 NULL0    City       Tamsinam                                                          Dirty                                             
+00331 NULL0 NULL0    Character  Pampupi                                                                          Sitting                            
+00333 NULL0 NULL0    Character  Pa po másomi                                                                                                        
+00334 NULL0 NULL0    Character  Masoso pa                                                         Old                                               
+00335 NULL0 NULL0    City       Penpopa                                                           Beautiful                                         
+00335 NULL0 NULL0    Character  Alapam                                                                           Wondering            Restlessly    
+00337 NULL0 NULL0    Item       Hammer forged From the Stars                                                                                                      
+00338 NULL0 NULL0    Land       Luena                                                                                                               
+00339 NULL0 NULL0    Character  Aopse apa                                                                                             Suspiciously  

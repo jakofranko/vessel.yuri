@@ -4,7 +4,7 @@
 ~ NOTE : as well as the world ID associated with the story.
 ~ AUTH : Jake Franklin
 
-@ id  world_id summary
+@ id  world_id  summary
 00000 00000     Nyazhiê must find The Infinity Gauntlet
 00001 00000     Eirmaulg must defeat Maulgmaursil
 00002 00000     U tunonïn must destroy The One Ring
@@ -133,3 +133,10 @@
 00125 00000    Apeo at upia must defeat Eppit
 00126 00071    Kampom must defeat Pepam pe tam
 00127 00071    Pa pamem must defeat Pepam pempa
+00128 00000    Epatso must find Staff from the Dead Lands
+00129 00071    Papapu must destroy The Chaotic Stone of Power
+00130 00000    Apsa must find Map
+00131 00071    Tukopa must find Cuirass
+00132 00071    Mún te mu must defeat Netapem
+00133 00071    Pampupi must defeat Pa po másomi
+00134 00000    Alapam must destroy Hammer forged From the Stars

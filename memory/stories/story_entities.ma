@@ -234,3 +234,27 @@
 00226 00313     00127    Pepam pempa
 00227 00314     00127    Pa tu masoso
 00228 00315     00127    Penmam pinpe
+00229 00315     00128    Epatso
+00230 00317     00128    Staff from the Dead Lands
+00231 00318     00128    Aapa
+00232 00318     00129    Papapu
+00233 00320     00129    The Chaotic Stone of Power
+00234 00321     00129    Nam pape
+00235 00322     00129    Pempam
+00236 00322     00130    Apsa
+00237 00324     00130    Map
+00238 00325     00130    Aapap
+00239 00325     00131    Tukopa
+00240 00327     00131    Cuirass
+00241 00328     00132    Mún te mu
+00242 00329     00132    Netapem
+00243 00330     00132    Kampa
+00244 00331     00132    Tamsinam
+00245 00331     00133    Pampupi
+00246 00333     00133    Pa po másomi
+00247 00334     00133    Masoso pa
+00248 00335     00133    Penpopa
+00249 00335     00134    Alapam
+00250 00337     00134    Hammer forged From the Stars
+00251 00338     00134    Luena
+00252 00339     00134    Aopse apa
