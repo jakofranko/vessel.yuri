@@ -15,3 +15,4 @@
 00009 00002      3,5                      Prevented from destroying <item>
 00010 00002      3,4,5,6                  Trial to destroy the <item>
 00011 00002      6,7                      Aftermath
+00012 00001       2,3                      Journey to seek aid at <aid_location>
