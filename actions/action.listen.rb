@@ -9,10 +9,21 @@ class ActionListen
         @name = "Listen"
         @docs = "Yuri can listen to the untold. Tell him. An interactive tool for writing missing scenes and arcs."
 
+        $tags ||= Memory_Array.new("story_templates/tags", @host.path)
+        $summaries ||= Memory_Array.new("story_templates/summaries", @host.path)
+        $arcs ||= ArcMemory.new("story_templates/arcs", @host.path)
+        $scenes ||= SceneMemory.new("story_templates/scenes", @host.path)
+
         @arcs_by_summary = $summaries.to_a.inject({}) do |memo, summary|
             s_id = summary["id"]
             summary_arcs = $arcs.get_by_summary_id(s_id)
             memo.update(s_id => summary_arcs)
+        end
+
+        @scenes_by_arc = $arcs.to_a.inject({}) do |memo, arc|
+            arc_id = arc["id"]
+            arc_scenes = $scenes.get_by_arc_id(arc_id)
+            memo.update(arc_id => arc_scenes)
         end
 
     end
@@ -23,6 +34,28 @@ class ActionListen
     #   work within it, or you can pick a mode where you just write
     #   for the summary or arc with the fewest children.
     def act q = nil
+
+        if !q.nil? then
+            topic = q
+        else
+            puts "What would you like to work on?"
+            puts "(summaries, arcs, or scenes)"
+            topic = STDIN.gets.chomp
+        end
+
+        case topic
+        when "arcs"
+            listen_arcs
+        when "scenes"
+            listen_scenes
+        else
+            puts "#{topic} is not a valid option"
+            return nil
+        end
+
+    end
+
+    def listen_arcs
 
         lowest_arcs = 99
         lowest_arcs_summary_id = nil
@@ -53,4 +86,45 @@ class ActionListen
 
     end
 
+    def listen_scenes
+
+        lowest_scenes = 999
+        lowest_scenes_arc_id = nil
+        lowest_scenes_arc = nil
+        lowest_scenes_arc_summary = nil
+        @scenes_by_arc.each_pair do |k, v|
+            if v.length < lowest_scenes then
+                lowest_scenes = v.length
+                lowest_scenes_arc_id = k
+            end
+        end
+
+        lowest_scenes_arc = $arcs
+            .to_a
+            .select {|arc| arc['id'] == lowest_scenes_arc_id }
+            .first
+        lowest_scenes_arc_summary = $summaries
+            .to_a
+            .select {|summary| summary["id"] == lowest_scenes_arc["summary_id"] }
+            .first
+
+        puts "Write a scene for arc ID #{lowest_scenes_arc_id} (it has only #{lowest_scenes} scenes)"
+        puts "Story Summary: #{lowest_scenes_arc_summary['summary']}"
+        puts "Arc Text: #{lowest_scenes_arc['text']}"
+        puts "Current scenes: #{$scenes.get_by_arc_id(lowest_scenes_arc_id).map{|scene| [scene.order, scene.describe] }}"
+        puts "The following tags can be used (use the 'tag' exactly as written (including carats <>)):"
+        $tags.to_a.each{|t| puts "Tag: #{t["tag"]}, Type: #{t["entity"]}"}
+        puts "Input TIME description:"
+        time = STDIN.gets.chomp
+        puts "Input ACTION description:"
+        action = STDIN.gets.chomp
+        puts "Input SETTING description:"
+        setting = STDIN.gets.chomp
+        puts "Input ORDER this scene should appear in (can be comma separated):"
+        order = STDIN.gets.chomp
+        puts "Creating scene..."
+        $scenes.add(lowest_scenes_arc_id, time, action, setting, order)
+        puts "Scene created."
+
+    end
 end
