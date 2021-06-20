@@ -75,7 +75,7 @@ class ActionCreate
         summary = $summaries.filter("id", summary_id.prepend("0", 5), nil).first
         puts "Creating arc for summary #{summary["summary"]}"
         puts "Here are the arcs for the selected summary:"
-        $arcs.get_by_summary_id(summary_id).each{|a| puts "#{a["text"]}, order: #{a["order"]}"}
+        $arcs.get_by_summary_id(summary_id).each{|a| puts "#{a.text}, order: #{a.order}"}
         puts "Input arc text:"
         arc = STDIN.gets.chomp
         puts "What order does this arc have? (number, can be comma seperated)"
