@@ -35,7 +35,7 @@ class ActionListen
     #   for the summary or arc with the fewest children.
     def act q = nil
 
-        if !q.nil? then
+        if !q.nil? && q != "" then
             topic = q
         else
             puts "What would you like to work on?"
