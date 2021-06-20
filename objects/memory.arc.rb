@@ -9,7 +9,7 @@ class ArcMemory < Memory_Array
         new_id = self.length.to_s.prepend("0", 5)
 
         # Append this string to the entities.ma file
-        self.append("#{new_id} #{summary_id.prepend("0", 5).append(" ", "summary_id".length + 1)} #{order.append(" ", 24)} #{text}")
+        self.append("#{new_id} #{summary_id.prepend("0", 5).append(" ", "summary_id".length)} #{order.append(" ", 24)} #{text}")
 
         return new_id
 
