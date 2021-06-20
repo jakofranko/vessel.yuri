@@ -15,4 +15,10 @@
 00009 00002      3,5                      Prevented from destroying <item>
 00010 00002      3,4,5,6                  Trial to destroy the <item>
 00011 00002      6,7                      Aftermath
-00012 00001       2,3                      Journey to seek aid at <aid_location>
+00012 00001      2,3                      Journey to seek aid at <aid_location>
+00013 00001      4                        Acquire aid at <aid_location>
+00014 00001      3,4,5                    Thwart plan of <henchman>
+00015 00001      5,6                      Defeat <henchman>
+00016 00001      7                        Journey to <antagonist_location>
+00017 00001      8                        Defeat <antagonis>
+00018 00001      9                        Journey <protagonist_home>
