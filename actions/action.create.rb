@@ -68,7 +68,6 @@ class ActionCreate
 
     def start_arc_creator
 
-        puts $summaries.inspect
         summary_id = "1"
         puts "Create arc for which summary template? (enter ID)"
         $summaries.to_a.each {|s| puts "#{s["id"]} : #{s["summary"]}" }
