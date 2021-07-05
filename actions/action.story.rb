@@ -63,11 +63,24 @@ class ActionStory
         # current_arc needs to be called before current_scene because current_arc
         # will handle loading the current_scenes attribute which is what current_scene
         # references when checking to see what is current.
-        current_arc = @active_story.current_arc
-        current_scene = @active_story.current_scene
+        current_arc = @active_story.get_current_arc
+        current_scene = @active_story.get_current_scene
 
-        current_scene.describe
+        # This will allow plain text to be substituted if a scene doesn't exist
+        scene_text = current_scene.respond_to?(:describe) ? current_scene.describe : current_scene.to_s
 
+        # puts $current_story.inspect
+
+        # Update the current story memory with the new
+        # values as set by the current_arc and current_scene functions
+        update_current_story(scene_text)
+
+        # Now that the scene text has been captured, nil it out so that
+        # get_current_scene can cycle in a new one the next time it's called.
+
+        @active_story.current_scene = nil
+
+        puts scene_text
     end
 
     def get_active_story
@@ -124,4 +137,21 @@ class ActionStory
 
     end
 
+    def update_current_story scene_text
+
+        story = $current_story.render["CURRENT_STORY"]
+
+        if story == "NULL" then story = {} end
+        if story["ID"].nil? then story["ID"] = @active_story.id end
+        if story["WORLD_ID"].nil? then story["WORLD_ID"] = @active_story.world_id end
+        if story["SUMMARY"].nil? then story["SUMMARY"] = @active_story.summary end
+        if story["CURRENT_ARC"].nil? then story["CURRENT_ARC"] = @active_story.current_arc.id end
+        if story["LAST_SCENE"].nil? then story["LAST_SCENE"] = {} end
+
+        story["LAST_SCENE"]["ID"] = @active_story.current_scene.id
+        story["LAST_SCENE"]["TEXT"] = scene_text
+
+        $current_story.save
+
+    end
 end

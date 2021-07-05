@@ -2,6 +2,7 @@ class Scene
 
     ATTRS ||= [
         :id,
+        :arc_id,
         :order,
         :time,
         :location,
@@ -17,6 +18,7 @@ class Scene
     # E.g., About mid-morning, while the merchants were selling their wares, a meteor fell from the sky.
     def initialize scene
         @id = scene["ID"]
+        @arc_id = scene["ARC_ID"]
         @order = scene["ORDER"]
         @time = scene["TIME"] || ""
         @location = get_location

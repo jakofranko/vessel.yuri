@@ -39,6 +39,7 @@ class Story
         id = story_config["id"]
         world_id = story_config["world_id"]
         summary = story_config["summary"]
+        current_arc_id = story_config["current_arc_id"] || nil
 
         @id               = id
         @tag_map          = {}
@@ -48,7 +49,7 @@ class Story
         @summary          = summary || generate_summary
         @arcs             = id ? get_arcs : generate_arcs
         @arc_scenes       = id ? get_scenes : generate_scenes
-        @current_arc      = nil
+        @current_arc      = get_current_arc(current_arc_id)
         @current_scene    = nil
         @current_scenes   = []
 
@@ -209,26 +210,29 @@ class Story
 
     end
 
-    def current_arc
+    def get_current_arc arc_id = nil
 
-        if @current_arc.nil? || @current_scenes.length == 0 then
-            @current_arc = @arcs.shift
-
-            if @scenes.nil? || @scenes.length == 0 then
-                raise 'There are no scenes for the selected story.'\
-                    ' You need to make sure there are scene templates'\
-                    ' written out for all the arc templates in your given story template.'\
-                    ' Then, you will need to delete this story and generate a new one.'
-            else
-                @current_scenes = @scenes.select {|scene| scene["arc_id"] == @current_arc["ID"] }
+        if @current_arc.nil? && arc_id.nil? == false then
+            # This should work to discard already used arcs, since
+            # the @arcs attribute should come sorted by order
+            while @current_arc == nil || @current_arc.id != arc_id
+                @current_arc = @arcs.shift
             end
+        elsif @current_arc.nil? || @current_scenes.length == 0 then
+            @current_arc = @arcs.shift
+        end
+
+        if @arc_scenes.nil? || @arc_scenes.length == 0 then
+            @current_scenes = [@current_arc.text]
+        else
+            @current_scenes = @arc_scenes[@current_arc.id]
         end
 
         return @current_arc
 
     end
 
-    def current_scene
+    def get_current_scene
 
         if @current_scene.nil? && @current_scenes.length != 0 then
             @current_scene = @current_scenes.shift
