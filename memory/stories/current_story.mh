@@ -3,11 +3,4 @@
 ~ NOTE : If the STORY key is empty, then a new story need to be generated.
 ~ AUTH : Jake Franklin
 
-CURRENT_STORY
-    ID : 00101
-    WORLD_ID : 00071
-    SUMMARY : Pampo pe pu must find The Nefarious Staff
-    CURRENT_ARC : 00000
-    CURRENT_SCENE
-        ID : 00000
-        LAST : something that happend in the last scene that's a tweet
+CURRENT_STORY : NULL
