@@ -109,22 +109,31 @@ class ActionListen
             .first
 
         puts "Write a scene for arc ID #{lowest_scenes_arc_id} (it has only #{lowest_scenes} scenes)"
-        puts "Story Summary: #{lowest_scenes_arc_summary['summary']}"
-        puts "Arc Text: #{lowest_scenes_arc['text']}"
-        puts "Current scenes: #{$scenes.get_by_arc_id(lowest_scenes_arc_id).map{|scene| [scene.order, scene.describe] }}"
-        puts "The following tags can be used (use the 'tag' exactly as written (including carats <>)):"
-        $tags.to_a.each{|t| puts "Tag: #{t["tag"]}, Type: #{t["entity"]}"}
-        puts "Input TIME description:"
-        time = STDIN.gets.chomp
-        puts "Input ACTION description:"
-        action = STDIN.gets.chomp
-        puts "Input SETTING description:"
-        setting = STDIN.gets.chomp
-        puts "Input ORDER this scene should appear in (can be comma separated):"
-        order = STDIN.gets.chomp
-        puts "Creating scene..."
-        $scenes.add(lowest_scenes_arc_id, time, action, setting, order)
-        puts "Scene created."
+
+        continue = 'y'
+        while continue
+            puts "Story Summary: #{lowest_scenes_arc_summary['summary']}"
+            puts "Arc Text: #{lowest_scenes_arc['text']}"
+            puts "Current scenes: #{$scenes.get_by_arc_id(lowest_scenes_arc_id).map{|scene| [scene.order, scene.describe] }}"
+            puts "The following tags can be used (use the 'tag' exactly as written (including carats <>)):"
+            $tags.to_a.each{|t| puts "Tag: #{t["tag"]}, Type: #{t["entity"]}"}
+            puts "Input TIME description:"
+            time = STDIN.gets.chomp
+            puts "Input ACTION description:"
+            action = STDIN.gets.chomp
+            puts "Input SETTING description:"
+            setting = STDIN.gets.chomp
+            puts "Input ORDER this scene should appear in (can be comma separated):"
+            order = STDIN.gets.chomp
+            puts "Creating scene..."
+            $scenes.add(lowest_scenes_arc_id, time, action, setting, order)
+            puts "Scene created."
+            puts "Continue creating scenes for arc #{lowest_scenes_arc_id}? (y/n)"
+
+            continue = STDIN.gets.chomp
+
+            break unless continue == 'y'
+        end
 
     end
 end
