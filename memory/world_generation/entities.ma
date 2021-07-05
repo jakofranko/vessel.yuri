@@ -344,3 +344,183 @@
 00337 NULL0 NULL0    Item       Hammer forged From the Stars                                                                                                      
 00338 NULL0 NULL0    Land       Luena                                                                                                               
 00339 NULL0 NULL0    Character  Aopse apa                                                                                             Suspiciously  
+00339 NULL0 NULL0    Character  Atate takiep                                                                                          Furtively     
+00341 NULL0 NULL0    Character  Apa pasa                                                                                                            
+00342 NULL0 NULL0    Character  Paat                                                              Old                                 Restlessly    
+00343 NULL0 NULL0    City       Pappit                                                                                                              
+00343 NULL0 NULL0    Character  Paltasa                                                           Old                                               
+00345 NULL0 NULL0    Character  Atko papepap                                                      Unassuming                                        
+00346 NULL0 NULL0    Character  Lapam                                                             Young                               Suspiciously  
+00346 NULL0 NULL0    Character  Tumtam                                                            Unassuming     Wondering                          
+00348 NULL0 NULL0    Item       Gem                                                                                                                 
+00349 NULL0 NULL0    Character  Kam kalan                                                                                             Restlessly    
+00349 NULL0 NULL0    Character  Pais                                                              Unassuming     Looking                            
+00351 NULL0 NULL0    Character  Pappap nënuu                                                                                                        
+00352 NULL0 NULL0    Character  Itat nënuu                                                                                                          
+00352 NULL0 NULL0    Character  Topiku laiit                                                                     Looking                            
+00354 NULL0 NULL0    Character  Aaap tek upa                                                                                                        
+00355 NULL0 NULL0    Character  Papak                                                                                                               
+00356 NULL0 NULL0    City       Taapap nënuu                                                      Beautiful      Bustling with activity               
+00356 NULL0 NULL0    Character  Papa                                                                                                                
+00358 NULL0 NULL0    Item       Cuirass of the Elder Gods                                                                                                      
+00359 NULL0 NULL0    Character  Alpap appe                                                        Young                                             
+00359 NULL0 NULL0    Character  Eplap iapap                                                       Old                                               
+00361 NULL0 NULL0    Item       Gem                                                                                                                 
+00362 NULL0 NULL0    Land       Aaptap la aa                                                      desert                                            
+00363 NULL0 NULL0    Character  Ekepup                                                                                                Restlessly    
+00363 NULL0 NULL0    Character  Papime                                                                           Looking                            
+00365 NULL0 NULL0    Item       Ring                                                                                                                
+00365 NULL0 NULL0    Character  Aap e patape                                                                                          Restlessly    
+00367 NULL0 NULL0    Item       The Cursed Shield                                                                                                      
+00368 NULL0 NULL0    Land       Pukapo                                                                                                              
+00369 NULL0 NULL0    Character  Apapa e ukaa                                                                     Sitting                            
+00369 NULL0 NULL0    Character  Papam                                                                                                               
+00371 NULL0 NULL0    Item       Stone                                                                                                               
+00372 NULL0 NULL0    Character  Kampum                                                                           Wondering            Furtively     
+00372 NULL0 NULL0    Character  Namut namut                                                       Young                               Curiously     
+00374 NULL0 NULL0    Character  Aptas                                                             Young                                             
+00375 NULL0 NULL0    Character  Atka                                                              Unassuming                          Curiously     
+00376 NULL0 NULL0    City       Pate                                                                                                                
+00376 NULL0 NULL0    Character  Oeppa                                                                                                 Suspiciously  
+00378 NULL0 NULL0    Character  Akupto                                                            Old            Wondering                          
+00379 NULL0 NULL0    Character  Pasaa                                                                            Standing             Suspiciously  
+00380 NULL0 NULL0    City       Tapkapep                                                          Sprawling      Bustling with activity               
+00380 NULL0 NULL0    Character  Pena                                                                             Sitting                            
+00382 NULL0 NULL0    Character  Uppapap                                                           Unassuming     Standing                           
+00383 NULL0 NULL0    Character  Paepak                                                            Old                                 Furtively     
+00384 NULL0 NULL0    City       Akapo nënuu                                                       Dirty          Bustling with activity               
+00384 NULL0 NULL0    Character  Pimsimtem                                                                                                           
+00386 NULL0 NULL0    Item       The Diabolical Scroll                                                                                                      
+00387 NULL0 NULL0    Character  Papam                                                                                                               
+00387 NULL0 NULL0    Character  Pepanpen                                                                                                            
+00389 NULL0 NULL0    Item       Sword                                                                                                               
+00389 NULL0 NULL0    Character  Pe pe                                                             Young                                             
+00391 NULL0 NULL0    Character  Temnasa                                                                                               Suspiciously  
+00392 NULL0 NULL0    Character  Mún masoso                                                                       Sitting              Furtively     
+00392 NULL0 NULL0    Character  Paman                                                                                                               
+00394 NULL0 NULL0    Item       Staff of Power                                                                                                      
+00395 NULL0 NULL0    Land       Papam                                                             sparse                                            
+00396 NULL0 NULL0    Character  Mún pim pan                                                                                                         
+00396 NULL0 NULL0    Character  Pa masoso                                                                        Wondering            Suspiciously  
+00398 NULL0 NULL0    Character  Pa pan kon                                                                       Standing                           
+00399 NULL0 NULL0    Character  Kunpekem                                                                                              Suspiciously  
+00400 NULL0 NULL0    City       Limtamsa                                                          Sprawling      Loud with the sound of industry               
+00400 NULL0 NULL0    Character  Ma apa a apa                                                      Unassuming                                        
+00402 NULL0 NULL0    Character  Aape a nënuu                                                                                                        
+00403 NULL0 NULL0    Character  Pultapi                                                                                                             
+00403 NULL0 NULL0    Character  Pamtan                                                                                                              
+00405 NULL0 NULL0    Item       Gem                                                                                                                 
+00406 NULL0 NULL0    Land       Pintamlom                                                                                                           
+00407 NULL0 NULL0    Character  Pa pa                                                             Unassuming                                        
+00407 NULL0 NULL0    Character  Pupu                                                              Young          Sitting              Curiously     
+00409 NULL0 NULL0    Item       Sword                                                                                                               
+00410 NULL0 NULL0    Character  Sempa masoso                                                                     Wondering                          
+00410 NULL0 NULL0    Character  Motpap                                                                                                              
+00412 NULL0 NULL0    Item       Sword of Death                                                                                                      
+00413 NULL0 NULL0    Land       Kipo                                                                                                                
+00414 NULL0 NULL0    Character  Apap                                                                             Sitting                            
+00414 NULL0 NULL0    Character  Ip iupa kaka                                                                                                        
+00416 NULL0 NULL0    Item       The Cursed Cuirass                                                                                                      
+00417 NULL0 NULL0    Land       Nasli                                                             verdant                                           
+00418 NULL0 NULL0    Character  Panap                                                             Old                                 Suspiciously  
+00418 NULL0 NULL0    Character  Lumlem                                                                                                              
+00420 NULL0 NULL0    Item       The Sorcerous Hammer                                                                                                      
+00421 NULL0 NULL0    Land       Tasam pan                                                         verdant                                           
+00422 NULL0 NULL0    Character  Pampim                                                            Unassuming                          Curiously     
+00422 NULL0 NULL0    Character  Pampam                                                                                                              
+00424 NULL0 NULL0    Item       Scepter                                                                                                             
+00425 NULL0 NULL0    Character  Mampale                                                                          Standing                           
+00425 NULL0 NULL0    Character  Ampi                                                              Old                                               
+00427 NULL0 NULL0    Character  Sataom                                                                           Looking                            
+00428 NULL0 NULL0    Character  Pemap                                                             Young                               Suspiciously  
+00429 NULL0 NULL0    City       Ana paska                                                                        Loud with the sound of industry               
+00429 NULL0 NULL0    Character  Tamsapo                                                                                                             
+00431 NULL0 NULL0    Item       Cuirass                                                                                                             
+00432 NULL0 NULL0    Land       Nam te                                                            sparse                                            
+00433 NULL0 NULL0    Character  Pakemta                                                                                               Furtively     
+00433 NULL0 NULL0    Character  Lamlatom                                                                                                            
+00435 NULL0 NULL0    Item       Shield                                                                                                              
+00436 NULL0 NULL0    Land       Pimlampam                                                         verdant                                           
+00437 NULL0 NULL0    Character  La sile                                                           Unassuming                                        
+00437 NULL0 NULL0    Character  Po pe mumlam                                                                                          Furtively     
+00439 NULL0 NULL0    Character  Pupem                                                                                                               
+00440 NULL0 NULL0    Character  Tusanpu                                                                          Sitting              Curiously     
+00441 NULL0 NULL0    City       Sapaka                                                                           Loud with the sound of industry               
+00441 NULL0 NULL0    Character  Upi ma papta                                                                                                        
+00443 NULL0 NULL0    Item       Stone                                                                                                               
+00443 NULL0 NULL0    Character  Atipup                                                            Old            Looking                            
+00445 NULL0 NULL0    Item       The Diabolical Spear                                                                                                      
+00446 NULL0 NULL0    Character  Apup                                                                                                                
+00446 NULL0 NULL0    Character  Apae                                                                                                  Suspiciously  
+00448 NULL0 NULL0    Item       The Diabolical Gem                                                                                                      
+00449 NULL0 NULL0    Land       Alea pa ali                                                                                                         
+00450 NULL0 NULL0    Character  Paeppal                                                                                               Suspiciously  
+00450 NULL0 NULL0    Character  Paep                                                              Young                               Restlessly    
+00452 NULL0 NULL0    Item       Ring                                                                                                                
+00453 NULL0 NULL0    Land       Apat                                                              desert                                            
+00454 NULL0 NULL0    Character  Litapta empa                                                                                          Suspiciously  
+00454 NULL0 NULL0    Character  Aa lap nënuu                                                                                          Suspiciously  
+00456 NULL0 NULL0    Item       The Doomed Ring                                                                                                      
+00456 NULL0 NULL0    Character  Oapa                                                                                                                
+00458 NULL0 NULL0    Item       The Doomed Shoe                                                                                                      
+00459 NULL0 NULL0    Character  Lakap                                                             Old            Looking              Curiously     
+00459 NULL0 NULL0    Character  Panpimon mún                                                                                          Curiously     
+00461 NULL0 NULL0    Character  Másomi la                                                                                             Furtively     
+00462 NULL0 NULL0    Character  Na ponam                                                                         Standing                           
+00463 NULL0 NULL0    City       Papemten mún                                                      Old            Crawling with its denizens               
+00463 NULL0 NULL0    Character  Pa mún                                                                                                              
+00465 NULL0 NULL0    Item       Glove from the Dead Lands                                                                                                      
+00466 NULL0 NULL0    Character  Sanpa                                                                            Looking                            
+00466 NULL0 NULL0    Character  Mamke                                                                                                               
+00468 NULL0 NULL0    Character  Pemapam                                                                                               Curiously     
+00469 NULL0 NULL0    Character  Tota                                                                                                  Curiously     
+00469 NULL0 NULL0    Character  Sapap                                                                                                               
+00471 NULL0 NULL0    Item       Shield                                                                                                              
+00472 NULL0 NULL0    Land       Itappan                                                           verdant                                           
+00473 NULL0 NULL0    Character  Akapi                                                             Young                                             
+00473 NULL0 NULL0    Character  Sakum                                                                            Sitting                            
+00475 NULL0 NULL0    Item       Book                                                                                                                
+00476 NULL0 NULL0    Character  Munpam                                                            Old                                               
+00476 NULL0 NULL0    Character  Po masoso                                                                        Wondering                          
+00478 NULL0 NULL0    Item       The Evil Ring                                                                                                       
+00479 NULL0 NULL0    Land       Tempata                                                                                                             
+00480 NULL0 NULL0    Character  Te mo nam mo                                                                                                        
+00480 NULL0 NULL0    Character  Pu pupam                                                                                                            
+00482 NULL0 NULL0    Character  Kapi kumam                                                                                                          
+00483 NULL0 NULL0    Character  Petom kumam                                                                                                         
+00484 NULL0 NULL0    City       Ta pam panpa                                                      Old            Bustling with activity               
+00484 NULL0 NULL0    Character  Ka lan                                                                                                Curiously     
+00486 NULL0 NULL0    Item       Gem                                                                                                                 
+00487 NULL0 NULL0    Character  Pape lan                                                          Unassuming                          Restlessly    
+00487 NULL0 NULL0    Character  Tatonam                                                                                               Furtively     
+00489 NULL0 NULL0    Item       Stone                                                                                                               
+00490 NULL0 NULL0    Land       Papa                                                              desert                                            
+00491 NULL0 NULL0    Character  Namku tatapa                                                                                                        
+00491 NULL0 NULL0    Character  Patamop                                                                                                             
+00493 NULL0 NULL0    Item       Ring                                                                                                                
+00494 NULL0 NULL0    Land       Nisanne                                                           sparse                                            
+00495 NULL0 NULL0    Character  Tepunpat epi                                                      Young                                             
+00495 NULL0 NULL0    Character  Pampama                                                                                               Suspiciously  
+00497 NULL0 NULL0    Item       Staff                                                                                                               
+00498 NULL0 NULL0    Character  Nem pa sala                                                       Young                               Restlessly    
+00498 NULL0 NULL0    Character  Etnu papa                                                                                                           
+00500 NULL0 NULL0    Character  Atmat                                                                                                 Furtively     
+00501 NULL0 NULL0    Character  Sapapep                                                                          Sitting              Suspiciously  
+00502 NULL0 NULL0    City       Nënuu panpau                                                      Sprawling      Crawling with its denizens               
+00502 NULL0 NULL0    Character  Sumpimpam                                                                        Sitting                            
+00504 NULL0 NULL0    Item       Glove                                                                                                               
+00505 NULL0 NULL0    Land       Pem mún                                                           verdant                                           
+00506 NULL0 NULL0    Character  Papon                                                                            Standing                           
+00506 NULL0 NULL0    Character  Pompa                                                                                                               
+00508 NULL0 NULL0    Item       Book of Horror                                                                                                      
+00508 NULL0 NULL0    Character  Pampamta                                                          Old                                 Furtively     
+00510 NULL0 NULL0    Item       The Chaotic Scroll                                                                                                      
+00511 NULL0 NULL0    Land       Pemsom motan                                                                                                        
+00512 NULL0 NULL0    Character  Na kempempi                                                                      Standing                           
+00512 NULL0 NULL0    Character  Sa sa                                                                                                               
+00514 NULL0 NULL0    Item       Ring                                                                                                                
+00515 NULL0 NULL0    Land       Pampin                                                            desert                                            
+00516 NULL0 NULL0    Character  San mon                                                                          Sitting                            
+00516 NULL0 NULL0    Character  Mún selin                                                                                                           
+00518 NULL0 NULL0    Item       Spear forged From the Stars                                                                                                      
+00519 NULL0 NULL0    Character  Sakam                                                                                                               

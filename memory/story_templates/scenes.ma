@@ -20,3 +20,5 @@
 00008 00002  1     in the land that is so familiar to <protagonist>            before history was written                        legends told of an item of great destiny, crafted by a mysterious people
 00009 00003  1,2                                                               in the early morning hours                        <protagonist> hurridly gathered what provisions might be needed
 00010 00005  1,2   under cover of night                                        the next day                                      <protagonist> set out in the direction of <item_location>
+00011 00006  1,2   in the carnage of <antagonist location>                     some days later                                   <protagonist> gathers <protagonist possessive> things and prepares to journey home
+00012 00006  1,2,3 despite the chaos of the previous day                       after a long, dreamless sleep                     <protagonist> finds <protagonist pronoun> companions, to see who survived
