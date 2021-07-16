@@ -3,4 +3,11 @@
 ~ NOTE : If the STORY key is empty, then a new story need to be generated.
 ~ AUTH : Jake Franklin
 
-CURRENT_STORY : NULL
+CURRENT_STORY
+    ID : 00014
+    WORLD_ID : 00071
+    SUMMARY : Kapim kapim must defeat Lomsampa
+    CURRENT_ARC : 00052
+    LAST_SCENE
+        ID : 00048
+        TEXT : Years ago, when kapim kapim was a child, lomsampa ruled the land
