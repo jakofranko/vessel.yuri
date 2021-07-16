@@ -5,11 +5,13 @@ class StoryArcMemory < Memory_Array
 
     def add story_arc, story_id, order
 
+        story_arc_id = story_arc.respond_to?(:id) ? story_arc.id : story_arc["ID"]
+        story_arc_text = story_arc.respond_to?(:text) ? story_arc.text : story_arc["TEXT"]
         new_id = self.length.to_s.prepend("0", 5)
         story_id = story_id.append(" ", 8)
-        arc_template_id = story_arc.id.append(" ", 15)
+        arc_template_id = story_arc_id.append(" ", 15)
         order = order.to_s.append(" ", 5)
-        text = story_arc.text
+        text = story_arc_text
 
         self.append("#{new_id} #{story_id} #{arc_template_id} #{order} #{text}")
 

@@ -140,7 +140,11 @@ class Story
 
                     # Parse tags and push the re-formated arc into our final list
                     arc.text = parse_tags(arc.text)
-                    arcs.push(arc)
+
+                    # Convert to a hash when populating arcs array,
+                    # since this is ultimately the form it will take
+                    # when this is populated by the `get_arcs` method.
+                    arcs.push(arc.to_h)
                     break
                 else
                     next
@@ -176,9 +180,9 @@ class Story
                         formatted_scene.action = parse_tags(scene.action)
                         formatted_scene.order = order
 
-                        if !scenes[arc.id] then scenes[arc.id] = [] end
-                        scenes[arc.id].push(formatted_scene)
-                        scenes[arc.id].sort_by(&:order)
+                        if !scenes[arc["ID"]] then scenes[arc["ID"]] = [] end
+                        scenes[arc["ID"]].push(formatted_scene)
+                        scenes[arc["ID"]].sort_by(&:order)
                         break
                     else
                         next
@@ -201,9 +205,9 @@ class Story
 
         raise "The @arcs variable has to be set and must be an array" unless @arcs.kind_of?(Array)
 
-        scenes = []
+        scenes = {}
         @arcs.each do |arc|
-            scenes.concat $story_arc_scenes.get_by_arc_id(arc["ID"])
+            scenes[arc["ID"]] = $story_arc_scenes.get_by_arc_id(arc["ID"])
         end
 
         scenes
@@ -212,20 +216,26 @@ class Story
 
     def get_current_arc arc_id = nil
 
+        if arc_id.nil? && $current_story then
+            # Let's search the $current_story object for one
+            cs = $current_story.to_h
+            arc_id = cs["CURRENT_STORY"] ? cs["CURRENT_STORY"]["CURRENT_ARC"] : nil
+        end
+
         if @current_arc.nil? && arc_id.nil? == false then
             # This should work to discard already used arcs, since
             # the @arcs attribute should come sorted by order
-            while @current_arc == nil || @current_arc.id != arc_id
+            while @current_arc == nil || @current_arc["ID"] != arc_id
                 @current_arc = @arcs.shift
             end
         elsif @current_arc.nil? || @current_scenes.length == 0 then
             @current_arc = @arcs.shift
         end
 
-        if @arc_scenes.nil? || @arc_scenes.length == 0 then
-            @current_scenes = [@current_arc.text]
+        if @arc_scenes.nil? || @arc_scenes[@current_arc["ID"]].nil? || @arc_scenes[@current_arc["ID"]].length == 0 then
+            @current_scenes = [@current_arc["TEXT"]]
         else
-            @current_scenes = @arc_scenes[@current_arc.id]
+            @current_scenes = @arc_scenes[@current_arc["ID"]]
         end
 
         return @current_arc
