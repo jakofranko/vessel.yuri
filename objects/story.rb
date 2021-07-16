@@ -39,7 +39,6 @@ class Story
         id = story_config["id"]
         world_id = story_config["world_id"]
         summary = story_config["summary"]
-        current_arc_id = story_config["current_arc_id"] || nil
 
         @id               = id
         @tag_map          = {}
@@ -49,7 +48,7 @@ class Story
         @summary          = summary || generate_summary
         @arcs             = id ? get_arcs : generate_arcs
         @arc_scenes       = id ? get_scenes : generate_scenes
-        @current_arc      = get_current_arc(current_arc_id)
+        @current_arc      = nil
         @current_scene    = nil
         @current_scenes   = []
 
@@ -111,7 +110,6 @@ class Story
 
     def get_summary_template id
 
-        puts $summaries.inspect
         $summaries.to_a.select {|summary| summary["id"] === id}
 
     end
@@ -152,6 +150,9 @@ class Story
             end
         end
 
+        # Note that the arcs will not have been saved yet,
+        # and so don't have the proper IDs. Currently the IDs
+        # are their *template* IDs.
         return arcs
     end
 
@@ -164,7 +165,8 @@ class Story
         scenes = {}
 
         @arcs.each do |arc|
-            arc_scenes = $scenes.get_by_arc_id(arc.id);
+            # Note, these are being fetched the the arc's *template* ID
+            arc_scenes = $scenes.get_by_arc_id(arc["ID"]);
             by_order = get_by_order(arc_scenes)
             used_scenes = []
 
