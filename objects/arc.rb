@@ -21,4 +21,12 @@ class Arc
         @order = arc["order"]
     end
 
+    def to_h
+        {
+            "ID" => @id,
+            "SUMMARY_ID" => @summary_id,
+            "TEXT" => @text,
+            "ORDER" => @order
+        }
+    end
 end
