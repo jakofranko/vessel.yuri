@@ -45,13 +45,10 @@ class ActionStory
 
         load_folder("#{@host.path}/objects/*")
 
+        puts @active_story.inspect
+
         # Only set this the first time. Once it's in memory, we'll use that.
         @active_story ||= get_active_story || new_story
-
-        puts "Current story's arcs:"
-        puts @active_story.arcs
-        puts "Current story's scenes:"
-        puts @active_story.arc_scenes
 
 
         # If just starting the server, there will be no current arcs or scenes
@@ -63,13 +60,17 @@ class ActionStory
         # current_arc needs to be called before current_scene because current_arc
         # will handle loading the current_scenes attribute which is what current_scene
         # references when checking to see what is current.
+        current_story = $current_story.to_h
         current_arc = @active_story.get_current_arc
         current_scene = @active_story.get_current_scene
 
+        if current_story["CURRENT_STORY"]["LAST_SCENE"] && current_story["CURRENT_STORY"]["LAST_SCENE"]["TEXT"] == current_scene.describe then
+            @active_story.current_scene = nil
+            current_scene = @active_story.get_current_scene
+        end
+
         # This will allow plain text to be substituted if a scene doesn't exist
         scene_text = current_scene.respond_to?(:describe) ? current_scene.describe : current_scene.to_s
-
-        # puts $current_story.inspect
 
         # Update the current story memory with the new
         # values as set by the current_arc and current_scene functions
@@ -78,7 +79,7 @@ class ActionStory
         # Now that the scene text has been captured, nil it out so that
         # get_current_scene can cycle in a new one the next time it's called.
 
-        @active_story.current_scene = nil
+
 
         puts scene_text
     end
@@ -120,7 +121,13 @@ class ActionStory
         # Save Arcs
         story.arcs.each_index do |i|
             arc = story.arcs[i]
-            $story_arcs.add(arc, story_id, i)
+            story_arc_id = $story_arcs.add(arc, story_id, i)
+
+            # When the arcs were generated in story initialization,
+            # the generated arcs retained their template IDs. They must
+            # now be set to reflect their "rendered" story_arc ID so that
+            # they can be properly fetched when getting the current arc.
+            arc["ID"] = story_arc_id
         end
 
         # Save Scenes
