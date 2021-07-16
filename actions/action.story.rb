@@ -140,6 +140,18 @@ class ActionStory
             }
         end
 
+        # Now that the arc IDs have been updated, get and set the current arc
+        story.get_current_arc
+
+        # Set the current story to the newly created story
+        current_story = {}
+        current_story["ID"] = story.id
+        current_story["WORLD_ID"] = story.world.ID
+        current_story["SUMMARY"] = story.summary
+        current_story["CURRENT_ARC"] = story.current_arc["ID"]
+        $current_story.render["CURRENT_STORY"] = current_story
+        $current_story.save
+
         story
 
     end
@@ -150,12 +162,17 @@ class ActionStory
 
         if story == "NULL" then story = {} end
         if story["ID"].nil? then story["ID"] = @active_story.id end
-        if story["WORLD_ID"].nil? then story["WORLD_ID"] = @active_story.world_id end
+        if story["WORLD_ID"].nil? then story["WORLD_ID"] = @active_story.world.ID end
         if story["SUMMARY"].nil? then story["SUMMARY"] = @active_story.summary end
-        if story["CURRENT_ARC"].nil? then story["CURRENT_ARC"] = @active_story.current_arc.id end
+        if story["CURRENT_ARC"].nil? then story["CURRENT_ARC"] = @active_story.current_arc["ID"] end
         if story["LAST_SCENE"].nil? then story["LAST_SCENE"] = {} end
 
-        story["LAST_SCENE"]["ID"] = @active_story.current_scene.id
+        # If an arc has no scenes created for it yet, then it could just be the arc text
+        if @active_story.current_scene && active_story.current_scene.kind_of?(String) == false then
+            story["LAST_SCENE"]["ID"] = @active_story.current_scene.id
+        else
+            story["LAST_SCENE"].delete("ID")
+        end
         story["LAST_SCENE"]["TEXT"] = scene_text
 
         $current_story.save
