@@ -20,5 +20,5 @@
 00014 00001      3,4,5                    Thwart plan of <henchman>
 00015 00001      5,6                      Defeat <henchman>
 00016 00001      7                        Journey to <antagonist_location>
-00017 00001      8                        Defeat <antagonis>
+00017 00001      8                        Defeat <antagonist>
 00018 00001      9                        Journey <protagonist_home>

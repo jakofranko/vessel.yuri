@@ -22,3 +22,5 @@
 00010 00005  1,2   under cover of night                                        the next day                                      <protagonist> set out in the direction of <item_location>
 00011 00006  1,2   in the carnage of <antagonist location>                     some days later                                   <protagonist> gathers <protagonist possessive> things and prepares to journey home
 00012 00006  1,2,3 despite the chaos of the previous day                       after a long, dreamless sleep                     <protagonist> finds <protagonist pronoun> companions, to see who survived
+00013 00005  2     while journeying on the road toward <item_location>         just before the dawn                              a <natural_disaster> struck 
+00014 00014  1,2,3 while shopping in the market place                          some days later                                   <protagonist> discovered that <henchman> was planning an ambush
