@@ -216,6 +216,28 @@ class Story
 
     end
 
+    def initialize_current_scenes
+        if @arc_scenes.nil? || @arc_scenes[@current_arc["ID"]].nil? || @arc_scenes[@current_arc["ID"]].length == 0 then
+            # We'll use the current arc's text and shift to the next arc
+            @current_scenes = [@current_arc["TEXT"]]
+        else
+            @current_scenes = @arc_scenes[@current_arc["ID"]]
+        end
+    end
+
+    def get_next_arc
+        @current_arc = @arcs.shift
+        if @current_arc.nil? then
+            puts "The story is done! Setting current story to NULL"
+            story = $current_story
+            story.render = {"CURRENT_STORY" => "NULL"}
+            $current_story.save
+        else
+            initialize_current_scenes
+            @current_scene = @current_scenes.shift
+        end
+    end
+
     def get_current_arc arc_id = nil
 
         if arc_id.nil? && $current_story then
@@ -227,18 +249,16 @@ class Story
         if @current_arc.nil? && arc_id.nil? == false then
             # This should work to discard already used arcs, since
             # the @arcs attribute should come sorted by order
+            # puts "shifting through arcs"
             while @current_arc == nil || @current_arc["ID"] != arc_id
                 @current_arc = @arcs.shift
             end
         elsif @current_arc.nil? || @current_scenes.length == 0 then
+            # puts "getting next arc"
             @current_arc = @arcs.shift
         end
 
-        if @arc_scenes.nil? || @arc_scenes[@current_arc["ID"]].nil? || @arc_scenes[@current_arc["ID"]].length == 0 then
-            @current_scenes = [@current_arc["TEXT"]]
-        else
-            @current_scenes = @arc_scenes[@current_arc["ID"]]
-        end
+        initialize_current_scenes
 
         return @current_arc
 
@@ -246,8 +266,62 @@ class Story
 
     def get_current_scene
 
-        if @current_scene.nil? && @current_scenes.length != 0 then
+        return @current_scene unless @current_scene.nil?
+
+        # two scenarios need to be handled, or maybe 3:
+        # 1. The current scene is nil, but there is another scene in the current_scenes array
+        # 2. A new story has been generated and there is nothing in the current_story memory
+        # 3. A LAST_SCENE exists, but there is no ID because it was just the arc text (an arc was selected that has no coresponding scene templates)
+        # 4. A LAST_SCENE exists, and it has an ID, and so the next scene needs to be determined based on this ID
+        cs = $current_story.to_h["CURRENT_STORY"]
+        last_scene = cs["LAST_SCENE"] || {}
+        last_scene_id = last_scene["ID"]
+        last_scene_order = last_scene["ORDER"]
+        # puts last_scene_id.inspect
+        # puts @arc_scenes
+        # puts @current_scenes.inspect
+
+        # The first case is that the arcs have just been initialized, so pull the first scene
+        if last_scene_id.nil? && @current_scenes.length != 0 then
+            puts "shifting to the next scene with current scenes and no scene ID"
             @current_scene = @current_scenes.shift
+        else
+            # Otherwise, we need to figure out what the next scene will be given the last scene
+            # The last scene might have just been arc text
+            if last_scene_id.nil?
+                puts "Last scene didn't have an ID, so shifting to next arc"
+                get_next_arc
+            else
+                # Find the next scene
+                # Search the current arc's scenes
+                @arc_scenes[cs["CURRENT_ARC"]].each do |arc_scene|
+                    if arc_scene.order > last_scene_order then
+                        puts "Found next scene!"
+                        @current_scene = arc_scene
+                        break
+                    end
+                end
+
+                # If it didn't find a higher order scene in the current arc, time to shift arcs
+                if @current_scene.nil? then
+                    puts "higher order scene not found, shifting to next arc"
+                    get_next_arc
+                end
+            end
+        end
+
+        # Check if the current_scenes is empty now, and refill
+        if @current_scenes.length == 0 then
+            if @arcs.length == 0
+                puts "The story is done! Setting current story to NULL"
+                story = $current_story
+                story.render = {"CURRENT_STORY" => "NULL"}
+                $current_story.save
+            else
+                puts "Scenes are empty, moving to next arc"
+                @current_arc = @arcs.shift
+                initialize_current_scenes
+            end
         end
 
         return @current_scene

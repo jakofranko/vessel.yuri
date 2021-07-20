@@ -21,12 +21,13 @@ class StoryArcMemory < Memory_Array
 
     def get_by_template_id arc_template_id, story_id = nil
 
-        if story_id.nil? then
-            return self.filter("ARC_TEMPLATE_ID", arc_template_id, nil)
-        else
-            return self.filter("STORY_ID", story_id, nil)
+        arcs = self.filter("ARC_TEMPLATE_ID", arc_template_id, nil)
+
+        if story_id then
+            return arcs.select {|arc| arc["STORY_ID"] == story_id }
         end
 
+        return arcs
     end
 
     def get_by_story_id story_id

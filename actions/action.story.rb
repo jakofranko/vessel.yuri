@@ -45,11 +45,8 @@ class ActionStory
 
         load_folder("#{@host.path}/objects/*")
 
-        puts @active_story.inspect
-
         # Only set this the first time. Once it's in memory, we'll use that.
         @active_story ||= get_active_story || new_story
-
 
         # If just starting the server, there will be no current arcs or scenes
         # in memory, so we need to load them from our data store, and then set
@@ -60,26 +57,20 @@ class ActionStory
         # current_arc needs to be called before current_scene because current_arc
         # will handle loading the current_scenes attribute which is what current_scene
         # references when checking to see what is current.
-        current_story = $current_story.to_h
         current_arc = @active_story.get_current_arc
         current_scene = @active_story.get_current_scene
-
-        if current_story["CURRENT_STORY"]["LAST_SCENE"] && current_story["CURRENT_STORY"]["LAST_SCENE"]["TEXT"] == current_scene.describe then
-            @active_story.current_scene = nil
-            current_scene = @active_story.get_current_scene
-        end
 
         # This will allow plain text to be substituted if a scene doesn't exist
         scene_text = current_scene.respond_to?(:describe) ? current_scene.describe : current_scene.to_s
 
         # Update the current story memory with the new
         # values as set by the current_arc and current_scene functions
-        update_current_story(scene_text)
+        unless scene_text.nil? || scene_text.empty?
+            update_current_story(scene_text)
+        end
 
         # Now that the scene text has been captured, nil it out so that
         # get_current_scene can cycle in a new one the next time it's called.
-
-
 
         puts scene_text
     end
@@ -132,25 +123,22 @@ class ActionStory
 
         # Save Scenes
         if story.arc_scenes.length > 0 then
+            # After saving the scenes, need to reassign new IDs
+            # so that the first scene gets queried correctly
+            new_arc_scenes = {}
             story.arc_scenes.each {|arc_template_id, scenes|
                 scene_arc = $story_arcs.get_by_template_id(arc_template_id, story_id).first
                 scenes.each {|scene|
-                    $story_arc_scenes.add(scene_arc["ID"], scene.time, scene.action, scene.setting, scene.order)
+                    scene_id = $story_arc_scenes.add(scene_arc["ID"], scene.time, scene.action, scene.setting, scene.order)
+                    scene.id = scene_id
+                    scene.arc_id = scene_arc["ID"]
                 }
+                new_arc_scenes[scene_arc["ID"]] = scenes
             }
+
+            # Reassign the arc_scenes with correct IDs
+            story.arc_scenes = new_arc_scenes
         end
-
-        # Now that the arc IDs have been updated, get and set the current arc
-        story.get_current_arc
-
-        # Set the current story to the newly created story
-        current_story = {}
-        current_story["ID"] = story.id
-        current_story["WORLD_ID"] = story.world.ID
-        current_story["SUMMARY"] = story.summary
-        current_story["CURRENT_ARC"] = story.current_arc["ID"]
-        $current_story.render["CURRENT_STORY"] = current_story
-        $current_story.save
 
         story
 
@@ -160,21 +148,32 @@ class ActionStory
 
         story = $current_story.render["CURRENT_STORY"]
 
-        if story == "NULL" then story = {} end
+        # These attributes will only be set once
+        if story == "NULL" then
+            story = {}
+            $current_story.render["CURRENT_STORY"] = story
+        end
         if story["ID"].nil? then story["ID"] = @active_story.id end
         if story["WORLD_ID"].nil? then story["WORLD_ID"] = @active_story.world.ID end
         if story["SUMMARY"].nil? then story["SUMMARY"] = @active_story.summary end
-        if story["CURRENT_ARC"].nil? then story["CURRENT_ARC"] = @active_story.current_arc["ID"] end
         if story["LAST_SCENE"].nil? then story["LAST_SCENE"] = {} end
+
+        # This needs to be updated every time
+        unless @active_story.current_arc.nil?
+            story["CURRENT_ARC"] = @active_story.current_arc["ID"]
+        end
 
         # If an arc has no scenes created for it yet, then it could just be the arc text
         if @active_story.current_scene && active_story.current_scene.kind_of?(String) == false then
             story["LAST_SCENE"]["ID"] = @active_story.current_scene.id
+            story["LAST_SCENE"]["ORDER"] = @active_story.current_scene.order
         else
             story["LAST_SCENE"].delete("ID")
+            story["LAST_SCENE"].delete("ORDER")
         end
         story["LAST_SCENE"]["TEXT"] = scene_text
 
+        puts $current_story.inspect
         $current_story.save
 
     end
