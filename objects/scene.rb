@@ -1,60 +1,44 @@
+# Scene object for programatically interacting with individual scene memories
 class Scene
 
-    ATTRS ||= [
-        :id,
-        :arc_id,
-        :order,
-        :time,
-        :location,
-        :setting,
-        :action
-    ]
-    attr_accessor(*ATTRS)
+  ATTRS ||= %i[
+    id
+    arc_id
+    order
+    time
+    location
+    setting
+    action
+  ].freeze
+  attr_accessor(*ATTRS)
 
-    ##
-    # Scenes will be generated from scene templates.
-    # Settings and actions will be generated from text templates.
-    # Time is a description of when the thing happened.
-    # E.g., About mid-morning, while the merchants were selling their wares, a meteor fell from the sky.
-    def initialize scene
-        @id = scene["ID"]
-        @arc_id = scene["ARC_ID"]
-        @order = scene["ORDER"]
-        @time = scene["TIME"] || ""
-        @location = get_location
-        @setting = scene["SETTING"] || ""
-        @action = scene["ACTION"] || ""
-    end
+  ##
+  # Scenes will be generated from scene templates.
+  # Settings and actions will be generated from text templates.
+  # Time is a description of when the thing happened.
+  # E.g., About mid-morning, while the merchants were selling their wares, a meteor fell from the sky.
+  def initialize(scene)
+    @id = scene['ID']
+    @arc_id = scene['ARC_ID']
+    @order = scene['ORDER']
+    @time = scene['TIME'] || ''
+    @location = get_location
+    @setting = scene['SETTING'] || ''
+    @action = scene['ACTION'] || ''
+  end
 
-    def get_time
+  def get_time; end
 
+  def get_location; end
 
+  def generate_setting; end
 
-    end
+  def generate_action; end
 
-    def get_location
+  def describe
 
+    "#{@time.capitalize}, #{@setting.downcase}, #{@action.downcase}"
 
-
-    end
-
-    def generate_setting
-
-
-
-    end
-
-    def generate_action
-
-
-
-    end
-
-    def describe
-
-        "#{@time.capitalize}, #{@setting.downcase}, #{@action.downcase}"
-
-    end
-
+  end
 
 end

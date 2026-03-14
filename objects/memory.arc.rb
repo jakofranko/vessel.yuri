@@ -1,36 +1,35 @@
-require_relative '../../../system/memory.rb'
+require_relative '../../../system/memory'
 require_relative './arc'
 require_relative './_toolkit'
 
+# Arc Memory, for adding and getting arcs using Nataniev's memory system
 class ArcMemory < Memory_Array
 
-    def add summary_id, order, text
+  def add(summary_id, order, text)
 
-        new_id = self.length.to_s.prepend("0", 5)
+    new_id = length.to_s.prepend('0', 5)
+    s_id = summary_id.prepend('0', 5).append(' ', 'summary_id'.length)
+    o = order.append(' ', 24)
 
-        # Append this string to the entities.ma file
-        self.append("#{new_id} #{summary_id.prepend("0", 5).append(" ", "summary_id".length)} #{order.append(" ", 24)} #{text}")
+    # Append this string to the entities.ma file
+    append("#{new_id} #{s_id} #{o} #{text}")
 
-        return new_id
+    new_id
 
-    end
+  end
 
-    def get id
+  def get(id)
 
-        if id.is_a? Numeric
-            id = id.to_s
-        end
+    id = id.to_s if id.is_a? Numeric
 
-        arc_row = self.filter('id', id.prepend("0", 5), "Arc").first
+    filter('id', id.prepend('0', 5), 'Arc').first
 
-        return arc_row
+  end
 
-    end
+  def get_by_summary_id(summary_id)
 
-    def get_by_summary_id summary_id
+    filter('summary_id', summary_id.prepend('0', 5), 'Arc')
 
-        return self.filter("summary_id", summary_id.prepend("0", 5), "Arc")
-
-    end
+  end
 
 end
