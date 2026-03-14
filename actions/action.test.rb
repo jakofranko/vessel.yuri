@@ -98,12 +98,13 @@ class ActionTest
     # Save Arcs
     story.arcs.each_index do |i|
         arc = story.arcs[i]
-        puts arc.text
+        puts arc["TEXT"]
         puts "and then"
         $story_arcs.add(arc, story_id, i)
     end
 
     puts "\nThe scenes in order of each arc are:\n"
+
     # Save Scenes
     if story.arc_scenes.length > 0 then
         story.arc_scenes.each {|arc_template_id, scenes|
