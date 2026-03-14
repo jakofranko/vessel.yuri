@@ -33,11 +33,9 @@ class VesselYuri
     install(:primary, :story)
     install(:primary, :listen)
     install(:primary, :test)
-    install(:primary, :tweet)
 
     install(:generic, :document)
     install(:generic, :help)
-
 
   end
 
