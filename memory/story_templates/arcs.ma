@@ -22,3 +22,4 @@
 00016 00001      7                        Journey to <antagonist_location>
 00017 00001      8                        Defeat <antagonist>
 00018 00001      9                        Journey <protagonist_home>
+00019 00000      3,4                      There is a problem obtaining <item>

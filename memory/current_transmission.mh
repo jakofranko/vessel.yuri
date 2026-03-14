@@ -1,0 +1,9 @@
+~ NAME : Current Transmission
+~ NOTE : This memory will serve to house the current scene for
+~ NOTE : transmission in chunks appropriate for the character
+~ NOTE : limit of the platform e.g., Twitter's 280 chr limit.
+~ AUTH : Jake Franklin
+
+TWITTER
+FACEBOOK
+INSTAGRAM
