@@ -1657,11 +1657,11 @@ Másomi mún
     [sʃf][sʃ]
     (.)\1
     [rl][rl]
-  cortho
-  vortho
-  noortho
-  nomorph
-  nowordpool
+  cortho : BLANK
+  vortho : BLANK
+  noortho : BLANK
+  nomorph : BLANK
+  nowordpool : BLANK
   minsyll : 1
   maxsyll : 3
   morphemes
@@ -1686,7 +1686,7 @@ Másomi mún
       men
   names
     Másomi mún
-  joiner :  
+  joiner : BLANK
   maxchar : 12
   minchar : 4
   genitive : me
@@ -1831,6 +1831,64 @@ Menhemmoh
   genitive : nen
   definitive : mek
   id : 00020
+Masu
+  phonemes
+    C : kntlmsp
+    V : oiaue
+    L : lr
+    S : ʃs
+    F : ʒsʃz
+  structure : CV
+  exponent : 1
+  restricts
+    [sʃf][sʃ]
+    (.)\1
+    [rl][rl]
+  cortho
+    ʃ : š
+    ʒ : ž
+    ʧ : č
+    ʤ : ǧ
+    j : j
+  vortho
+    A : ä
+    E : ë
+    I : ï
+    O : ö
+    U : ü
+  noortho
+  nomorph
+  nowordpool
+  minsyll : 2
+  maxsyll : 3
+  morphemes
+    of
+      ko
+    the
+      ka
+    BLANK
+      ne
+      mi
+      ma
+      le
+      pi
+      ke
+    language
+      su
+  words
+    language
+      nemisu
+      Masu
+    BLANK
+      lepike
+  names
+    Masu
+  joiner :  
+  maxchar : 10
+  minchar : 4
+  genitive : ko
+  definitive : ka
+  id : 00063
 Mal nap lip
   phonemes
     C : ptkmnls
