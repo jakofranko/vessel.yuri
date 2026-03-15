@@ -1,50 +1,50 @@
+# Add a few enhancements to the base String class
 class String
-    PLURAL_EXCEPTIONS ||= []
 
-    # Given string x, find out if it is a x, an x, or are x
-    def article
-        if self.plural?
-            return ""
-        elsif /^[aeiouAEIOU]/ =~ self
-            return "an"
-        else
-            return "a"
-        end
-    end
+  PLURAL_EXCEPTIONS ||= [].freeze
 
-    def with_article
-        if !self.article.empty?
-            self.article + " " + self
-        else
-            self
-        end
+  # Given string x, find out if it is a x, an x, or are x
+  def article
+    if plural?
+      ''
+    elsif /^[aeiouAEIOU]/ =~ self
+      'an'
+    else
+      'a'
     end
+  end
 
-    # Detect if a string is plural
-    def plural?
-        if /s$/ =~ self && PLURAL_EXCEPTIONS.include?(self) == false
-            return true
-        else
-            return false
-        end
+  def with_article
+    if !article.empty?
+      "#{article} #{self}"
+    else
+      self
     end
+  end
 
-    # Special property for describing strings if they are the child of an entity
-    def preposition=(val)
-        @preposition = val.to_s
-    end
+  # Detect if a string is plural
+  def plural?
+    return true if /s$/ =~ self && PLURAL_EXCEPTIONS.include?(self) == false
 
-    def preposition
-        return @preposition
-    end
+    false
+
+  end
+
+  # Special property for describing strings if they are the child of an entity
+  def preposition=(val)
+    @preposition = val.to_s
+  end
+
+  attr_reader :preposition
 
 end
 
+# Add and enhancement to the Hash class
 class Hash
 
-    def symbolize_keys
-        Hash[self.map { |k, v| [k.to_sym, v] }]
-    end
+  def symbolize_keys
+    Hash.transform_keys(&:to_sym)
+  end
 
 end
 
@@ -53,10 +53,9 @@ end
 # elements weighted more frequently the the last elements by using
 # the power of a given exponent.
 def choose(list, exponent = 2)
-    list_index = ((rand ** exponent) * list.length).floor
-    if list[list_index] == "NULL" then
-        return ""
-    else
-        return list[list_index]
-    end
+  list_index = ((rand**exponent) * list.length).floor
+  return '' if list[list_index] == 'NULL'
+
+  list[list_index]
+
 end

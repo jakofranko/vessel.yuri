@@ -1,45 +1,44 @@
-require_relative '../../../system/memory.rb'
+require_relative '../../../system/memory'
 require_relative './story'
 require_relative './_toolkit'
 
+# Memory of stories via Nataniev's memory system
 class StoryMemory < Memory_Array
 
-    def add world_id, summary
+  def add(world_id, summary)
 
-        new_id = self.length.to_s.prepend("0", 5)
+    new_id = length.to_s.prepend('0', 5)
 
-        # Append this string to the entities.ma file
-        self.append("#{new_id} #{world_id.prepend("0", 5).append(" ", "world_id".length)} #{summary}")
+    # Append this string to the entities.ma file
+    append("#{new_id} #{world_id.prepend('0', 5).append(' ', 'world_id'.length)} #{summary}")
 
-        return new_id
+    new_id
 
-    end
+  end
 
-    def get id
+  def get(id)
 
-        if id.is_a? Numeric
-            id = id.to_s.prepend("0", 5)
-        end
+    id = id.to_s.prepend('0', 5) if id.is_a? Numeric
 
-        story = self.filter('id', id, "Story").first
+    filter('id', id, 'Story').first
 
-        return story
+  end
 
-    end
+  def get_by_arc_id(arc_id)
 
-    def get_by_arc_id arc_id
+    filter('arc_id', arc_id.prepend('0', 5), 'Scene')
 
-        return self.filter("arc_id", arc_id.prepend("0", 5), "Scene")
+  end
 
-    end
+  def describe
 
-    def describe
+    each do |x, y|
 
-        self.each { |x, y|
-            puts x
-            puts y
-        }
+      puts x
+      puts y
 
     end
+
+  end
 
 end
